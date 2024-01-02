@@ -1,0 +1,78 @@
+-----------------------------------------------useRef--------------------------------------------------------------------------------------------
+
+useRef - To manage uncontrolled input
+         To target Dom Nodes and to change value without rerender
+         You can use it in useEffect without any dependency as it does not call rerender
+
+import React, { useEffect, useRef } from 'react';
+
+// preserves value
+// DOES NOT trigger re-render
+// target DOM nodes/elements
+
+const UseRefBasics = () => {
+  const refContainer = useRef(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(refContainer.current.value);
+  };
+  useEffect(() => {
+    console.log(refContainer.current);
+    refContainer.current.focus();
+  });
+
+  return (
+    <>
+      <form className='form' onSubmit={handleSubmit}>
+        <div>
+          <input type='text' ref={refContainer} />
+        </div>
+        <button type='submit'>submit</button>
+      </form>
+    </>
+  );
+};
+
+export default UseRefBasics;
+
+Usage - While scrolling you can use useRef to target a container and then scrollLeft() to scroll to the left
+      - When we submit a form, any time on fresh load if we want our first input tag to be highlighted
+      - Let any state be changed , If I want to do a specific task after any state change, in useEffect I can call useRef to do that task for any state change.
+      - {current: null}
+      - refContainer.current === <input type="text" nane="val" id="val"  ref={refContainer}/>
+
+-----------------------------------------------useReducer--------------------------------------------------------------------------------------------
+
+useReducer -  To simplify complex structure
+
+const[state,dispatch] = useReducer(reducer,)  Either set second val here or separately //dispatch can be renamed
+
+Takes reducer function , which takes state and action after dispatch as input
+
+
+if(name)
+{
+dispatch({type:'TESTING'})
+}
+else {
+}
+
+Here dispatch is taking an Object which is the aCtion to be taken on old state.
+
+In reducer we check the type of Dispatch. Remember Reducer must return some state.
+
+if(action.type === 'TESTING')
+{
+    return {
+      ...state,
+      people: newPeople,
+      isModalOpen: true,
+      modalContent: 'item added',
+    };
+  }
+return state;     //else return old state
+};
+
+
+
