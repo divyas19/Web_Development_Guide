@@ -1,0 +1,55 @@
+-----------------------------------------------JavaScript Array find() Method--------------------------------------------------------------------------------------------
+
+The Javascript arr.find() method in Javascript is used to get the value of the first element in the array that satisfies the provided condition. It checks all the elements of the array and whichever the first element satisfies the condition is going to print. This function will not work function having the empty array elements and also does not change the original array.
+
+// Input array contain some elements.
+let array = [-10, -0.20, 0.30, -40, -50];
+
+// Method (return element > 0).
+let found = array.find(function (element) {
+	return element > 0;
+});
+
+// Printing desired values.
+console.log(found);
+
+-----------------------------------------------Javascript map() filter() reduce()----------------------------------------------------------------------------------------
+
+The map(), reduce() and filter() are array functions that transform the array according to the applied function and return the updated array. They are used to write simple, short and clean codes for modifying an array instead of using the loops.
+
+***map() method: It applies a given function on all the elements of the array and returns the updated array.
+
+arr = new Array(1, 2, 3, 6, 5, 4); 
+  
+// function triple(n){ 
+//     return n*3; 
+// }
+// var new_arr = arr.map(triple) 
+// console.log(new_arr); 
+  
+var new_arr = arr.map((n)=>{ 
+    return n*3; 
+}  ) 
+console.log(new_arr); 
+
+//OUTPUT
+//[ 3, 6, 9, 18, 15, 12 ]
+
+***reduce() method: It reduces all the elements of the array to a single value by repeatedly applying a function.
+
+function product(a, b){ 
+    return a * b; 
+} 
+arr = new Array(1, 2, 3, 6, 5, 4); 
+  
+var new_arr = arr.reduce(product) 
+console.log(new_arr) 
+
+***It filters the elements of the array that return false for the applied condition and returns the array which contains elements that satisfy the applied condition
+
+arr = new Array(1, 2, 3, 6, 5, 4); 
+var new_arr = arr.filter(function (x){ 
+    return x % 2==0; 
+}); 
+  
+console.log(new_arr)
