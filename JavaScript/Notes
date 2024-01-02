@@ -1,0 +1,837 @@
+JAVASCRIPT
+
+-----------------------------------------------Basics--------------------------------------------------------------------------------------------
+
+Earlier JS was running only in Browsers with the help of JavaScript Engine.
+Like FireFox: SpiderMonkey
+Chrome: V8
+
+Basics of JS
+
+OpenSource JS Engine in chrome was embedded in C++ Program. (Node)
+Node is a C++ Program including Google V8 JS Engine.
+
+ECMAScript is a specification. JS is a programming language that confirms to it.
+
+To run JS in Node, open command prompt and enter - node index.js
+
+-----------------------------------------------Data Types--------------------------------------------------------------------------------------------
+
+let name;
+console.log(name); - undefined
+By default in JS variables are undefined.
+
+Variable - Cannot be a reserved keyword.
+           Cannot start with a number.
+           Cannot contain a space or hyphen (-)
+           Are case-sensitive
+
+JS is dynamically typed.
+
+Primitives/Value Types - String Number Boolean undefined null
+
+All numbers are typeof number
+
+undefined is type as well as value.
+
+null is object type.
+
+Reference Types - Array Object Function
+
+Objects :
+
+let person = {
+name: 'Rosh',
+age: 30
+};
+
+person.name = "john" ;
+
+person['name'] = 'Mary'
+
+let selection = 'name';
+person[selection] = 'Mary';
+
+let selectedColors = ['red','blue'];
+selectedColors[2] =1;
+
+(3)["red","blue",1]
+
+
+-----------------------------------------------Dynamic--------------------------------------------------------------------------------------------
+
+let val = 1;
+console.log(`Val : ${val}`);
+console.log("Val : "+val);
+
+var str1 = "Hello ";
+var str2 = "world!";
+var res = str1.concat(str2); //will return "Hello world!"
+
+-----------------------------------------------Useful Methods--------------------------------------------------------------------------------------------
+
+querySelector()
+
+Get the first <p> element:
+document.querySelector("p");
+
+Get the first element with class="example":
+document.querySelector(".example");
+
+The querySelector() method returns the first element that matches a CSS selector.
+To return all matches (not only the first), use the querySelectorAll() instead.
+Both querySelector() and querySelectorAll() throw a SYNTAX_ERR exception if the selector(s) is invalid.
+
+HTML
+
+<button>Press me</button>
+<div id="greeting"></div>
+
+JS
+const button = document.querySelector("button");
+
+function greet() {
+  const name = prompt("What is your name?");
+  const greeting = document.querySelector("#greeting");
+  greeting.textContent = `Hello ${name}, nice to see you!`;
+}
+
+button.addEventListener("click", greet);
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The Document Object</h1>
+<h2>The getElementById() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = "Hello World";
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="demo">The Document Object</h1>
+<h2>The getElementById() Method</h2>
+
+<script>
+document.getElementById("demo").style.color = "red";
+</script>
+
+</body>
+</html>
+
+-----------------------------------------------Ways of Function Writing--------------------------------------------------------------------------------------------
+
+1) Function declaration  
+    function add(a, b) {          
+        console.log(a + b); 
+    } 
+      
+    // Calling a function 
+    add(2, 3); 
+
+2) Function Expression 
+    const add = function(a, b) { 
+        console.log(a+b); 
+    }  
+      
+    // Calling function 
+    add(2, 3); 
+
+3)Arrow Functions
+
+  (i) Single line of code 
+    let add = (a, b) => a + b;  
+      
+    console.log(add(3, 2)); 
+
+  (ii) Multiple line of code 
+    const great = (a, b) => { 
+        if (a > b)  
+            return "a is greater"; 
+        else
+            return "b is greater"; 
+    } 
+      
+    console.log(great(3,5)); 
+ 
+-----------------------------------------------var and let--------------------------------------------------------------------------------------------
+
+In the early days of JavaScript, there was only one way of declaring variables and that was using the var keyword. A variable declared with var is defined throughout the program. One of the issues with using the var keyword was redeclaring a variable inside a block will also redeclare the variable outside the block. 
+
+With the introduction of ES6 in 2015 two more keywords, let and const came into the picture. var and let are both used for variable declaration in javascript but the difference between them is that var is function scoped and let is block scoped. Variable declared by let cannot be redeclared and must be declared before use whereas variables declared with var keyword are hoisted. 
+
+-----------------------------------------------Hoisting--------------------------------------------------------------------------------------------
+
+In JavaScript, Hoisting is the default behavior of moving all the declarations at the top of the scope before code execution. Basically, it gives us an advantage that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+
+-----------------------------------------------Callbacks--------------------------------------------------------------------------------------------
+
+JavaScript is an asynchronous language, which means that it can handle multiple tasks simultaneously. Callbacks are a fundamental aspect of JavaScript, as they allow you to run code after an asynchronous operation has been completed. In this article, we’ll look at what callbacks are, why they’re used, and how to use them with real-life examples and code examples.
+
+What are Callbacks?
+
+A callback is a function that is passed as an argument to another function, and is called after the main function has finished its execution. The main function is called with a callback function as its argument, and when the main function is finished, it calls the callback function to provide a result. Callbacks allow you to handle the results of an asynchronous operation in a non-blocking manner, which means that the program can continue to run while the operation is being executed.
+
+Why use Callbacks?
+
+Callbacks are used to handle the results of asynchronous operations in a non-blocking manner. Asynchronous operations are operations that take a significant amount of time to complete, such as network requests, file I/O, and database queries. If these operations were executed synchronously, the program would freeze and wait for the operation to complete before continuing. This can lead to a poor user experience, as the program would appear unresponsive.
+
+Callbacks allow you to continue executing code while the operation is being executed in the background. Once the operation has completed, the callback function is called with the result of the operation. This way, you can ensure that the program remains responsive and the user experience is not impacted.
+
+Concepts:
+
+Asynchronous programming: Callbacks are used to handle the results of asynchronous operations, which means that the operation does not block the execution of the rest of the program. Instead, the program continues to run and the callback function is executed when the operation is complete.
+
+Non-blocking: Callbacks allow for non-blocking programming, which means that the program does not stop and wait for an operation to complete before continuing to execute. This is important for improving the performance and responsiveness of applications.
+
+Higher-order functions: A higher-order function is a function that takes one or more functions as arguments, or returns a function as a result. The mainFunction in the examples above is a higher-order function because it takes a callback function as an argument.
+
+Anonymous functions: Anonymous functions are functions that are not named and are often used as callbacks. The function passed to setTimeout in the first code example is an anonymous function.
+
+Closure: A closure is a function that has access to variables in its outer scope, even after the outer function has returned. This allows the callback function to access variables and information from the main function, even after the main function has completed its execution.
+
+ understanding these concepts is essential for effectively using callbacks in JavaScript programming
+
+
+Real-Life Examples:
+
+Loading images on a website: When you load a website, images can take a while to load, especially if they’re large. If images were loaded synchronously, the website would freeze and wait for each image to load before continuing. With callbacks, you can load the images asynchronously, which means that the website continues to load while the images are being loaded in the background.
+
+Handling form submissions: When a user submits a form, it takes time to process the data and send it to the server. If the form submission was executed synchronously, the user would have to wait for the data to be processed and sent before the form can be submitted. With callbacks, you can handle the form submission asynchronously, which means that the user can continue to interact with the form while the data is being processed and sent in the background.
+
+
+function mainFunction(callback) {
+console.log("Performing operation...");
+// Use setTimeout to simulate an asynchronous operation
+setTimeout(function() {
+	callback("Operation complete");
+}, 1000);
+}
+
+// Define the callback function
+function callbackFunction(result) {
+console.log("Result: " + result);
+}
+
+// Call the main function with the callback function
+mainFunction(callbackFunction);
+
+-----------------------------------------------Promise--------------------------------------------------------------------------------------------
+
+JavaScript Promise are easy to manage when dealing with multiple asynchronous operations where callbacks can create callback hell leading to unmanageable code. Prior to promises events and callback functions were used but they had limited functionalities and created unmanageable code. Multiple callback functions would create callback hell that leads to unmanageable code. Promises are used to handle asynchronous operations in JavaScript.
+
+Syntax:
+
+let promise = new Promise(function(resolve, reject){
+     //do something
+});
+Parameters
+
+The promise constructor takes only one argument which is a callback function
+The callback function takes two arguments, resolve and reject
+Perform operations inside the callback function and if everything went well then call resolve.
+If desired operations do not go well then call reject.
+A Promise has four states:
+
+
+1)fulfilled: Action related to the promise succeeded
+2)rejected: Action related to the promise failed
+3)pending: Promise is still pending i.e. not fulfilled or rejected yet
+4)settled: Promise has been fulfilled or rejected
+
+function watchTutorialCallback(callback, errorCallback) {
+  let userLeft = false
+  let userWatchingCatMeme = false
+
+  if (userLeft) {
+    errorCallback({
+      name: 'User Left', 
+      message: ':('
+    })
+  } else if (userWatchingCatMeme) {
+    errorCallback({
+      name: 'User Watching Cat Meme',
+      message: 'WebDevSimplified < Cat' 
+    })
+  } else {
+    callback('Thumbs up and Subscribe')
+  }
+}
+
+function watchTutorialPromise() {
+  let userLeft = false
+  let userWatchingCatMeme = false
+  return new Promise((resolve, reject) => {
+    if (userLeft) {
+      reject({
+        name: 'User Left', 
+        message: ':('
+      })
+    } else if (userWatchingCatMeme) {
+      reject({
+        name: 'User Watching Cat Meme',
+        message: 'WebDevSimplified < Cat' 
+      })
+    } else {
+      resolve('Thumbs up and Subscribe')
+    }
+  })
+}
+
+watchTutorialCallback(message => {
+  console.log(message)
+}, error => {
+  console.log(error.name + ' ' + error.message)
+})
+
+watchTutorialPromise().then(message => {
+  console.log(message)
+}).catch(error => {
+  console.log(error.name + ' ' + error.message)
+})
+
+const recordVideoOne = new Promise((resolve, reject) => {
+  resolve('Video 1 Recorded')
+})
+
+const recordVideoTwo = new Promise((resolve, reject) => {
+  resolve('Video 2 Recorded')
+})
+
+const recordVideoThree = new Promise((resolve, reject) => {
+  resolve('Video 3 Recorded')
+})
+
+
+After all promises are resolved then run this.
+Promise.all([
+  recordVideoOne,
+  recordVideoTwo,
+  recordVideoThree
+]).then(messages => {
+  console.log(messages)
+})
+
+After first promise is resolved then run this.
+Promise.race([
+  recordVideoOne,
+  recordVideoTwo,
+  recordVideoThree
+]).then(message => {
+  console.log(message)
+})
+
+-----------------------------------------------Async Await--------------------------------------------------------------------------------------------
+
+JavaScript is Synchronous in nature which means that it has an event loop that allows you to queue up an action that won’t take place until the loop is available sometime after the code that queued the action has finished executing. But there are a lot of functionalities in our program which make our code Asynchronous and one of them is the Async/Await functionality.
+Async/Await is the extension of promises which we get as support in the language. 
+
+What is Async Function ?
+Async simply allows us to write promises-based code as if it was synchronous and it checks that we are not breaking the execution thread. It operates asynchronously via the event loop. Async functions will always return a value. It makes sure that a promise is returned and if it is not returned then JavaScript automatically wraps it in a promise which is resolved with its value.
+
+Example 1: In this example, we will see the basic use of async in JavaScript.
+
+
+const getData = async () => {
+    let data = "Hello World";
+    return data;
+}
+ 
+getData().then(data => console.log(data));
+Output
+
+Hello World
+
+What is Await Function ?
+Await function is used to wait for the promise. It could be used within the async block only. It makes the code wait until the promise returns a result. It only makes the async block wait.
+
+Example 2: This example shows the basic use of the await keyword in JavaScript.
+
+
+const getData = async () => {
+    let y = await "Hello World";
+    console.log(y);
+}
+ 
+console.log(1);
+getData();
+console.log(2);
+Output
+1
+2
+Hello World
+
+
+Notice that the console prints 2 before the “Hello World”. This is due to the usage of the await keyword. 
+
+//ASYNC AWAIT
+
+function makeRequest(location){
+    return new Promise((resolve,reject)=>{
+        console.log(`Making request to ${location}`)
+        if(location === `Google`)
+        {
+            resolve(`Google says Hi`)
+        } else {
+            reject(`We can only talk to Google`)
+        }
+    })
+}
+
+function processRequest(response){
+    return new Promise((resolve,reject)=>{
+        cnsole.log('Processing response')
+        resolve(`Extra Information + ${response}`)
+    })
+}
+
+// makeRequest('Facebook').then(response => {
+//     console.log('Response Received')
+//     return processRequest(response)
+// }).then(processedResponse=>{
+//     console.log(processedResponse)
+// }).catch(err=>{
+//     console.log(err)
+// })
+
+async function doWork(){
+    try{
+        const response = await makeRequest('Facebook')
+        console.log('Response Received')
+        const processedResponse = await processRequest(response)
+        console.log(processedResponse)
+    } catch(err){
+        console.log(err)
+    }
+}
+doWork()
+
+//OUTPUT
+// Making request to Facebook
+// We can only talk to Google
+
+-----------------------------------------------JavaScript Array find() Method--------------------------------------------------------------------------------------------
+
+The Javascript arr.find() method in Javascript is used to get the value of the first element in the array that satisfies the provided condition. It checks all the elements of the array and whichever the first element satisfies the condition is going to print. This function will not work function having the empty array elements and also does not change the original array.
+
+// Input array contain some elements.
+let array = [-10, -0.20, 0.30, -40, -50];
+
+// Method (return element > 0).
+let found = array.find(function (element) {
+	return element > 0;
+});
+
+// Printing desired values.
+console.log(found);
+
+-----------------------------------------------Javascript map() filter() reduce()----------------------------------------------------------------------------------------
+
+The map(), reduce() and filter() are array functions that transform the array according to the applied function and return the updated array. They are used to write simple, short and clean codes for modifying an array instead of using the loops.
+
+***map() method: It applies a given function on all the elements of the array and returns the updated array.
+
+arr = new Array(1, 2, 3, 6, 5, 4); 
+  
+// function triple(n){ 
+//     return n*3; 
+// }
+// var new_arr = arr.map(triple) 
+// console.log(new_arr); 
+  
+var new_arr = arr.map((n)=>{ 
+    return n*3; 
+}  ) 
+console.log(new_arr); 
+
+//OUTPUT
+//[ 3, 6, 9, 18, 15, 12 ]
+
+***reduce() method: It reduces all the elements of the array to a single value by repeatedly applying a function.
+
+function product(a, b){ 
+    return a * b; 
+} 
+arr = new Array(1, 2, 3, 6, 5, 4); 
+  
+var new_arr = arr.reduce(product) 
+console.log(new_arr) 
+
+***It filters the elements of the array that return false for the applied condition and returns the array which contains elements that satisfy the applied condition
+
+arr = new Array(1, 2, 3, 6, 5, 4); 
+var new_arr = arr.filter(function (x){ 
+    return x % 2==0; 
+}); 
+  
+console.log(new_arr)
+
+-----------------------------------------------forEach()----------------------------------------------------------------------------------------
+
+***forEach()-The arr.forEach() method calls the provided function once for each element of the array. The provided function may perform any kind of operation on the elements of the given array. 
+
+// JavaScript to illustrate forEach() method
+function func() {
+ 
+    // Original array
+    const items = [12, 24, 36];
+    const copy = [];
+    items.forEach(function (item) {
+        copy.push(item + item+2);
+    });
+    console.log(copy);
+}
+func();
+
+-----------------------------------------------Array destructuring----------------------------------------------------------------------------------------
+
+What Is Destructuring?
+In simple terms destructuring is a fancy way in JavaScript to break apart arrays and objects. It generally allows you to get individual pieces of arrays and objects in less code and opens up a multitude of possibilities. This doesn’t really sound like much more than syntactical sugar, but this small change actually makes doing many tasks significantly easier. Destructuring in arrays and objects is very similar, but it is slightly easier to understand with arrays so I will start by explaining how to destructure arrays.
+
+Destructuring An Array
+Imagine you want to get the first element out of an array. Normally you would do this by accessing the element at index 0.
+
+const array = ["A", "B", "C", "D", "E"]
+const first = array[0]
+
+console.log(first)
+// A
+This is pretty straightforward, but what if you now want the first two elements? You will need to write another line of code to get that element.
+
+const array = ["A", "B", "C", "D", "E"]
+const first = array[0]
+const second = array[1]
+
+console.log(first)
+// A
+console.log(second)
+// B
+Again this is not really a big deal, but this can be slightly simplified with destructuring. Instead of getting each element we want individually we will get all elements at once.
+
+const array = ["A", "B", "C", "D", "E"]
+const [first, second] = array
+
+console.log(first)
+// A
+console.log(second)
+// B
+This syntax probably looks really confusing, but it is actually quite a bit simpler than it looks. Essentially to denote we are doing array destructuring and trying to get elements from an array, we need to wrap our variables inside brackets. This is what we do when we wrap first and second in brackets. Then we just set that group of bracketed variables ([first, second]) equal to the array we want to get the elements from.
+
+This tells JavaScript to take the array on the right side of the equals sign and assign the first element to the first variable in the brackets on the left side of the equals sign. It does the same thing with the second element in the array and assigns it to the second variable in the brackets. This would then continue on until there were no more elements left in the brackets. If we wanted to get the first three elements of the array it is as simple as adding a new variable to the brackets.
+
+const array = ["A", "B", "C", "D", "E"]
+const [first, second, third] = array
+
+console.log(first)
+// A
+console.log(second)
+// B
+console.log(third)
+// C
+Also, if you want to skip an element, for example if you only want elements one and three, you would just leave out the name for the second variable, but keep the comma. This comma tells JS to just skip the second element.
+
+const array = ["A", "B", "C", "D", "E"]
+const [first, , third] = array
+
+console.log(first)
+// A
+console.log(third)
+// C
+Now this on its own is really not that useful since you don’t often need to access an array like this, but what if you want all elements in an array except the first two? This is where the spread operator comes in.
+
+Spread Operator With Arrays
+The spread operator is a tool that lets you spread out all the elements of an array or object. This can be used to create new objects or arrays that are clones, but for our specific use case we can combine this with destructuring to get all other elements not specifically destructured already.
+
+const array = ["A", "B", "C", "D", "E"]
+const [first, second, ...rest] = array
+
+console.log(first)
+// A
+console.log(second)
+// B
+console.log(rest)
+// ['C', 'D', 'E']
+This is incredibly useful for getting a new array with only some of the elements removed.
+
+We can also use the spread operator to combine multiple arrays together.
+
+const array1 = [1, 2, 3]
+const array2 = [4, 5, 6]
+const newArray = [...array1, ...array2]
+
+console.log(newArray)
+// [1, 2, 3, 4, 5, 6]
+Here we are not doing any destructuring and instead are just taking the two arrays and spreading every single value from them into a new array. Since we spread array1 first it will be all the elements at the beginning of the array. We can even combine this with adding individual elements in as well.
+
+const array1 = [1, 2, 3]
+const array2 = [4, 5, 6]
+const newArray = [0, ...array1, 3.5, ...array2, 7]
+
+console.log(newArray)
+// [0, 1, 2, 3, 3.5, 4, 5, 6, 7]
+
+When To Use Destructuring/Spread Operator With Arrays
+It may seem like these cases above are contrived and this would never be a useful feature, so here are three ways I use this feature every day.
+
+Copying An Array
+If I need to ever create a clone of an array then I can easily spread the array into a new array and now I will have two separate arrays that I can modify without modifying independently.
+
+const array = [1, 2, 3]
+const arrayClone = [...array]
+arrayClone.push(4)
+
+console.log(array)
+// [1, 2, 3]
+console.log(arrayClone)
+// [1, 2, 3, 4]
+Converting An Array-Like Object To An Array
+Many times when dealing with JavaScript you get an array-like structure, such as when using document.querySelector, and you cannot use array methods like map on it. To fix this you can just spread the array-like structure into a new array and use all the array methods you want.
+
+const elements = document.querySelector('div')
+const array = [...elements]
+
+array.map(a => /* This works */)
+elements.map(e => /* This throws an error */)
+Destructuring Function Returns
+If you have ever worked with React you are very familiar with this one. Destructuring arrays can be used when you want to return multiple values from a function as an array and easily access them.
+
+function sumAndMultiply(a, b) {
+  return [a + b, a * b]
+}
+
+const [sum, product] = sumAndMultiply(2, 3)
+
+console.log(sum)
+// 5
+console.log(product)
+// 6
+
+-----------------------------------------------Object destructuring----------------------------------------------------------------------------------------
+
+Now that is a lot of talk about arrays so let’s now talk about destructuring objects which is the most useful form of destructuring.
+
+Similar to arrays, destructuring an object for specific properties is as easy as wrapping the variables inside of curly brackets to denote we are doing object destructuring. You then just put the object you want to get the values from on the right side of the equals sign.
+
+const person = { name: "Kyle", age: 25 }
+const { name, age } = person
+
+console.log(name)
+// Kyle
+console.log(age)
+// 25
+As long as you use the same variable name in your destructured variables as is in the object it will work perfectly. Luckily, you can also easily rename variables as well. If you wanted the name variable to be called firstName instead you can do the following.
+
+const person = { name: "Kyle", age: 25 }
+const { name: firstName, age } = person
+
+console.log(firstName)
+// Kyle
+console.log(age)
+// 25
+This is essentially saying that you are mapping the property name from the object person to a new variable called firstName.
+
+Spread Operator With Objects
+Just like with arrays you can spread out the rest of an object while destructuring.
+
+const person = { name: "Kyle", age: 25, favoriteFood: "Rice" }
+const { name, ...rest } = person
+
+console.log(name)
+// Kyle
+console.log(rest)
+// { age: 25, favoriteFood: 'Rice' }
+As you can see all of the properties that are not destructured are added to a new object. This is really useful for cloning an object without certain properties.
+
+Also, like arrays you can combine together two objects with the spread operator to create a new object. This will also overwrite any values that are in both objects by the one that is defined last.
+
+const person1 = { name: "Kyle", age: 25 }
+const person2 = { age: 32, favoriteFood: "Rice" }
+const newPerson = { ...person1, ...person2 }
+
+console.log(newPerson)
+// { name: 'Kyle', age: 32, favoriteFood: 'Rice' }
+
+Nested Object Destructuring
+
+It is pretty common to have an object nested inside another object and want to get a specific value from it. With destructuring this is incredibly easy.
+
+const person = {
+  name: "Kyle",
+  age: 25,
+  address: {
+    city: "Somewhere",
+    state: "One Of Them",
+  },
+}
+const {
+  name,
+  address: { city },
+} = person
+
+console.log(name)
+// Kyle
+console.log(city)
+// Somewhere
+The way this works is by saying we are mapping the address property to a specific variable, but instead of actually creating a variable to map that element to we are destructuring that element into the variable city. We are essentially combining the below two lines together.
+
+const { name, address: addressVariable } = person
+const { city } = addressVariable
+We can even nest array destructuring together, but that is not something you will often need to do.
+
+Default Values
+It is pretty common to destructure an object without knowing if a property exists or not. Many times when this is the case there is a default value you want to apply in case that value does not exist.
+
+const person = { name: "Kyle", age: 25 }
+const { name = "Sally", favoriteFood = "Banana" } = person
+
+console.log(name)
+// Kyle
+console.log(favoriteFood)
+// Banana
+As you can see since the favoriteFood property does not exist in the person object it falls back to the default value. The name property does exist, though, so instead of using the default it pulls the actual value from the person object.
+
+When To Use Destructuring/Spread Operator With Objects
+Again it may seem like these cases above are contrived and this would never be a useful feature, but in reality I use this feature every day.
+
+Copying An Object
+Just like arrays it is very easy to copy an object and create an exact clone with destructuring.
+
+const person = { name: "Kyle", age: 25 }
+const personClone = { ...person }
+personClone.name = "Sally"
+
+console.log(person)
+// { name: 'Kyle', age: 25 }
+console.log(personClone)
+// { name: 'Sally', age: 25 }
+Destructuring Function Returns
+Again just like arrays I use this all the time to return multiple values from a function.
+
+function sumAndMultiply(a, b) {
+  return { sum: a + b, product: a * b }
+}
+
+const { sum, product } = sumAndMultiply(2, 3)
+
+console.log(sum)
+// 5
+console.log(product)
+// 6
+Destructuring Function Parameters
+In JavaScript it is very common to pass an object to a function so having the ability to destructure the object in the function definition and define defaults is incredibly useful.
+
+function printPerson({ name, age, favoriteFood = "None" }) {
+  console.log(`Name: ${name}. Age: ${age}. Food: ${favoriteFood}.`)
+}
+
+const person = { name: "Kyle", age: 25 }
+
+printPerson(person)
+// Name: Kyle. Age: 25. Food: None.
+Conclusion
+
+-----------------------------------------------Cookies, Local Storage, And Session Storage----------------------------------------------------------------------------------------
+
+What Are Cookies, Local Storage, And Session Storage Used For?
+Before I dive into the many differences between the various storage options I first need to talk about what they are used for. All three methods of storage are used to store information on the user’s browser which can be accessed even after navigating to new pages on your site. This data is also saved to the user’s exact browser they are using so if they have your site open in Chrome it will only save the information to their Chrome browser on the device they are currently on. This means if they open your site later in a different browser the data will no longer be there. Now let’s jump into the many differences between each option.
+
+Storage Limit
+Each storage method has a maximum size of the data you can store with it. Both local storage and session storage have a pretty large maximum storage capacity with local storage having a 10 megabyte maximum and session storage having a 5 megabyte maximum. These sizes are so large you should never run into any issues with storing too much data.
+
+Cookies on the other hand have a very restrictive capacity at 4 kilobytes. This may seem incredibly small, but in reality you shouldn’t be storing too much information in cookies so you shouldn’t need to worry about this maximum.
+
+Access
+After storing your data eventually you will need to access it and each storage method has slightly different levels of accessibility. Local storage is accessible in any window or tab that is open to your site. This means if you store some data in local storage on one tab of your browser that same local storage data will be available on all other tabs and windows you have open to that site.
+
+This differs from session storage which is only available in the current tab you set the session storage data in. The easiest way to remember this difference is that session storage is tied to a particular session and each tab of your browser is its own session.
+
+Lastly, cookies are very similar to local storage in that they are accessible from any window or tab after they are set, but one thing that makes them unique is that cookies are also accessible on the server as well. This is because for every request you make to your backend server all of your cookies are also sent along. This makes cookies ideal for authentication related tasks.
+
+Expiration
+Another major difference between the different types of storage is how long they last for. Local storage is the easiest to understand since it never expires. Once you store data in local storage it will stay there until you manually remove it or the user manually removes it.
+
+Session storage data will expire as soon as you close the tab you are on. This is because session storage is tied to a particular session which is equivalent to a tab so once you close your tab you are closing your session thus all session storage is cleared.
+
+Cookies are unique in that you can set the expiration date for them manually. This gives you complete control over how long cookies last for.
+
+Syntax
+Lastly, we need to talk about the differences in syntax between these different storage methods. Before we jump into the differences, though, it is important to note that local storage and session storage have the exact same syntax. The only difference is session storage is accessed with the sessionStorage variable and local storage uses the localStorage variable.
+
+Storing Data
+In order to set data using local storage or session storage you simple use the setItem function. This function takes two string parameters. The first parameter is the name and the second parameter is the value to associate with that name. You can think of this very similar to a key value pair in a JSON object.
+
+localStorage.setItem("name", "Kyle")
+
+sessionStorage.setItem("name", "Kyle")
+In order to do the same with cookies is a bit more complex. You need to access the document.cookie object and set that to your cookie. To do this all you need to do is set document.cookie to a string where the name and value are separated by an equals sign.
+
+document.cookie = "name=Kyle"
+This will create a cookie with the name name and the value Kyle, but this cookie will be expired since the default expiration date is in the past. In order to set an expiration date manually we need to pass the expires key a UTC date value. We also need to make sure we separate the expires key from our name key with a semicolon.
+
+document.cookie = `name=Kyle; expires=${new Date(9999, 0, 1).toUTCString()}`
+This creates a cookie with an expiration date of 01/01/9999 which essentially is like creating a cookie that never expires.
+
+Now if you want to store multiple sets of different data you just need to duplicate the above code.
+
+localStorage.setItem("name", "Kyle")
+localStorage.setItem("lastName", "Smith")
+
+sessionStorage.setItem("name", "Kyle")
+sessionStorage.setItem("lastName", "Smith")
+
+
+Storing JSON Objects:- Only strings can be stored with localStorage or sessionStorage, but we can use JSON.stringify to store more complex objects and JSON.parse to read them. Here is an example:
+// Create item:
+let myObj = { name: 'Harry', language: 'JavaScript' };
+localStorage.setItem(key, JSON.stringify(myObj));
+// Read item:
+let item = JSON.parse(localStorage.getItem(key));
+
+
+Even with cookies you just set document.cookie to a new string and it will add a new cookie without overwriting your old cookies.
+
+document.cookie = `name=Kyle; expires=${new Date(9999, 0, 1).toUTCString()}`
+document.cookie = `lastName=Smith; expires=${new Date(
+  9999,
+  0,
+  1
+).toUTCString()}`
+Getting Data
+In order to get data from local storage and session storage it is as easy as calling the getItem method. This method takes a single parameter which is the name of the key value pair and will return the value.
+
+localStorage.setItem("name", "Kyle")
+localStorage.getItem("name") // Kyle
+
+sessionStorage.setItem("name", "Kyle")
+sessionStorage.getItem("name") // Kyle
+Cookies are a bit more difficult since there is no way to get an individual cookie. The only way to get cookies is to get all the cookies at once by accessing the document.cookie object.
+
+document.cookie = `name=Kyle; expires=${new Date(9999, 0, 1).toUTCString()}`
+document.cookie = `lastName=Smith; expires=${new Date(
+  9999,
+  0,
+  1
+).toUTCString()}`
+document.cookie // name=Kyle; lastName=Smith
+Removing Data
+As like the previous examples removing data from local storage and session storage is as easy as calling a single method. This method is the removeItem method and takes a single parameter which is the name of the key value pair to remove.
+
+localStorage.removeItem("name")
+
+sessionStorage.removeItem("name")
+Cookies as usual are a bit more difficult. To remove a cookie you need to set the cookie again but give it a blank value and a past expiration date.
+
+document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
