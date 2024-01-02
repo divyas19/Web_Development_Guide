@@ -1,0 +1,5 @@
+-----------------------------------------------Export--------------------------------------------------------------------------------------------
+
+when we use export default , then while importing we can change the name.
+
+But if we use only export then names must match.
