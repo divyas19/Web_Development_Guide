@@ -1,0 +1,484 @@
+REDUX
+
+-----------------------------------------------Redux--------------------------------------------------------------------------------------------
+
+Redux is a state management tool for JS Library - Angular, React, Vue, Vanilla JS.
+
+Flux by Facebook
+Redux 
+Mobx
+
+Redux - Centralizes application's state
+      - Makes data flow transparent and predictable
+
+Tools - Redux Developer Tools
+      - Log Rocket
+
+Redux allows you cache or store product's state.
+
+Redux Pros -
+Predictable state changes
+Centralized state
+Easy debugging
+Preserve page state
+Undo/redo
+Ecosystem of add-ons
+
+Redux Cons -
+Complexity
+Verbosity
+
+Webpack is a static module bundler for JavaScript applications — it takes all the code from your application and makes it usable in a web browser.
+
+Functional Programming -
+More Concise
+Easier to Debug
+Easier to test
+More Scalable
+
+Topics to go through
+Redux Store
+Middleware
+Calling APIs
+Testing Redux apps
+Integration with React
+
+
+
+Lodash - A modern JavaScript utility library modularity, performance & extras. - npm i lodash
+
+let input = " JavaScript ";
+let output = "<div>" + input.trim() + "</div>";
+
+const trim = str => str.trim();
+const WrapInDiv = str => `<div>${str}</div>`;
+const toLowerCase = str => str.toLowerCase();
+
+const result = wrapInDiv(toLowerCase(trim(input)));
+
+
+
+
+import { compose, pipe } from "lodash/fp";
+
+let input = " JavaScript ";
+let output = "<div>" + input.trim() + "</div>";
+
+const trim = str => str.trim();
+const WrapInDiv = str => `<div>${str}</div>`;
+const toLowerCase = str => str.toLowerCase();
+
+const transform = compose(wrapInDiv, toLowerCase, trim);
+transform(input);
+
+//You can use pipe to write functions in proper manner
+
+const transform = pipe(trim, to LowerCase, wrapInDiv);
+transform(input);
+
+currying.js
+function add(a) {
+ return function(b) {
+return a + b;
+};
+}
+
+const add1 = add(1);
+add1(5)  
+
+const add2 = a => b => a + b; // (a,b) => a+b
+add(1)(5); // add(1,5)
+
+More generalized form
+trim = str => str.trim();
+wrap = type => str => `<${type}>${str}</${type}>`;
+toLowerCase = str => str.toLowerCase();
+
+transform = pipe(trim, toLowerCase, wrap("div"));  //Since pipe will allow only one parameter in the function, so we use concept of currying
+console.log(transform(input));
+
+
+
+
+
+Pure Function - A function which we call everytime with same argument will return same response.
+
+Pure Functions - No random values
+                 No current date/time
+                 No global state (DOM, files, db, etc)
+                 No mutation of parameters
+
+Example below is not a Pure Function
+
+function isEligible(age){
+return age > minAge;
+}
+
+Benefits of Pure Functions 
+Self-documenting
+Easily testable
+Cacheable
+Concurrency // Since we dont change state we can run functions in parallel
+
+
+reducers need to be pure
+
+JS is not a pure Functional Programming Language as we can mutate Arrays and Objects
+
+const prevents reassignment but data can be changed in some types.
+
+
+
+
+
+
+Why Immutability - PROS
+Prediction
+Faster Change Detection - You need to match reference not in side values to detect change
+Concurrency
+
+CONS
+Performance
+Memory overhead
+
+Structural Sharing - If values are common between two objects they are not copied they are shared.
+
+Updating Objects
+const person = { name: "John" };
+Object.assign({}, person, {name:"Bob", age: 30})
+console.log(updated);
+
+or
+
+const updated = {...person, name: "Bob" };
+
+Both methods do shallow copy, example below
+
+const person = { name: "John", 
+                 address: {
+                    country: "USA"
+                    city: "San Francisco"
+                 }
+};
+
+const updated = { ...person, name: "Bob"};
+updated.address.city = "New York";
+console.log(person);
+
+Deep copy
+
+const updated = { ...person, 
+                 address: {
+                    ...person.address,
+                    city: "New York"
+                 },
+name:"Bob"
+};
+
+console.log(person);
+
+
+Updating Arrays
+const numbers = [1,2,3,4,5];
+const index = numbers.indexOf(2);
+const added = [...numbers.slice(0, index), 4, ...numbers.slice(index)];
+
+Removing
+const removed = numbers.filter(n=> n!== 2);
+
+Updating
+const updated = numbers.map(n => (n === 2?20:n)
+
+Immutability
+Immutable Immer Mori
+
+let book = {title:"Harry Potter"};
+
+function publish(book)
+{
+book.isPublished = true;
+}
+
+publish(book);
+
+console.log(book);
+
+Immutable - npm i immutable
+
+import { Map } from 'immutable';
+let book = Map({title:"Harry Potter"});
+function publish(book)
+{
+return book.set("isPublished",true);
+}
+book = publish(book);
+console.log(book.toJS());
+
+Immer
+
+import { produce } from 'immer';
+let book = {title:"Harry Potter"};
+function publish(book)
+{
+return produce(book, draftBook => {draftBook.isPublished = true;});
+}
+let updated = publish(book);
+console.log(book);
+console.log(updated);
+
+
+
+
+
+
+action - plain js object that defines what just happened
+
+store - single js object which contains our state
+
+Reducer - One or more reducers responsible for updating the slice of a store.
+
+npm i redux@4.0
+
+1) Design a Store
+
+{
+bugs: [
+{
+id:1,
+description: "",
+resolved: false
+}
+],
+currentUser: {}
+}
+
+
+2) Action
+{
+type: "ADD_BUG",       //Redux complains if it is not there
+description: "..."
+}
+
+You can use any other type which is serailizable, which we we can store that on a disk.
+
+Redux is inspired by flux which is an architectural pattern and a library built by Fcaebook.  
+
+payload is an object that contains all the data about the action
+
+{
+type: "bugRemoved",
+payload: {
+id:1
+}
+}
+
+3) Creating Reducer 
+
+reducer.js
+
+let lastId = 0;
+
+function reducer(state = [], action) {
+if (action.type === 'bugAdded')
+    return [
+      ...state,
+      {
+        id: ++lastId,
+        description: action.payload.description,
+        resolved: false
+      }
+     ];
+else if (action.type === 'bugRemoved')
+     return state.filter(bug => bug.id !== action.payload.id);
+
+return state;
+}
+
+//Using Switch operator
+
+
+let lastId = 0;
+
+export default function reducer(state = [], action) {
+switch (action.type === 'bugAdded') {
+ case "bugAdded":
+    return [
+      ...state,
+      {
+        id: ++lastId,
+        description: action.payload.description,
+        resolved: false
+      }
+     ];
+ case "bugRemoved":
+     return state.filter(bug => bug.id !== action.payload.id);
+default:
+     return state;
+}
+}
+
+
+store.js  -  store is a object which has several methods dispatch subscribe getState replaceReducer Symbol(observable)
+
+import {createStore} from 'redux';
+import reducer from './reducer';
+
+const store = createStore(reducer);
+
+export default store;
+
+Dispatching Actions
+
+index.js
+
+import store from "./store";
+
+//subscribe method returns unsubscribe method
+const unsubscribe = store.subscribe(() => {
+console.log("Store changed!",store.getState());
+});
+
+store.dispatch({
+type: "bugAdded",
+payload: {
+description: "Bug1"
+}
+}
+});
+
+unsubscribe();
+
+store.dispatch({
+type:  "bugRemoved",
+payload: {
+  id: 1
+ }
+})
+
+console.log(store.getState());
+
+Action Types
+
+actionTypes.js
+
+export const BUG_ADDED = "bugAdded";
+export const BUG_REMOVED = "bugRemoved";
+
+reducer.js
+
+//import {BUG_ADDED, BUG_REMOVED } from './actionTypes';
+import * as actions from './actionTypes';
+
+
+let lastId = 0;
+
+export default function reducer(state = [], action) {
+switch (action.type) {
+ case actions.BUG_ADDED:
+    return [
+      ...state,
+      {
+        id: ++lastId,
+        description: action.payload.description,
+        resolved: false
+      }
+     ];
+ case actions.BUG_REMOVED:
+     return state.filter(bug => bug.id !== action.payload.id);
+default:
+     return state;
+}
+}
+
+//Similarly bring changes to index.js
+
+
+
+
+
+
+
+
+Best way to write  +  Implement resolving a bug
+
+1)store.js
+import {createStore} from 'redux';
+import reducer from './reducer';
+
+const store = createStore(reducer);
+
+export default store;
+
+
+2)actionTypes.js
+export const BUG_ADDED = "bugAdded";
+export const BUG_REMOVED = "bugRemoved";
+export const BUG_RESOLVED = "bugResolved";
+
+3)actions.js
+import * as actions from './actionTypes';
+
+export function bugAdded(description) {
+ return {
+  type: actions.BUG_ADDED,
+  payload: {
+    description: description
+  }
+ };
+}
+
+export function bugResolved = id => ({
+  type: actions.BUG_RESOLVED,
+  payload: {
+   // id: id 
+   id
+  }
+ };
+})
+
+4)reducer.js
+
+//import {BUG_ADDED, BUG_REMOVED } from './actionTypes';
+import * as actions from './actionTypes';
+
+
+let lastId = 0;
+
+export default function reducer(state = [], action) {
+switch (action.type) {
+ case actions.BUG_ADDED:
+    return [
+      ...state,
+      {
+        id: ++lastId,
+        description: action.payload.description,
+        resolved: false
+      }
+     ];
+ case actions.BUG_REMOVED:
+     return state.filter(bug => bug.id !== action.payload.id);
+ case actions.BUG_RESOLVED:
+     return state.map(bug = > bug.id !== action.payload.id ? bug : {...bug, resolved:true}
+default:
+     return state;
+}
+}
+
+5)index.js
+
+import store from "./store";
+import {bugAdded, bugResolved } from "./actions";
+
+store.dispatch(bugAdded("Bug 1"));
+store.dispatch(bugResolved(1));
+
+
+// store.dispatch({
+// type:  "bugRemoved",
+// payload: {
+//   id: 1
+// }
+// })
+
+console.log(store.getState());
+
