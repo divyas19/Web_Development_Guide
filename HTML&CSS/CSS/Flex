@@ -1,0 +1,99 @@
+Flex -
+
+The flex container becomes flexible by setting the display property to flex:
+
+The flex container properties are:
+
+flex-direction
+flex-wrap
+flex-flow
+justify-content
+align-items
+align-content
+
+flex-direction :- row; (Default value of flex-direction is row, justify-content : X axis, align-items : Y axis)
+                  column;
+                  row-reverse;
+                  column-reverse; 
+
+flex-wrap :- wrap; (Default value of flex-direction is no-wrap) 
+             wrap-reverse; 
+
+This is a shorthand for flex-direction: and flex-wrap: 
+flex-flow: row-reverse wrap;  
+
+justify-content will justify the content in horizontal direction (for default row)
+justify-content :- flex-start; 
+                   flex-end; 
+                   center; 
+                   space-between; 
+                   space-evenly; 
+                   space-around; 
+
+align-items will justify the content in vertical direction (for default row)
+align-items :- center; 
+               flex-end; 
+               flex-start; 
+               stretch/normal; 
+               start; 
+               end; 
+               baseline; 
+
+The flex item properties are :-
+
+order
+flex-grow
+flex-shrink
+flex-basis
+flex
+align-self
+
+order :-  Higher the order, later it shows up in the container.
+
+flex-grow :- This property specifies how much a flex item will grow relative to the rest of the flex items.
+
+
+flex-basis :- The flex-basis Property specifies the initial length of a flex item.
+
+Example :- 
+Set the initial length of the third flex item to 200 pixels:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="flex-basis: 200px">3</div>
+  <div>4</div>
+</div>
+
+
+flex :- The flex property is a shorthand property for the flex-grow, flex-shrink, and flex-basis properties.
+
+Example
+Make the third flex item not growable (0), not shrinkable (0), and with an initial length of 200 pixels:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="flex: 0 0 200px">3</div>
+  <div>4</div>
+</div>
+
+align-self :- flex-start;
+              flex-end;
+              center;  
+              stretch;
+              baseline;
+
+
+Note 1 :-
+when we set flex-wrap
+Items are wrapping in one or more rows
+align-items come to picture and they work on cross axis
+Values - flex-start flex-end space-around space-between space-evenly
+
+Note 2 :-
+If you want to override the width, set flex-basis - it helps to define an items size differently.
+flex-basis: 0 - size of maximum shrink
+
+Note 3 :-
+The gap property is then used to specify the gap between the flex items. In this code, gap:40px 20px sets the gap to 40 pixels vertically and 20 pixels horizontally. This means that there will be a 40-pixel gap between each row of flex items, and a 20-pixel gap between each column of flex items.
