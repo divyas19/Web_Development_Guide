@@ -1,0 +1,52 @@
+GIT Commands :-
+
+*Push Project Folder to Github
+
+Install git if not there.
+Click on extension and do setup by viewing video.
+
+Create a git repo with no readme.
+
+Go to vscode 1)git init
+
+             2)Copy these lines 
+               git init
+               git add README.md
+               git commit -m "first commit"
+               git branch -M main
+               git remote add origin https://github.com/divyas19/del.git
+               git push -u origin main
+
+             3) git add .
+                git commit -m "First commit"
+                git push -u origin main
+
+
+*Clone a git repo
+git clone -b <branch_name> link
+
+
+*Create new branch
+git branch branch_name
+Check all branches 
+git branch
+Select new branch
+git checkout branch_name
+Add all code
+git add .
+git commit -m "add comment"
+Push code to new branch
+git push origin branch_name
+
+
+*Pull request
+git pull origin master
+
+
+*Others
+dir
+cd dir_name
+cd.. To go back
+
+mkdir
+rmdir
