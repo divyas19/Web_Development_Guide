@@ -1,0 +1,8 @@
+-----------------------------------------------JSX Rules--------------------------------------------------------------------------------------------
+
+JSX rules
+return single element and must return something
+div section article or Fragment <> </> 
+camelCase for html attribute className instead of class  htmlFor instead of for
+For JS {}
+
