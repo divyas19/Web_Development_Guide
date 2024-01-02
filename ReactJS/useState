@@ -1,0 +1,140 @@
+-----------------------------------------------useState--------------------------------------------------------------------------------------------
+
+useState is a function which returns array. First val is undefined and second is a function.            
+
+
+useState Array :-
+
+import React from 'react';
+import { data } from '../../../data';
+const UseStateArray = () => {
+  const [people, setPeople] = React.useState(data);
+
+  const removeItem = (id) => {
+    let newPeople = people.filter((person) => person.id !== id);
+    setPeople(newPeople);
+  };
+  return (
+    <>
+      {people.map((person) => {
+        const { id, name } = person;
+        return (
+          <div key={id} className='item'>
+            <h4>{name}</h4>
+            <button onClick={() => removeItem(id)}>remove</button>
+          </div>
+        );
+      })}
+      <button className='btn' onClick={() => setPeople([])}>
+        clear items
+      </button>
+    </>
+  );
+};
+
+export default UseStateArray;
+
+
+useState Object :-
+
+import React, { useState } from 'react';
+
+const UseStateObject = () => {
+  const [person, setPerson] = useState({
+    name: 'peter',
+    age: 24,
+    message: 'random message',
+  });
+
+  // const [name,setName] = useState('peter')
+  // const [age,setAge] = useState(24)
+  // const [message,setMessage] = useState('random message')
+
+  const changeMessage = () => {
+    setPerson({ ...person, message: 'hello world' });
+    // setMessage('hello world')
+  };
+
+  return (
+    <>
+      <h3>{person.name}</h3>
+      <h3>{person.age}</h3>
+      <h4>{person.message}</h4>
+      <button className='btn' onClick={changeMessage}>
+        change message
+      </button>
+    </>
+  );
+};
+
+export default UseStateObject;
+
+
+
+useState Counter :-
+
+import React, { useState } from 'react';
+
+const UseStateCounter = () => {
+  const [value, setValue] = useState(0);
+
+  const reset = () => {
+    setValue(0);
+  };
+
+  const complexIncrease = () => {
+    setTimeout(() => {
+      // setValue(value + 1);
+      setValue((prevState) => {
+        return prevState + 1;
+      });
+    }, 2000);
+  };
+
+  return (
+    <>
+      <section style={{ margin: '4rem 0' }}>
+        <h2>regular counter</h2>
+        <h1>{value}</h1>
+        <button className='btn' onClick={() => setValue(value - 1)}>
+          decrease
+        </button>
+        <button className='btn' onClick={reset}>
+          reset
+        </button>
+        <button className='btn' onClick={() => setValue(value + 1)}>
+          increase
+        </button>
+      </section>
+      <section style={{ margin: '4rem 0' }}>
+        <h2>more complex counter</h2>
+        <h1>{value}</h1>
+        <button className='btn' onClick={complexIncrease}>
+          increase later
+        </button>
+      </section>
+    </>
+  );
+};
+
+export default UseStateCounter;
+
+
+
+
+
+<div className={`btn-warning ${props.mode}`}></div>
+
+If you want to create a function in setState, you can do it.
+
+const [people, setPeople] = useState(data);
+
+const removeItem = (id) =>
+{
+setPeople((oldPeople) => {                                                         oldPeople is the previous state
+let newPeople = oldPeople.filter((person) => person.id !== id);
+return newPeople;                                                                  return is important to set the new state
+});
+};
+
+
