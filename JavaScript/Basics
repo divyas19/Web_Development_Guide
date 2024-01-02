@@ -1,0 +1,14 @@
+-----------------------------------------------Basics--------------------------------------------------------------------------------------------
+
+Earlier JS was running only in Browsers with the help of JavaScript Engine.
+Like FireFox: SpiderMonkey
+Chrome: V8
+
+Basics of JS
+
+OpenSource JS Engine in chrome was embedded in C++ Program. (Node)
+Node is a C++ Program including Google V8 JS Engine.
+
+ECMAScript is a specification. JS is a programming language that confirms to it.
+
+To run JS in Node, open command prompt and enter - node index.js
