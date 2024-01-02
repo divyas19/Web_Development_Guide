@@ -1,0 +1,144 @@
+JSON
+
+-----------------------------------------------JSON Basics--------------------------------------------------------------------------------------------
+
+JSON - JAVASCRIPT OBJECT NOTATION
+
+Data Representation Format
+Commonly Used for APIs and Configs
+Lightweight and Easy to Read/Write
+Integrates Easily With Most Languages
+
+-----------------------------------------------JSON Types--------------------------------------------------------------------------------------------
+
+companies.json
+
+[
+ {
+   "name":A,
+   "noOfEmployees":1,
+   "ceo":Z,
+   "rating":1
+ },
+ {
+   "name":B,
+   "noOfEmployees":1,
+   "ceo":Y,
+   "rating":1
+ }
+]
+
+
+Strings Numbers Booleans null Arrays Objects
+
+-----------------------------------------------JSON Object Literals--------------------------------------------------------------------------------------------
+
+This is a JSON string:
+
+'{"name":"John", "age":30, "car":null}'
+Inside the JSON string there is a JSON object literal:
+
+{"name":"John", "age":30, "car":null}
+JSON object literals are surrounded by curly braces {}.
+
+JSON object literals contains key/value pairs.
+
+Keys and values are separated by a colon.
+
+Keys must be strings, and values must be a valid JSON data type:
+
+string
+number
+object
+array
+boolean
+null
+
+Each key/value pair is separated by a comma.
+
+It is a common mistake to call a JSON object literal "a JSON object".
+
+JSON cannot be an object. JSON is a string format.
+
+The data is only JSON when it is in a string format. When it is converted to a JavaScript variable, it becomes a JavaScript object.
+
+JavaScript Objects
+You can create a JavaScript object from a JSON object literal:
+
+Example
+myObj = {"name":"John", "age":30, "car":null};
+Normally, you create a JavaScript object by parsing a JSON string:
+
+Example
+myJSON = '{"name":"John", "age":30, "car":null}';
+myObj = JSON.parse(myJSON);
+
+Accessing Object Values
+
+You can access object values by using dot (.) notation:
+Example
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+x = myObj.name;
+
+You can also access object values by using bracket ([]) notation:
+Example
+const myJSON = '{"name":"John", "age":30, "car":null}';
+const myObj = JSON.parse(myJSON);
+x = myObj["name"];
+
+-----------------------------------------------JSON in HTML--------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>JSON EXAMPLE</title>
+</head>
+<body>
+ <script type="text/javascript">
+   let companies = [
+ {
+   "name":A,
+   "noOfEmployees":1,
+   "ceo":Z,
+   "rating":1
+ },
+ {
+   "name":B,
+   "noOfEmployees":1,
+   "ceo":Y,
+   "rating":1
+ }
+]
+console.log(companies);
+ </script>
+</body>
+</html>
+
+-----------------------------------------------JSON Object Literals in HTML--------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>JSON EXAMPLE</title>
+</head>
+<body>
+ <script type="text/javascript">
+   let companies = `[
+ {
+   "name":A,
+   "noOfEmployees":1,
+   "ceo":Z,
+   "rating":1
+ },
+ {
+   "name":B,
+   "noOfEmployees":1,
+   "ceo":Y,
+   "rating":1
+ }
+]`
+console.log(JSON.parse(companies)[0].name);
+ </script>
+</body>
+</html>S
