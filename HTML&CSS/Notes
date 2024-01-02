@@ -1,0 +1,997 @@
+HTML AND CSS
+
+-----------------------------------------------HTML Syntax--------------------------------------------------------------------------------------------
+
+HTML is the standard markup language for creating Web pages.
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+</body>
+</html>
+
+
+
+HTML TAGS :- 
+
+HTML Tags and Elements are sometimes perceived as the same. However, they are not. There is a subtle difference between HTML elements and tags that many people aren't aware of.
+HTML Tags are building blocks of HTML Page. They tell the browser how it should display content to the user. A tag starts with a < bracket and ends with a > bracket. Most tags exist in pairs in HTML. Tags have an opening and closing part. They are similar, except the closing part has a / sign after the opening bracket.
+
+
+
+HTML ELEMENTS :- 
+
+HTML Element includes a start tag, content, and an end tag. HTML Elements are components of the web page. Let's say we created a div block and filled it with some text. Then the text-filled div becomes the component of the HTML Page. The <div></div> tags along with the content inside it becomes a component and HTML Element. This will be rendered and shown to the user.
+An HTML element consists of a start tag, some content, and an end tag. You can also have attributes in your tags such as class or id name.
+
+
+
+-----------------------------------------------HTML CSS Topics--------------------------------------------------------------------------------------------
+ 
+
+1)Positions 2)Size 3)Tables 4)Flex 5)Grid
+
+
+1)Positions :-
+
+Absolute : Makes element out of normal flow.
+           To make it move in coordination with some other element, give that parent element some position apart from static.   
+
+  Static : Default
+           No access to Top Right Bottom Left and Z-Index unlike relative
+
+Relative : An element with position: relative; is positioned relative to its normal position.
+           Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position. Other content will not be                    	   adjusted to fit into any gap left by the element.
+
+   Fixed : An element with position: fixed; is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. The top, right, bottom, and      	   left properties are used to position the element.
+
+	   A fixed element does not leave a gap in the page where it would normally have been located.
+
+  Sticky : Give it top offest , (Before it behaves relative) as the distance from top is that offset it sticks behaving as sticky.
+
+
+
+2)Size :-
+
+Absolute Lengths :-
+
+px - not fixed size 
+     pixels (1px = 1/96th of 1in)
+
+Relative Lengths :-
+
+rem - rem Unit: The rem is based upon the font-size value of the root element, which is the <html> element. And if the <html> element doesn’t have a specified font-size, the browser                                                       default value of 16px is used. So here only the value of the root is considered, and there is no relation with a parent element.
+
+em - em Unit: The em unit allows setting the font size of an element relative to the font size of its parent. When the size of the parent element changes, the size of the child changes  	automatically.
+
+max-width - 60ch - To limit characters
+
+
+
+3)Tables :-
+
+A table in HTML consists of table cells inside rows and columns.
+
+Example
+A simple HTML table:
+
+<table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+</table>
+
+
+To make a cell span over multiple columns, use the colspan attribute:
+
+Example
+<table>
+  <tr>
+    <th colspan="2">Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>43</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>57</td>
+  </tr>
+</table>
+
+
+To make a cell span over multiple rows, use the rowspan attribute:
+
+Example
+<table>
+  <tr>
+    <th>Name</th>
+    <td>Jill</td>
+  </tr>
+  <tr>
+    <th rowspan="2">Phone</th>
+    <td>555-1234</td>
+  </tr>
+  <tr>
+    <td>555-8745</td>
+</tr>
+</table>
+
+
+
+4)Flex :-
+
+The flex container becomes flexible by setting the display property to flex:
+
+The flex container properties are:
+
+flex-direction
+flex-wrap
+flex-flow
+justify-content
+align-items
+align-content
+
+flex-direction :- row; (Default value of flex-direction is row, justify-content : X axis, align-items : Y axis)
+                  column;
+                  row-reverse;
+                  column-reverse; 
+
+flex-wrap :- wrap; (Default value of flex-direction is no-wrap) 
+             wrap-reverse; 
+
+This is a shorthand for flex-direction: and flex-wrap: 
+flex-flow: row-reverse wrap;  
+
+justify-content will justify the content in horizontal direction (for default row)
+justify-content :- flex-start; 
+                   flex-end; 
+                   center; 
+                   space-between; 
+                   space-evenly; 
+                   space-around; 
+
+align-items will justify the content in vertical direction (for default row)
+align-items :- center; 
+               flex-end; 
+               flex-start; 
+               stretch/normal; 
+               start; 
+               end; 
+               baseline; 
+
+The flex item properties are :-
+
+order
+flex-grow
+flex-shrink
+flex-basis
+flex
+align-self
+
+order :-  Higher the order, later it shows up in the container.
+
+flex-grow :- This property specifies how much a flex item will grow relative to the rest of the flex items.
+
+
+flex-basis :- The flex-basis Property specifies the initial length of a flex item.
+
+Example :- 
+Set the initial length of the third flex item to 200 pixels:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="flex-basis: 200px">3</div>
+  <div>4</div>
+</div>
+
+
+flex :- The flex property is a shorthand property for the flex-grow, flex-shrink, and flex-basis properties.
+
+Example
+Make the third flex item not growable (0), not shrinkable (0), and with an initial length of 200 pixels:
+
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div style="flex: 0 0 200px">3</div>
+  <div>4</div>
+</div>
+
+align-self :- flex-start;
+              flex-end;
+              center;  
+              stretch;
+              baseline;
+
+
+Note 1 :-
+
+when we set flex-wrap
+Items are wrapping in one or more rows
+align-items come to picture and they work on cross axis
+Values - flex-start flex-end space-around space-between space-evenly
+
+Note 2 :-
+
+If you want to override the width, set flex-basis - it helps to define an items size differently.
+flex-basis: 0 - size of maximum shrink
+
+Note 3 :-
+The gap property is then used to specify the gap between the flex items. In this code, gap:40px 20px sets the gap to 40 pixels vertically and 20 pixels horizontally. This means that there will be a 40-pixel gap between each row of flex items, and a 20-pixel gap between each column of flex items.
+
+
+
+5)Grid
+
+CSS Grid Concept :- 
+
+Grids are 2-D we can place H and V and Both. Stacking through z-index.
+You can have grid 6*6 with only two items.
+
+
+CONTAINER :- 
+
+display:grid;
+
+_______________________________________
+
+____  ____  ____  ____
+____  ____  ____  ____
+____  ____  ____  ____
+
+grid-template-rows: 133px 133px 133px;
+                  : 133px   1fr   1fr;
+                  :   2fr   1fr   1fr;
+
+grid-template-columns: 133px 133px 133px;
+
+grid-template-rows: repeat(3, 1fr);// : 1fr 1fr 1fr
+grid-template-columns: repeat(3, 1fr);
+
+grid-template-rows: 100px 100px;
+grid-template-columns: 100px 3fr 1fr;
+
+some may shrink a lot 
+grid-template-columns: 100px minmax(100px,3fr) 1fr; //stops shrinking at 100px;
+
+
+
+grid - 3 rows - 2 columns
+grid-template-areas:
+   'header header'
+   'main aside'
+   'footer footer';  
+
+.item-1{
+grid-area: header;
+}
+
+.item-2{
+grid-area: main;
+}
+
+.item-3{
+grid-area: aside;
+}
+
+.item-4{
+grid-area: footer;
+}
+
+text inside each item at center
+
+ 
+
+
+row-gap:12px;
+column-gap:12px;
+gap: 12px 13px;
+gap: 12px; all
+
+
+
+It is item property :-
+grid-column-start: 1;  |_|_| | | | 
+grid-column-end: 3;
+grid-row-start: 1;   
+grid-row-end: 3;
+
+____  ____  
+
+grid-column: 2 / span 3;  or span 2 - means whereever you are span 2 columns from that.
+grid-column: 2 / 5
+
+
+start from line 1 and span till 3 columns
+| |_|_|_| | | | |
+
+
+
+Item property :-
+grid-area: row-start col-start row-end col-end;
+grid-area: 3 / 1 / -1 / -1; // 3 / 1 / 7 / 7
+
+
+
+Stacking :-
+.item{
+grid-area: 2 / 4 / 4 / 6;
+z-index: 1;
+ }
+
+
+
+Elements falling outside of grid size are in explicitly defind grid and don't follow properties.
+To resolve this in container add 
+grid-auto-rows: 100px; //If it is added below last row
+grid-auto-flow: column;
+
+
+justify-content - must give width to items - container property 
+
+grid - 6*6
+only 2 rows and 2 columns
+
+____ ____ ____ ____ ____ ____    container width : 600px; item width : 200px;
+
+          ____ ____
+          |        |           2 r 2 c   
+
+
+  
+
+justify-items - must give width to items - container property
+
+grid-template-rows: 50px 1fr 50px;
+grid-template-columns: repeat(3, 1fr);
+
+__________________________________   start
+
+__________ __________ __________     each grid 
+____       ____       ____
+
+
+
+__________________________________   end
+
+__________ __________ __________     each grid 
+      ____       ____       ____
+
+align-items: center;
+center start end.... 
+
+place-items: center;
+
+start end center baseline
+
+
+
+
+justify-self - It is item property.
+justify-self: center;
+
+align-self: center;
+
+place-self: center;
+
+
+
+grid - container treated as block;
+inline-grid - container treated as inline // to set whole layout in a box
+
+
+
+Responsive grid
+
+grid-template-rows: repeat(4,100px);
+grid-template-columns: repeat(4, minmax(100px,1fr));  at 100px*4 the grid may shrink more but items cover 400px
+
+
+grid-template-rows: repeat(4,100px);
+grid-template-columns: repeat(auto-fit, minmax(100px,1fr));  at 100px*4 the grid may shrink more but items cover 400px
+
+
+
+
+
+-----------------------------------------------Box Shadow--------------------------------------------------------------------------------------------
+
+h1{
+text-shadow: 0px 0px 5px yellow, 0px 0px 5px blue;
+}
+
+h1:hover
+{
+box-shadow: 5px 5px 5px black;
+}
+
+-5 left 5 right x
+-5 top 5 bottom y
+spread
+
+
+
+
+
+
+
+-----------------------------------------------Responsive Design--------------------------------------------------------------------------------------------
+
+media queries
+bootstrap
+flex 
+rem
+
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+default all, screen, speech
+
+infinity - 480px - lightgreen
+
+@media screen and (max-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+480px - 0px - lightgreen
+
+@media screen and (max-width: 500px) and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+500px - 480px
+
+
+
+
+-----------------------------------------------Liner Gradient--------------------------------------------------------------------------------------------
+
+body{
+background: linear-gradient(skyblue, lightgreen);
+background: linear-gradient(to right, skyblue, lightgreen); //skyblue at start then lightgreen
+
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+BACKGROUND IMAGE
+
+body{
+background-image: url("yourpath.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+
+background-position: center;
+background-size: cover;
+}
+
+
+-----------------------------------------------Float--------------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+  float: left;
+}
+p.clear {
+  clear: right;
+}
+
+</style>
+</head>
+<body>
+
+<img src="w3css.gif" width="100" height="132">
+<p>This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.</p>
+<p class="clear">This is also some text. This is also some text. This is also some text. This is also some text. This is also some text. This is also some text.</p>
+<p><strong>Remove the "clear" class to see the effect.</strong></p>
+
+</body>
+</html>
+
+
+
+-----------------------------------------------Animations--------------------------------------------------------------------------------------------
+
+#box{
+transform: translateX(50px);
+transform: translateY(50px);
+transform: translate(50px,50px);
+transform: rotateX(180deg);
+transform: rotateY(180deg);
+transform: rotateZ(180deg);
+transform: scaleX(3);
+transform: scaleY(3);
+transform: scale(2, 2);
+transform: skewX(45deg);
+transform: skewY(45deg);
+transform: skew(20deg, 20deg);
+transform: matrix(1,0,0,1,0,0) - scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()
+}
+
+
+#box{
+animation: mySlide; Name of your animation
+animation-play-state: running; You can stop it
+animation-iteration-count:infinite;
+animation delay: 0s;
+animation-timimg-function: linear; ease ease-out ease-in
+animation duration: 3s;
+
+animation: 3s linear 0s infinite running mySlide;
+}
+
+#box:hover{
+animation: 3s linear 0s infinite running mySlide;
+
+}
+
+@keyframes mySlide{
+from(margin-left: 100%;}
+to{margin-left: 0%;}
+}
+
+@keyframes myRotate{
+100%{transform: rotateX(360deg)}
+100%{transform: rotateY(360deg)}
+100%{transform: rotateZ(360deg)}
+}
+
+@keyframes myOpacity{
+50%{opacity: 0;}
+}
+
+@keyframes myScale{
+50%{transform: scale(0.5, 0.5);}
+}
+
+@keyframes myColorChange{
+20%{background-color: orange;}
+40%{background-color: yellow;}
+60%{background-color: green;}
+80%{background-color: blue;}
+100%{background-color: purple;}
+}
+
+-----------------------------------------------Major Points--------------------------------------------------------------------------------------------
+
+Text-align : 
+Aligns content horizontally, so to align vertically do use padding.
+
+
+
+Padding : 
+If single value , then if width is there left right padding is added.
+If single value , then if height is there top bottom padding is added.
+
+
+
+box-sizing: border-box
+To keep the width constant even if padding is added.
+
+
+
+The height and width properties do not include padding, borders, or margins. It sets the height/width of the area inside the padding, border, and margin of the element.
+
+
+
+Position : Static(Default) Relative absolute Fixed Stickey
+
+Elements are then positioned using the top, bottom, left, and right properties. However, these properties will not work unless the position property is set first. They also work differently depending on the position value.
+
+Note: z-index only works on positioned elements (position: absolute, position: relative, position: fixed, or position: sticky) and flex items (elements that are direct children of display: flex elements).
+
+Overflow : Note: The overflow property only works for block elements with a specified height.
+Note: In OS X Lion (on Mac), scrollbars are hidden by default and only shown when being used (even though "overflow:scroll" is set).
+
+
+
+To center a block 
+To horizontally center a block element (like <div>), use margin: auto;
+
+To center an image 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+
+
+
+If an element is taller than the element containing it, and it is floated, it will overflow outside of its container. You can use the "clearfix hack" to fix this (see example below).
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  border: 3px solid #4CAF50;
+  padding: 5px;
+}
+
+.img1 {
+  float: right;
+}
+
+.img2 {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+<h2>Without Clearfix</h2>
+
+<p>This image is floated to the right. It is also taller than the element containing it, so it overflows outside of its container:</p>
+
+<div>
+  <img class="img1" src="pineapple.jpg" alt="Pineapple" width="170" height="170">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet...
+</div>
+
+<h2 style="clear:right">With New Modern Clearfix</h2>
+<p>Add the clearfix hack to the containing element, to fix this problem:</p>
+
+<div class="clearfix">
+  <img class="img2" src="pineapple.jpg" alt="Pineapple" width="170" height="170">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet...
+</div>
+
+</body>
+</html>
+
+
+
+
+
+Center vertically
+padding and line-height
+
+An inline element may provide color to that much only, so make it block to cover all area.
+
+
+-----------------------------------------------Other Topics--------------------------------------------------------------------------------------------
+
+
+***PRESERVE SPACES AND LINE TAGS***
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The pre tag preserves both spaces and line breaks:</p>
+
+<pre>
+   My Bonnie lies over the ocean.
+
+   My Bonnie lies over the sea.
+
+   My Bonnie lies over the ocean.
+   
+   Oh, bring back my Bonnie to me.
+</pre>
+
+</body>
+</html>
+
+
+***PRESENT TEXT***
+
+Tag		Description
+<b>		Defines bold text
+<em>		Defines emphasized text 
+<i>		Defines a part of text in an alternate voice or mood
+<small>		Defines smaller text
+<strong>	Defines important text
+<sub>		Defines subscripted text
+<sup>		Defines superscripted text
+<ins>		Defines inserted text
+<del>		Defines deleted text
+<mark>		Defines marked/highlighted text
+
+
+***TO PLACE MANY IMAGES TOGETHER***
+
+Use Image Map
+
+
+***SHOW DIFFERENT IMAGES FOR VARYING SCREEN SIZES***
+
+Use the picture Element
+
+
+***FAVICON***
+
+<head>
+  <title>My Page Title</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+
+***BORDER STYLE***
+
+The following values are allowed:
+
+dotted     
+dashed     
+solid     
+double     
+groove     
+ridge     
+inset     
+outset     
+none     
+hidden     
+
+ th, td {
+  border-style: dotted;
+}
+
+
+***TABLE - SPACE AROUND EACH CELL***
+
+table {
+  border-spacing: 30px;
+}
+
+
+***TABLES -nth child***
+
+tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+th:nth-child(even),td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+
+***TABLESS - STYLE COLUMNS COLLECTIVELY***
+
+  <colgroup>
+    <col span="2" style="background-color: #D6EEEE">
+  </colgroup>
+
+
+***DESCRIPTION LIST***
+
+A Description List
+Coffee
+- black hot drink
+Milk
+- white cold drink
+
+
+***TO PLACE WEBSITE WITHIN A PAGE***
+
+Use iframes
+
+
+***HTML LAYOUT TECHNIQUES***
+
+There are four different techniques to create multicolumn layouts. Each technique has its pros and cons:
+
+CSS framework
+CSS float property
+CSS flexbox
+CSS grid
+
+
+***IMAGE WIDTH 100% RESPONSIVE***
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h2>Responsive Image</h2>
+<p>When the CSS width property is set in a percentage value, the image will scale up and down when resizing the browser window. Resize the browser window to see the effect.</p>
+
+<img src="img_girl.jpg" style="width:100%;">
+
+</body>
+</html>
+
+
+***MEDIA RESPONSIVENESS***
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+
+.menu a {
+  background-color: #e5e5e5;
+  padding: 8px;
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  color: black;
+}
+
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+}
+
+.right {
+  background-color: #e5e5e5;
+  float: left;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;color:#aaaaaa;">
+
+<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>Hello World</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+  </div>
+
+  <div class="main">
+    <h2>Lorum Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+  </div>
+
+  <div class="right">
+    <h2>About</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+  </div>
+</div>
+
+<div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">© copyright w3schools.com</div>
+
+</body>
+</html>
+
+
+***NAME IN INPUT***
+
+To submit inut value
+
+
+***AUTOCOMPLETE AND NOVALIDATE***
+
+Check in form
+
+
+***LEGEND AND FIELDSET***
+
+<form action="/action_page.php">
+  <fieldset>
+    <legend>Personalia:</legend>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+
+
+***OUTLINE STYLE***
+
+outline-style : After setting this only other properties will work of outline-style
+
+
+***MAGAZINE TYPE CONTENT***
+
+text-align : justify-content
+
+
+***LAST TEXT OF CONTENT***
+
+text-align-last: right;
+
+
+***IMAGE AND TEXT ALIGNMENT***
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img.a {
+  vertical-align: baseline;
+}
+
+img.b {
+  vertical-align: text-top;
+}
+
+img.c {
+  vertical-align: text-bottom;
+}
+
+img.d {
+  vertical-align: sub;
+}
+
+img.e {
+  vertical-align: super;
+}
+</style>
+</head>
+<body>
+
+<h1>The vertical-align Property</h1>
+
+<h2>vertical-align: baseline (default):</h2>
+<p>An <img class="a" src="sqpurple.gif" width="9" height="9"> image with a default alignment.</p> 
+
+
+***TEXT RESPONSIVE***
+
+The text size can be set with a vw unit, which means the "viewport width".
+
+That way the text size will follow the size of the browser window:
+
+<h1 style="font-size:10vw">Hello World</h1>
