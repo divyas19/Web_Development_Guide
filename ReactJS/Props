@@ -1,0 +1,40 @@
+-----------------------------------------------Props--------------------------------------------------------------------------------------------
+
+You can pass props as bunny also.
+
+props are objects.
+
+
+const Book = ({img, title, author}) =>      Destructuring in js
+{
+//const {img, title, author} = props;
+return (
+<article className='book'>
+<img src={img} alt='' />
+<h1>{title}</h1>
+<h4>{author}</h4>
+</article>
+}
+);
+};
+
+<Book title="My Diary" price={22}/>
+
+
+<Book title="My Diary" /> If we don't pass any value, the price will not be displayed.
+
+
+const firstBook = {
+images: "...",
+title: "Happy World"
+}
+
+<img src={props.images} alt='' />    //Instead of props you can use values, datas
+
+No need to maintain props pass order and use order.
+
+const objArr = [{},{},]
+const strArr = ["",""]
+
+return <section className="booklist">{objArr}</section>;   invalid
+return <section className="booklist">{strArr}</section>;   valid 
