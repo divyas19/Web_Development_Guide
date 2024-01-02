@@ -1,0 +1,342 @@
+AXIOS
+
+-----------------------------------------------Basics----------------------------------------------------------------------------------------
+
+What is Axios?
+Advantage of using Axios?
+Use Axios in React with Promises
+Error handling with Axios
+Axios with Async Await
+Best Way to write Axios
+
+What is Axios?
+Axios is lightweight package and use to make HTTP requests in Any Javascript Library like React, Angular or Vue. Axios makes it easy to send asynchronous HTTP requests to REST endpoints and perform CRUD operations. If you use Fetch method in Javascript, Axios is the “Easy to use” Version of Fetch.
+
+
+Advantages of using Axios
+Axios by default Work in JSON format.So no more JSON parsing.
+
+Make all types of HTTP requests (GET, POST, PUT, DELETE)
+
+
+How to install Axios in React App
+Like any other npm package, you have to simply install Axios package in your React Application and import axios from the axios package.
+
+
+Install Axios
+
+npm install axios
+or
+yarn add axios
+
+-----------------------------------------------Axios with Promise----------------------------------------------------------------------------------------
+
+Use Axios in React with Promises and Error Handling
+import { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios.jsx";
+
+const App = () => {
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+
+  // using Promises
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => setMyData(response.data))
+      .catch((error) => setIsError(error.message));
+  }, []);
+
+//plz subscribe to thapa technical
+  return (
+    <>
+      <h1>Axios Tutorial</h1>
+      {isError !== "" && <h2>{isError}</h2>}
+
+      <div className="grid">
+        {myData.slice(0, 9).map((post) => {
+          const { body, id, title } = post;
+          return (
+            <div key={id} className="card">
+              <h2>{title.slice(0, 15).toUpperCase()}</h2>
+              <p>{body.slice(0, 100)}</p>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default App;
+
+-----------------------------------------------Use Axios in React with Async & Await. Also Error Handling with Try Catch---------------------------------------------------- 
+
+
+import { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios.jsx";
+
+
+const App = () => {
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+
+  // using Async Await
+  const getMyPostData = async () => {
+    try {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+      setMyData(res.data);
+    } catch (error) {
+      setIsError(error.message);
+    }
+  };
+
+  // NOTE:  calling the function
+  useEffect(() => {
+    getMyPostData();
+  }, []);
+
+  return (
+    <>
+      <h1>Axios Tutorial</h1>
+      {isError !== "" && <h2>{isError}</h2>}
+
+      <div className="grid">
+        {myData.slice(0, 9).map((post) => {
+          const { body, id, title } = post;
+          return (
+            <div key={id} className="card">
+              <h2>{title.slice(0, 15).toUpperCase()}</h2>
+              <p>{body.slice(0, 100)}</p>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default App;
+
+-----------------------------------------------Simplified way to use axios---------------------------------------------------- 
+
+Best way to write Axios in react app by creating a axios.js file and add the below code and then simply import the axios from this file and pass only the string for which you want data.
+import axios from "axios";
+
+// we need to pass the baseURL as an object
+const API = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com",
+});
+
+export default API;
+
+
+import { useState, useEffect } from "react";
+import "./App.css";
+import axios from "./axios.jsx";
+
+const App = () => {
+  const [myData, setMyData] = useState([]);
+  const [isError, setIsError] = useState("");
+
+  // using Async Await
+  const getMyPostData = async () => {
+    try {
+      const res = await axios.get("/posts");
+      setMyData(res.data);
+    } catch (error) {
+      setIsError(error.message);
+    }
+  };
+
+  // NOTE:  calling the function
+  useEffect(() => {
+    getMyPostData();
+  }, []);
+
+  return (
+    <>
+      <h1>Axios Tutorial</h1>
+      {isError !== "" && <h2>{isError}</h2>}
+
+      <div className="grid">
+        {myData.slice(0, 9).map((post) => {
+          const { body, id, title } = post;
+          return (
+            <div key={id} className="card">
+              <h2>{title.slice(0, 15).toUpperCase()}</h2>
+              <p>{body.slice(0, 100)}</p>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default App;
+
+-----------------------------------------------Sending an Axios POST in React---------------------------------------------------- 
+
+We can now perform the same POST request we just did in the JavaScript example in React. We will first install the Axios package using npm or Yarn to use Axios in React. In your terminal, install Axios by running either of the commands:
+
+$ npm install axios
+
+$ yarn add axios
+With Axios installed, let’s go to our App.js file. Unlike in JavaScript, we will first import Axios from the Axios package we installed before using it. Then, in our handleSubmit function, we will call Axios with the POST method just as we did in the vanilla example:
+
+import React, { useState } from "react";
+import axios from "axios";
+
+const App = () => {
+  const [data, setData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({
+      ...data,
+      [e.target.name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      email: data.email,
+      password: data.password
+    };
+    axios.post("https://reqres.in/api/login", userData).then((response) => {
+      console.log(response.status, response.data.token);
+    });
+  };
+
+  return (
+    <div>
+      <h1>Login Account</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">
+          Email
+          <input
+            type="email"
+            name="email"
+            value={data.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            value={data.password}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
+The above code is a practical example of where and how we can make the Axios POST call.
+
+-----------------------------------------------POST request using Axios with React Hooks---------------------------------------------------- 
+
+How to handle POST request errors in Axios
+
+As previously stated, one of the advantages of using Axios over the native Fetch API is that it allows us to handle error responses better.
+
+
+Over 200k developers use LogRocket to create better digital experiences
+Learn more →
+With Axios, it catches errors in the .catch() block and allows us to check for certain conditions to see why the error occurs so we can know how to handle them. Let’s see how we can do that below using the first example:
+
+const App = () => {
+  const [data, setData] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({
+      ...data,
+      [e.target.name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const userData = {
+      email: data.email,
+      password: data.password
+    };
+    axios
+      .post("https://reqres.in/api/login", userData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log("server responded");
+        } else if (error.request) {
+          console.log("network error");
+        } else {
+          console.log(error);
+        }
+      });
+  };
+
+  return (
+    <div>
+      <h1>Login Account</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="email">
+          Email
+          <input
+            type="email"
+            name="email"
+            value={data.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            value={data.password}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+};
+In the first error condition, we check if there is a response, that is if our request was sent and the server responded.
+
+The errors we can get here range from a 400 error telling us the user does not exist or there are missing credentials, a 404 error telling us the page was not found, to a 501 error telling us the page is unavailable, etc.
+
+In the second error condition, we checked to see if the request was made, but the server received no response. A network error or offline internet network is usually the reason for this error.
+
+And finally, if the error received does not fall under these two categories, then the last error block catches it and tells us what happened. We can also use error.toJSON() to make our error response more readable.
+
+-----------------------------------------------Using async/await syntax with Axios---------------------------------------------------- 
+
+Similarly, you can use the async/await function to make an Axios POST request. To use async and await, we are going to make use of the try…catch method. We make our calls inside the try block and then get our errors in our catch block. See the code below:
+
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(url, userData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+From the code above, we are awaiting a response from our POST request before we can perform an operation with the response. It works like the .then() we have seen in the previous example.
