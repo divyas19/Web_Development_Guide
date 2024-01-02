@@ -1,0 +1,93 @@
+-----------------------------------------------Using Maps--------------------------------------------------------------------------------------------
+
+const books = [
+{ id:1,
+img:'',
+title:'',
+author:'',
+},
+{ id:2,
+img:'',
+title:'',
+author:'',
+},
+{ id:3,
+img:'',
+title:'',
+author:'',
+},
+]
+
+function BookList()
+{
+return(
+<section className ='booklist'>
+{
+books.map((book,index) => {                               props is an object, but here you are passing book object in props object
+return <Book key={index} book={book}></Book>;
+})}
+);
+}
+
+const Book = (props) =>
+{
+const {img, title, author} = props.book;
+return (
+<article className='book'>
+<img src={img} alt='' />
+<h1>{title}</h1>
+<h4>{author}</h4>
+</article>
+}
+);
+};
+
+
+
+
+
+
+const books = [
+{ id:1,
+img:'',
+title:'',
+author:'',
+},
+{ id:2,
+img:'',
+title:'',
+author:'',
+},
+{ id:3,
+img:'',
+title:'',
+author:'',
+},
+]
+
+function BookList()
+{
+return(
+<section className ='booklist'>
+{
+books.map((book,index) => {
+
+//return <Book key={book.id} {...book}></Book>;            Using destructure in js   
+})}
+);
+}
+
+const Book = (props) =>
+{
+const {img, title, author} = props;
+return (
+<article className='book'>
+<img src={img} alt='' />
+<h1>{title}</h1>
+<h4>{author}</h4>
+</article>
+}
+);
+};
+
+
