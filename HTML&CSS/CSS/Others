@@ -1,0 +1,138 @@
+Other Topics -
+
+-----------------------------------------------Box Shadow--------------------------------------------------------------------------------------------
+
+h1{
+text-shadow: 0px 0px 5px yellow, 0px 0px 5px blue;
+}
+
+h1:hover
+{
+box-shadow: 5px 5px 5px black;
+}
+
+-5 left 5 right x
+-5 top 5 bottom y
+spread
+
+-----------------------------------------------Liner Gradient--------------------------------------------------------------------------------------------
+
+body{
+background: linear-gradient(skyblue, lightgreen);
+background: linear-gradient(to right, skyblue, lightgreen); //skyblue at start then lightgreen
+
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+BACKGROUND IMAGE
+
+body{
+background-image: url("yourpath.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+
+background-position: center;
+background-size: cover;
+}
+
+-----------------------------------------------Other Points--------------------------------------------------------------------------------------------
+
+Text-align : 
+Aligns content horizontally, so to align vertically do use padding.
+
+
+
+Padding : 
+If single value , then if width is there left right padding is added.
+If single value , then if height is there top bottom padding is added.
+
+
+
+box-sizing: border-box
+To keep the width constant even if padding is added.
+
+
+
+The height and width properties do not include padding, borders, or margins. It sets the height/width of the area inside the padding, border, and margin of the element.
+
+
+
+Position : Static(Default) Relative absolute Fixed Stickey
+
+Elements are then positioned using the top, bottom, left, and right properties. However, these properties will not work unless the position property is set first. They also work differently depending on the position value.
+
+Note: z-index only works on positioned elements (position: absolute, position: relative, position: fixed, or position: sticky) and flex items (elements that are direct children of display: flex elements).
+
+Overflow : Note: The overflow property only works for block elements with a specified height.
+Note: In OS X Lion (on Mac), scrollbars are hidden by default and only shown when being used (even though "overflow:scroll" is set).
+
+
+
+To center a block 
+To horizontally center a block element (like <div>), use margin: auto;
+
+To center an image 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+
+
+If an element is taller than the element containing it, and it is floated, it will overflow outside of its container. You can use the "clearfix hack" to fix this (see example below).
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  border: 3px solid #4CAF50;
+  padding: 5px;
+}
+
+.img1 {
+  float: right;
+}
+
+.img2 {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+
+<h2>Without Clearfix</h2>
+
+<p>This image is floated to the right. It is also taller than the element containing it, so it overflows outside of its container:</p>
+
+<div>
+  <img class="img1" src="pineapple.jpg" alt="Pineapple" width="170" height="170">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet...
+</div>
+
+<h2 style="clear:right">With New Modern Clearfix</h2>
+<p>Add the clearfix hack to the containing element, to fix this problem:</p>
+
+<div class="clearfix">
+  <img class="img2" src="pineapple.jpg" alt="Pineapple" width="170" height="170">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet...
+</div>
+
+</body>
+</html>
+
+
+
+Center vertically
+padding and line-height
+
+An inline element may provide color to that much only, so make it block to cover all area.
