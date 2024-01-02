@@ -1,3 +1,5 @@
+-----------------------------------------------Basic--------------------------------------------------------------------------------------------
+
 HTML is the standard markup language for creating Web pages.
 
 <!DOCTYPE html>
@@ -24,3 +26,311 @@ HTML Tags are building blocks of HTML Page. They tell the browser how it should 
 HTML ELEMENTS - 
 HTML Element includes a start tag, content, and an end tag. HTML Elements are components of the web page. Let's say we created a div block and filled it with some text. Then the text-filled div becomes the component of the HTML Page. The <div></div> tags along with the content inside it becomes a component and HTML Element. This will be rendered and shown to the user.
 An HTML element consists of a start tag, some content, and an end tag. You can also have attributes in your tags such as class or id name.
+
+
+-----------------------------------------------Other Topics--------------------------------------------------------------------------------------------
+
+
+***PRESERVE SPACES AND LINE TAGS***
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>The pre tag preserves both spaces and line breaks:</p>
+
+<pre>
+   My Bonnie lies over the ocean.
+
+   My Bonnie lies over the sea.
+
+   My Bonnie lies over the ocean.
+   
+   Oh, bring back my Bonnie to me.
+</pre>
+
+</body>
+</html>
+
+
+***PRESENT TEXT***
+
+Tag		Description
+<b>		Defines bold text
+<em>		Defines emphasized text 
+<i>		Defines a part of text in an alternate voice or mood
+<small>		Defines smaller text
+<strong>	Defines important text
+<sub>		Defines subscripted text
+<sup>		Defines superscripted text
+<ins>		Defines inserted text
+<del>		Defines deleted text
+<mark>		Defines marked/highlighted text
+
+
+***TO PLACE MANY IMAGES TOGETHER***
+
+Use Image Map
+
+
+***SHOW DIFFERENT IMAGES FOR VARYING SCREEN SIZES***
+
+Use the picture Element
+
+
+***FAVICON***
+
+<head>
+  <title>My Page Title</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+
+***BORDER STYLE***
+
+The following values are allowed:
+
+dotted     
+dashed     
+solid     
+double     
+groove     
+ridge     
+inset     
+outset     
+none     
+hidden     
+
+ th, td {
+  border-style: dotted;
+}
+
+
+***TABLE - SPACE AROUND EACH CELL***
+
+table {
+  border-spacing: 30px;
+}
+
+
+***TABLES -nth child***
+
+tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+th:nth-child(even),td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+
+***TABLESS - STYLE COLUMNS COLLECTIVELY***
+
+  <colgroup>
+    <col span="2" style="background-color: #D6EEEE">
+  </colgroup>
+
+
+***DESCRIPTION LIST***
+
+A Description List
+Coffee
+- black hot drink
+Milk
+- white cold drink
+
+
+***TO PLACE WEBSITE WITHIN A PAGE***
+
+Use iframes
+
+
+***HTML LAYOUT TECHNIQUES***
+
+There are four different techniques to create multicolumn layouts. Each technique has its pros and cons:
+
+CSS framework
+CSS float property
+CSS flexbox
+CSS grid
+
+
+***IMAGE WIDTH 100% RESPONSIVE***
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<h2>Responsive Image</h2>
+<p>When the CSS width property is set in a percentage value, the image will scale up and down when resizing the browser window. Resize the browser window to see the effect.</p>
+
+<img src="img_girl.jpg" style="width:100%;">
+
+</body>
+</html>
+
+
+***MEDIA RESPONSIVENESS***
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.menu {
+  float: left;
+  width: 20%;
+  text-align: center;
+}
+
+.menu a {
+  background-color: #e5e5e5;
+  padding: 8px;
+  margin-top: 7px;
+  display: block;
+  width: 100%;
+  color: black;
+}
+
+.main {
+  float: left;
+  width: 60%;
+  padding: 0 20px;
+}
+
+.right {
+  background-color: #e5e5e5;
+  float: left;
+  width: 20%;
+  padding: 15px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 620px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;color:#aaaaaa;">
+
+<div style="background-color:#e5e5e5;padding:15px;text-align:center;">
+  <h1>Hello World</h1>
+</div>
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+  </div>
+
+  <div class="main">
+    <h2>Lorum Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+  </div>
+
+  <div class="right">
+    <h2>About</h2>
+    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+  </div>
+</div>
+
+<div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">© copyright w3schools.com</div>
+
+</body>
+</html>
+
+
+***NAME IN INPUT***
+
+To submit inut value
+
+
+***AUTOCOMPLETE AND NOVALIDATE***
+
+Check in form
+
+
+***LEGEND AND FIELDSET***
+
+<form action="/action_page.php">
+  <fieldset>
+    <legend>Personalia:</legend>
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname" value="John"><br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname" value="Doe"><br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+
+
+***OUTLINE STYLE***
+
+outline-style : After setting this only other properties will work of outline-style
+
+
+***MAGAZINE TYPE CONTENT***
+
+text-align : justify-content
+
+
+***LAST TEXT OF CONTENT***
+
+text-align-last: right;
+
+
+***IMAGE AND TEXT ALIGNMENT***
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img.a {
+  vertical-align: baseline;
+}
+
+img.b {
+  vertical-align: text-top;
+}
+
+img.c {
+  vertical-align: text-bottom;
+}
+
+img.d {
+  vertical-align: sub;
+}
+
+img.e {
+  vertical-align: super;
+}
+</style>
+</head>
+<body>
+
+<h1>The vertical-align Property</h1>
+
+<h2>vertical-align: baseline (default):</h2>
+<p>An <img class="a" src="sqpurple.gif" width="9" height="9"> image with a default alignment.</p> 
+
+
+***TEXT RESPONSIVE***
+
+The text size can be set with a vw unit, which means the "viewport width".
+
+That way the text size will follow the size of the browser window:
+
+<h1 style="font-size:10vw">Hello World</h1>
