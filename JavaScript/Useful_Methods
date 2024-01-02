@@ -1,0 +1,61 @@
+-----------------------------------------------Useful Methods--------------------------------------------------------------------------------------------
+
+querySelector()
+
+Get the first <p> element:
+document.querySelector("p");
+
+Get the first element with class="example":
+document.querySelector(".example");
+
+The querySelector() method returns the first element that matches a CSS selector.
+To return all matches (not only the first), use the querySelectorAll() instead.
+Both querySelector() and querySelectorAll() throw a SYNTAX_ERR exception if the selector(s) is invalid.
+
+HTML
+
+<button>Press me</button>
+<div id="greeting"></div>
+
+JS
+const button = document.querySelector("button");
+
+function greet() {
+  const name = prompt("What is your name?");
+  const greeting = document.querySelector("#greeting");
+  greeting.textContent = `Hello ${name}, nice to see you!`;
+}
+
+button.addEventListener("click", greet);
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The Document Object</h1>
+<h2>The getElementById() Method</h2>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML = "Hello World";
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="demo">The Document Object</h1>
+<h2>The getElementById() Method</h2>
+
+<script>
+document.getElementById("demo").style.color = "red";
+</script>
+
+</body>
+</html>
