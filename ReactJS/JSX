@@ -6,3 +6,35 @@ div section article or Fragment <> </>
 camelCase for html attribute className instead of class  htmlFor instead of for
 For JS {}
 
+-----------------------------------------------Points--------------------------------------------------------------------------------------------
+
+<h1 style={{backgroundColor: "lightblue"}}>Hello Style!</h1>
+
+class MyHeader extends React.Component {
+  render() {
+    const mystyle = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      padding: "10px",
+      fontFamily: "Arial"
+    };
+    return (
+      <div>
+      <h1 style={mystyle}>Hello Style!</h1>
+      <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+
+const Title = 'I am the heading'
+<h1>{Title}</h1>
+<h1>{Title.toUpperCase()}</h1>
+<h1>{6+6}</h1>
+
+Remember In return you have JSX
+So write javascript in {}
+Also statement should return something  ex - {let a = 6;} not valid 
+                                        ex - {console.log("Hello")} valid
+
+
