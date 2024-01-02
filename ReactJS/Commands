@@ -1,0 +1,25 @@
+-----------------------------------------------Commands--------------------------------------------------------------------------------------------
+
+1)Initially creating an app
+npx create-react-app appname
+npm start
+
+2)After clone from git
+npm start
+npm install
+
+3)Move to production
+npm run build
+
+node --version
+Babel is a Javascript Compiler that converts newest Javascript into good old Javascript
+
+index.js
+<div id="root"></div> Whole our Javascript lives here.
+
+rafce   rfc
+
+npm start -> Starts the development server
+npm run build -> Bundles the app into satatic files for production -> This gives Build Folder to deploy
+
+Keep React Component name in Caps
