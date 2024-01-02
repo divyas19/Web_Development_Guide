@@ -1,0 +1,34 @@
+-----------------------------------------------Responsive Design--------------------------------------------------------------------------------------------
+
+media queries
+bootstrap
+flex 
+rem
+
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+default all, screen, speech
+
+infinity - 480px - lightgreen
+
+@media screen and (max-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+480px - 0px - lightgreen
+
+@media screen and (max-width: 500px) and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+500px - 480px
+
+
