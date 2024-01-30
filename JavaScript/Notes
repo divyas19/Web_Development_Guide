@@ -447,6 +447,29 @@ doWork()
 //OUTPUT
 // Making request to Facebook
 // We can only talk to Google
+----------------------------------------------------------------------------------------------------------------------------------------
+
+async function showCountry(){
+    try{
+    console.log("If state is Karnataka : ");
+    let val = await retAns("Karnataka");
+    console.log(val);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+function retAns(val){
+    return new Promise(function(resolve,reject){
+        if(val === "Karnataka")
+        resolve("Country is India.")
+        else
+        reject("No answer : ");
+    });
+}
+
+showCountry();
 
 -----------------------------------------------JavaScript Array find() Method--------------------------------------------------------------------------------------------
 
