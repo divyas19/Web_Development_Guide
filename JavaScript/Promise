@@ -73,6 +73,8 @@ watchTutorialPromise().then(message => {
 })
 
 ---------------------------------------------------------------------------------------------------------------------------------------
+let userLeft = false;
+let userWatchingCatMeme = false;
 
 let v = new Promise((resolve, reject) => {
     if (userLeft) {
