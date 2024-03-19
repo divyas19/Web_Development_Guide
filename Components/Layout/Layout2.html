@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Layout1</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      .wrapper-div {
+        width: 90%;
+        margin: auto;
+      }
+
+      #both-div {
+        margin-bottom: 10px;
+        width: 100%;
+        min-height: 50px;
+      }
+
+      .clearfix::after {
+        clear: both;
+        display: block;
+        content: "";
+      }
+
+      .float {
+        background-color: grey;
+        min-height: 50px;
+        line-height: 50px;
+        width: 50%;
+        float: left;
+      }
+
+      #both-div .float:first-child {
+        padding-left: 20px;
+      }
+
+      #head {
+        background-color: grey;
+        min-height: 400px;
+        width: 100%;
+        /* line-height: 400px;
+        text-align: center; */
+        display: grid;
+        place-content: center;
+        margin-bottom: 10px;
+      }
+
+      #intro {
+        background-color: grey;
+        min-height: 50px;
+        /* line-height: 50px;
+        text-align: center; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      #three-div {
+        margin-bottom: 10px;
+        width: 100%;
+        min-height: 100px;
+      }
+
+      .float-again {
+        background-color: grey;
+        min-height: 100px;
+        /* line-height: 100px;
+        text-align: center; */
+        /* display: grid;
+        place-content: center; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
+        float: left;
+      }
+
+      #three-div .float-again:nth-child(2) {
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+
+      #foot {
+        background-color: grey;
+        min-height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper-div">
+      <div id="both-div" class="clearfix">
+        <div class="float">Logo</div>
+        <div class="float">Navigation</div>
+      </div>
+      <div id="head">Header / Banner</div>
+      <div id="intro">Intro Text Area</div>
+      <div id="three-div" class="clearfix">
+        <div class="float-again">Box 1</div>
+        <div class="float-again">Body 2</div>
+        <div class="float-again">Body 3</div>
+      </div>
+      <div id="foot">Footer</div>
+    </div>
+  </body>
+</html>
