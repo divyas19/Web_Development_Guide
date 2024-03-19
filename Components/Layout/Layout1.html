@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Layout1</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+      .wrapper-div {
+        padding: 5px;
+      }
+      #head {
+        background-color: grey;
+        min-height: 50px;
+        line-height: 50px;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 15px;
+      }
+
+      #navbar {
+        background-color: grey;
+        min-height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      #both-div {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      .clearfix::after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+
+      #item1 {
+        background-color: grey;
+        min-height: 475px;
+        line-height: 475px;
+        text-align: center;
+        width: 22%;
+        float: left;
+      }
+
+      #item2 {
+        background-color: grey;
+        min-height: 475px;
+        line-height: 475px;
+        text-align: center;
+        width: 75%;
+        float: right;
+      }
+
+      #foot {
+        background-color: grey;
+        min-height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper-div">
+      <div id="head"><h1>Header</h1></div>
+      <div id="navbar"><h3>Navbar</h3></div>
+      <div id="both-div" class="clearfix">
+        <div id="item1">Side Bar</div>
+        <div id="item2">Body Area</div>
+      </div>
+      <div id="foot">Footer</div>
+    </div>
+  </body>
+</html>
