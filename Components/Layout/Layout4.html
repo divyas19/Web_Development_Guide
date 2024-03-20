@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Layout1</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+
+      .wrapper-div {
+        width: 90%;
+        margin: auto;
+      }
+
+      #logo-nav {
+        min-height: 50px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      #logo {
+        background-color: grey;
+        min-height: 50px;
+        width: 50%;
+        padding-left: 20px;
+        float: left;
+        line-height: 50px;
+      }
+
+      #nav {
+        background-color: grey;
+        min-height: 50px;
+        width: 50%;
+        float: right;
+        line-height: 50px;
+      }
+
+      .clearfix::after {
+        clear: both;
+        display: block;
+        content: "";
+      }
+
+      #box3-div {
+        min-height: 150px;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .box3 {
+        width: 30%;
+        background-color: grey;
+        float: left;
+        min-height: 150px;
+        text-align: center;
+        line-height: 150px;
+      }
+
+      #box3-div .box3:nth-child(2) {
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+
+      #both-div {
+        margin-bottom: 10px;
+        width: 100%;
+        min-height: 460px;
+      }
+
+      #float-left-side {
+        min-height: 460px;
+        float: left;
+        width: 48%;
+      }
+
+      #float-right-side {
+        min-height: 460px;
+        float: right;
+        width: 48%;
+      }
+
+      .float-left {
+        min-height: 460px;
+        width: 46%;
+        float: left;
+      }
+
+      .float-right {
+        min-height: 460px;
+        width: 46%;
+        float: right;
+      }
+
+      .float-left div,
+      .float-right div {
+        min-height: 100px;
+        width: 100%;
+        background-color: grey;
+      }
+
+      .float-left div:nth-child(1),
+      .float-left div:nth-child(2),
+      .float-left div:nth-child(3) {
+        margin-bottom: 20px;
+      }
+
+      .float-right div:nth-child(1),
+      .float-right div:nth-child(2),
+      .float-right div:nth-child(3) {
+        margin-bottom: 20px;
+      }
+
+      #foot {
+        background-color: grey;
+        min-height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper-div">
+      <div id="logo-nav" class="clearfix">
+        <div id="logo">Logo</div>
+        <div id="nav">Navigation</div>
+      </div>
+
+      <div id="both-div" class="clearfix">
+        <div id="float-left-side" class="clearfix">
+          <div class="float-left">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <div class="float-right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div id="float-right-side" class="clearfix">
+          <div class="float-left">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <div class="float-right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div id="box3-div" class="clearfix">
+        <div class="box3">Box1</div>
+        <div class="box3">Box2</div>
+        <div class="box3">Box3</div>
+      </div>
+      <div id="foot">Footer</div>
+    </div>
+  </body>
+</html>
