@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Layout1</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+
+      .wrapper-div {
+        width: 90%;
+        margin: auto;
+      }
+
+      #logo {
+        background-color: grey;
+        min-height: 50px;
+        width: 100%;
+        margin-bottom: 10px;
+        padding-left: 20px;
+      }
+
+      #both-div {
+        margin-bottom: 10px;
+        width: 100%;
+        min-height: 500px;
+      }
+
+      .clearfix::after {
+        clear: both;
+        display: block;
+        content: "";
+      }
+
+      .float-left {
+        background-color: grey;
+        min-height: 500px;
+        float: left;
+        width: 35%;
+        padding-left: 20px;
+        padding-top: 20px;
+      }
+
+      .float-right {
+        min-height: 500px;
+        float: right;
+        width: 60%;
+      }
+
+      .right1 {
+        min-height: 150px;
+        width: 100%;
+        margin-bottom: 50px;
+        background-color: gray;
+        display: grid;
+        place-content: center;
+      }
+
+      .right2 {
+        min-height: 300px;
+        width: 100%;
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #foot {
+        background-color: grey;
+        min-height: 50px;
+        line-height: 50px;
+        text-align: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper-div">
+      <div id="logo">Logo</div>
+      <div id="both-div" class="clearfix">
+        <div class="float-left">
+          <div>Side bar</div>
+          <div>Navigation</div>
+        </div>
+        <div class="float-right">
+          <div class="right1">Header / Banner</div>
+          <div class="right2">Body Area</div>
+        </div>
+      </div>
+      <div id="foot">Footer</div>
+    </div>
+  </body>
+</html>
+
+<!-- Using Floats
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Layout1</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+
+      .wrapper-div {
+        width: 90%;
+        margin: auto;
+      }
+
+      #logo {
+        background-color: grey;
+        min-height: 50px;
+        width: 100%;
+        margin-bottom: 10px;
+        padding-left: 20px;
+      }
+
+      #both-div {
+        margin-bottom: 10px;
+        width: 100%;
+        min-height: 500px;
+        display: flex;
+        gap: 5%;
+      }
+
+      .float-left {
+        background-color: grey;
+        min-height: 500px;
+        width: 35%;
+        padding-left: 20px;
+        padding-top: 20px;
+      }
+
+      .float-right {
+        min-height: 500px;
+        width: 60%;
+      }
+
+      .right1 {
+        min-height: 150px;
+        width: 100%;
+        margin-bottom: 50px;
+        background-color: gray;
+        display: grid;
+        place-content: center;
+      }
+
+      .right2 {
+        min-height: 300px;
+        width: 100%;
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #foot {
+        background-color: grey;
+        min-height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper-div">
+      <div id="logo">Logo</div>
+      <div id="both-div" class="clearfix">
+        <div class="float-left">
+          <div>Side bar</div>
+          <div>Navigation</div>
+        </div>
+        <div class="float-right">
+          <div class="right1">Header / Banner</div>
+          <div class="right2">Body Area</div>
+        </div>
+      </div>
+      <div id="foot">Footer</div>
+    </div>
+  </body>
+</html> -->
