@@ -164,6 +164,23 @@ document.getElementById("demo").style.color = "red";
     } 
       
     console.log(great(3,5)); 
+
+-----------------------------------------------this and constructor--------------------------------------------------------------------------------------------
+
+function Person(name, technology){
+   this.name = name;
+   this.tech= technology;
+}
+
+let a = new Person("a","js");
+let b = new Person("b","java");
+
+console.log(a);
+console.log(b);
+
+// O/P
+// Person { name: 'a', tech: 'js' }
+// Person { name: 'b', tech: 'java' }
  
 -----------------------------------------------var and let--------------------------------------------------------------------------------------------
 
