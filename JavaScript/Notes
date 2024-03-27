@@ -165,6 +165,46 @@ document.getElementById("demo").style.color = "red";
       
     console.log(great(3,5)); 
 
+-----------------------------------------------Arrays--------------------------------------------------------------------------------------------
+
+let arr = ["a","b"];
+let elem = arr[1]; //b
+arr.push("c");
+arr.push("d","e",1,{name:"xyz"}, function(){console.log("I am function.");});
+arr[1]="f"
+console.log(arr);
+// [ 'a', 'f', 'c', 'd', 'e', 1, { name: 'xyz' }, [Function (anonymous)] ]
+arr.pop();
+console.log(arr.length); //7
+
+// let arr = new Array();
+// arr[0] ="a";
+// console.log(arr); // ['a']
+
+let numArr = [1,2,3,4,5,6,7];
+console.log(numArr);
+numArr.splice(2,3,8,9,10,11);
+console.log(numArr);
+
+
+let charArr =["a","b","c","d"];
+// for(let i =0; i < numArr.length; i++)
+// {
+//     console.log(numArr[i]);
+// }
+
+for(let character of charArr)
+{
+    console.log(character);
+}
+
+for(let ind in charArr)
+{
+    console.log(ind);
+}
+
+//in is used for array index similar to being used in objects for keys
+
 -----------------------------------------------this and constructor--------------------------------------------------------------------------------------------
 
 function Person(name, technology){
