@@ -170,17 +170,21 @@ document.getElementById("demo").style.color = "red";
 function Person(name, technology){
    this.name = name;
    this.tech= technology;
+   this.work = function(){console.log(this.name+" uses "+this.tech)};
 }
 
 let a = new Person("a","js");
 let b = new Person("b","java");
 
 console.log(a);
+a.work();
 console.log(b);
-
+b.work();
 // O/P
-// Person { name: 'a', tech: 'js' }
-// Person { name: 'b', tech: 'java' }
+// Person { name: 'a', tech: 'js', work: [Function (anonymous)] }
+// a uses js
+// Person { name: 'b', tech: 'java', work: [Function (anonymous)] }
+// b uses java
  
 -----------------------------------------------var and let--------------------------------------------------------------------------------------------
 
