@@ -128,3 +128,19 @@ Promise.race([
 ]).then(message => {
   console.log(message)
 })
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+const val = 0;
+
+let p = new Promise((resolve,reject)=>{
+    
+    if(val === 1)
+    resolve({name:"true",message:"Successful"});
+    else
+    reject({name:"false",message:"Unsuccessful"});
+    
+})
+
+p.then(data=>{console.log(data.name+" "+data.message)})
+ .catch(data=>{console.log(data.name+" "+data.message)});
