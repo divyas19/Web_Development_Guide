@@ -12,3 +12,9 @@ Node is a C++ Program including Google V8 JS Engine.
 ECMAScript is a specification. JS is a programming language that confirms to it.
 
 To run JS in Node, open command prompt and enter - node index.js
+
+JavaScript is Synchronous:-
+Spoiler: at its base, JavaScript is a synchronous, blocking, single-threaded language. That just means that only one operation can be in progress at a time. That’s not the entire story, though!
+What if you have to make an expensive database request? You don’t want to be twiddling your thumbs while PG and Postgres grab those 800 songs you need for your music library. Synchronous code makes a programmer’s life very difficult, so the JavaScript community developed some great workarounds.
+
+When you hear folks say that JavaScript is an asynchronous language, what they mean is that you can manipulate JavaScript to behave in an asynchronous way. It’s not baked in, but it’s possible! 
