@@ -389,7 +389,6 @@ watchTutorialPromise().then(message => {
 })
 
 ---------------------------------------------------------------------------------------------------------------------------------------
-
 let userLeft = false;
 let userWatchingCatMeme = false;
 
@@ -445,6 +444,55 @@ Promise.race([
 ]).then(message => {
   console.log(message)
 })
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+const val = 0;
+
+let p = new Promise((resolve,reject)=>{
+    
+    if(val === 1)
+    resolve({name:"true",message:"Successful"});
+    else
+    reject({name:"false",message:"Unsuccessful"});
+    
+})
+
+p.then(data=>{console.log(data.name+" "+data.message)})
+ .catch(data=>{console.log(data.name+" "+data.message)});
+ 
+ let p1 = new Promise((resolve,reject)=>{
+     resolve(1);
+ });
+ 
+  let p2 = new Promise((resolve,reject)=>{
+     resolve(2);
+ });
+ 
+  let p3 = new Promise((resolve,reject)=>{
+     resolve(3);
+ });
+ 
+ Promise.all([p1,p2,p3]).then(data=>console.log(data));
+ 
+  let p4 = new Promise((resolve,reject)=>{
+      setTimeout(()=>resolve(4),2000)
+ });
+ 
+  let p5 = new Promise((resolve,reject)=>{
+     resolve(5);
+ });
+ 
+  let p6 = new Promise((resolve,reject)=>{
+     resolve(6);
+ });
+ 
+ Promise.race([p4,p5,p6]).then(data=>console.log(data));
+ 
+//  O/P
+//  false Unsuccessful
+// [ 1, 2, 3 ]
+// 5
 
 -----------------------------------------------Async Await--------------------------------------------------------------------------------------------
 
