@@ -605,6 +605,17 @@ function func() {
 }
 func();
 
+//It can take three parameters
+let a= [1,2,3];
+a.forEach((elem,ind,arr)=>{console.log(elem+" "+ind+" "+arr)})
+console.log(a);
+
+// O/P
+// 1 0 1,2,3
+// 2 1 1,2,3
+// 3 2 1,2,3
+// [ 1, 2, 3 ]
+
 -----------------------------------------------Array destructuring----------------------------------------------------------------------------------------
 
 What Is Destructuring?
