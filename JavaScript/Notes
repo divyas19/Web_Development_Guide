@@ -1136,10 +1136,7 @@ fib(num-2);
 // Factorial
 
 const fact = (num)=>{
-    if(num < 0)
-    {
-        return "Enter valid value."
-    }
+
     if(num === 0)
     {
         return 1;
