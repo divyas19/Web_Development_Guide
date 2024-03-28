@@ -1099,4 +1099,65 @@ function init() {
 }
 init();
 
+-----------------------------------------------Fibonacci sequence
+ and Factorial----------------------------------------------------------------------------------------
+
+// Fibonacci sequence
+
+let a = 0;
+let b = 1;
+
+function fib(num)
+{
+    if(num == 0)
+    return;
+    let c = a + b;
+    a = b;
+    b = c;
+    console.log(c);
+    fib(--num);
+}
+
+
+const num = parseInt(prompt("Enter the number : "));
+console.log(0);
+console.log(1);
+fib(num-2);
+
+// o/p
+// Enter the number : 4
+// 0
+// 1
+// 1
+// 2
+
+
+
+// Factorial
+
+const fact = (num)=>{
+    if(num < 0)
+    {
+        return "Enter valid value."
+    }
+    if(num === 0)
+    {
+        return 1;
+    }
+    
+    return num*fact(num-1);
+    
+}
+
+const num = parseInt(prompt("Enter the number : "));
+
+if(num <=0)
+    console.log("Enter a valid value.");
+else
+    console.log("Fcatorial of "+num+" is : "+fact(num));
+    
+// O/P
+// Enter the number : 3
+// Fcatorial of 3 is : 6
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
