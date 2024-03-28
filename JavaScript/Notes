@@ -1054,6 +1054,35 @@ for(let val of setData)
 // 9
 // 10
 
+-----------------------------------------------Maps----------------------------------------------------------------------------------------
+
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+fruits.set("papaya", 400);
+console.log(fruits);
+fruits.delete("papaya");
+console.log(fruits.get("apples")); 
+console.log(fruits.size);
+fruits.clear;
+console.log(fruits);
+console.log(fruits.has("apples"));
+
+// O/P
+// Map(4) {
+//   'apples' => 500,
+//   'bananas' => 300,
+//   'oranges' => 200,
+//   'papaya' => 400
+// }
+// 500
+// 3
+// Map(3) { 'apples' => 500, 'bananas' => 300, 'oranges' => 200 }
+// true
+
 -----------------------------------------------Closure----------------------------------------------------------------------------------------
 
 A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.
