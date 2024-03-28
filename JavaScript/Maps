@@ -1,0 +1,26 @@
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+
+fruits.set("papaya", 400);
+console.log(fruits);
+fruits.delete("papaya");
+console.log(fruits.get("apples")); 
+console.log(fruits.size);
+fruits.clear;
+console.log(fruits);
+console.log(fruits.has("apples"));
+
+// O/P
+// Map(4) {
+//   'apples' => 500,
+//   'bananas' => 300,
+//   'oranges' => 200,
+//   'papaya' => 400
+// }
+// 500
+// 3
+// Map(3) { 'apples' => 500, 'bananas' => 300, 'oranges' => 200 }
+// true
