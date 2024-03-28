@@ -169,12 +169,12 @@ document.getElementById("demo").style.color = "red";
 
 let arr = ["a","b"];
 let elem = arr[1]; //b
-arr.push("c");
+arr.push("c");   //shift to add as a first element
 arr.push("d","e",1,{name:"xyz"}, function(){console.log("I am function.");});
 arr[1]="f"
 console.log(arr);
 // [ 'a', 'f', 'c', 'd', 'e', 1, { name: 'xyz' }, [Function (anonymous)] ]
-arr.pop();
+arr.pop();   //unshift to remove first element
 console.log(arr.length); //7
 
 // let arr = new Array();
