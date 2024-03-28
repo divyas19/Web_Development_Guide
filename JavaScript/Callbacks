@@ -49,3 +49,22 @@ console.log("Result: " + result);
 
 // Call the main function with the callback function
 mainFunction(callbackFunction);
+
+Easy example to understand:-
+
+function mainFunction(callback){
+    console.log("This is main function.")
+    setTimeout(()=>{callback()},2000);
+}
+
+function callbackFunction()
+{
+    console.log("This is callback function.")
+}
+
+
+mainFunction(callbackFunction);
+
+// O/P
+// This is main function.
+// This is callback function.
