@@ -1,0 +1,21 @@
+A set is a collection of items that are unique i.e. no element can be repeated. Set in ES6 are ordered: elements of the set can be iterated in the insertion order. The set can store any type of value whether primitive or objects.
+
+let setData = new Set([1,2,3,7,9]);
+setData.add("10");
+setData.delete(3);
+console.log(setData);
+console.log(setData.size);
+
+for(let val of setData)
+{
+    console.log(val);
+}
+
+// O/P
+// Set(5) { 1, 2, 7, 9, '10' }
+// 5
+// 1
+// 2
+// 7
+// 9
+// 10
