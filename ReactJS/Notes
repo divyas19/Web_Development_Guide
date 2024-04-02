@@ -962,7 +962,8 @@ const SinglePerson = ({ id, name }) => {
 };
 
 
-Example use :-
+
+Example - In One Page :-
 
 import React, { useState, useContext } from 'react';
 import { data } from '../../../data';
@@ -1011,6 +1012,178 @@ const SinglePerson = ({ id, name }) => {
 };
 
 export default ContextAPI;
+
+
+
+Example - In Multiple Page :-
+
+// App.js (Combining ThemeContext and App)
+import React, { createContext, useState, useContext } from 'react';
+import Button from './Button';
+
+const ThemeContext = createContext();
+
+const App = () => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className="App">
+        <h1>Theme Toggler</h1>
+        <Button />
+      </div>
+    </ThemeContext.Provider>
+  );
+};
+
+export default App;
+export { ThemeContext }; // Exporting ThemeContext for Button.js
+
+
+
+// Button.js
+import React, { useContext } from 'react';
+import { ThemeContext } from './App'; // Importing ThemeContext from App.js
+
+const Button = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  return (
+    <button onClick={toggleTheme}>
+      Toggle Theme
+    </button>
+  );
+};
+
+export default Button;
+________________________________________________________________________________________________________
+
+Example - Better Version In Multiple Page :-
+
+// ThemeContext.js
+import React, { createContext, useState } from 'react';
+
+const ThemeContext = createContext();
+
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export default ThemeContext;
+
+
+// Button.js
+import React, { useContext } from 'react';
+import ThemeContext from './ThemeContext';
+
+const Button = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  return (
+    <button
+      style={{ background: theme === 'light' ? '#fff' : '#333', color: theme === 'light' ? '#333' : '#fff' }}
+      onClick={toggleTheme}
+    >
+      Toggle Theme
+    </button>
+  );
+};
+
+export default Button;
+
+
+// App.js
+import React from 'react';
+import { ThemeProvider } from './ThemeContext';
+import Button from './Button';
+
+const App = () => {
+  return (
+    <ThemeProvider>
+      <Button />
+    </ThemeProvider>
+  );
+};
+
+export default App;
+__________________________________________________________________________________________________________
+
+//ThemeContent.js
+import React, { useState, createContext, useContext } from 'react'
+
+const ModeContext = createContext();
+const UpdateModeContext = createContext();
+
+export function useTheme() {
+    return useContext(ModeContext);
+}
+
+export function useThemeUpdate() {
+    return useContext(UpdateModeContext);
+}
+
+export function ThemeProvider({ children }) {
+    const [mode, setMode] = useState("Light")
+    return (
+        // <ModeContext.Provider value={{ mode, setMode }}>
+        <ModeContext.Provider value={mode}>
+            <UpdateModeContext.Provider value={setMode}>
+                {children}
+            </UpdateModeContext.Provider>
+        </ModeContext.Provider>
+    )
+}
+
+
+//App.js
+import React from 'react';
+import { ThemeProvider } from "./ThemeContent";
+import Mode from "./Mode"
+export default function App() {
+  return (
+    <ThemeProvider>
+      <Mode />
+    </ThemeProvider>
+  )
+}
+
+
+//Mode.js
+import React from 'react'
+import { useTheme, useThemeUpdate } from "./ThemeContent"
+
+export default function Mode() {
+    // const { mode, setMode } = useTheme();
+    const mode = useTheme();
+    const setMode = useThemeUpdate();
+
+    const myStyle = mode === "Light" ? { backgroundColor: "pink" } : { backgroundColor: "grey" };
+    return (
+        <div
+            // style={{backgroundColor: mode==="Light"?"pink":"grey"}}
+            style={myStyle}
+        >
+            {`Hello I am in ${mode} - mode.`}
+            <button onClick={() => setMode((prevMode) => prevMode === "Light" ? "Dark" : "Light")}>{`Toggle ${mode} mode`}</button>
+        </div>
+    )
+}
+
+
 
 
 
