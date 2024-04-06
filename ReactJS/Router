@@ -142,5 +142,25 @@ Navbar.css
   color: green; /* Active route color */
 }
 
+---------Points for NavLink------------
 
+In React Router v6, the className prop of the NavLink component can be a function. When you provide a function to the className prop, React Router will call this function with an object containing various properties. One of these properties is isActive, which indicates whether the current location matches the to prop of the NavLink.
 
+Here's how it works:
+
+className Prop as a Function: When you pass a function to the className prop of NavLink, React Router will call this function with an object containing properties related to the link.
+
+Object with Properties: The object passed to the function contains properties like isActive, href, location, etc. These properties provide information about the link and the current routing state.
+
+Accessing isActive Property: Within the function, you can access the isActive property from the object to determine if the link is currently active.
+
+Conditional Styling: Based on the value of isActive, you can return different class names from the function. If isActive is true, it means the link is active, and you can return a class name for active styling. If isActive is false, you can return a class name for inactive styling.
+
+So, the className function receives an object from React Router, and it accesses the isActive property from this object to determine the appropriate class name to apply to the NavLink based on whether it's active or not. This mechanism allows for dynamic styling of navigation links based on the current routing state.
+
+<NavLink 
+  to="about"
+  className={({ isActive }) => (isActive ? "activeClassName" : "className")}
+>
+  About
+</NavLink>
