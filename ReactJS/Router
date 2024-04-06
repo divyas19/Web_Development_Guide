@@ -300,3 +300,118 @@ const MyComponent = () => {
 
 export default MyComponent;
 In this example, clicking the "Go Back" button will trigger the handleGoBack function, which calls navigate(-1), causing the application to navigate back in the history stack by one step. This is equivalent to clicking the back button in the browser.
+
+------------Nested Routes------------
+
+App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './Home';
+import Products from './Products';
+import Clothes from './Clothes';
+import Makeup from './Makeup';
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />}>
+          <Route path="clothes" element={<Clothes />} />
+          <Route path="makeup" element={<Makeup />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+
+Home.js:
+
+javascript
+Copy code
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Home = () => {
+  return (
+    <div>
+      <h1>Home Page</h1>
+      <nav>
+        <ul>
+          <li><Link to="/products">Products</Link></li>
+        </ul>
+      </nav>
+    </div>
+  );
+};
+
+export default Home;
+
+Products.js:
+
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+
+const Products = () => {
+  return (
+    <div>
+      <h1>Products Page</h1>
+      <nav>
+        <ul>
+          <li><Link to="clothes">Clothes</Link></li>
+          <li><Link to="makeup">Makeup</Link></li>
+        </ul>
+      </nav>
+      <div className="product-container">
+        <Outlet />
+      </div>
+    </div>
+  );
+};
+
+export default Products;
+
+Clothes.js:
+
+import React from 'react';
+
+const Clothes = () => {
+  return (
+    <div>
+      <h2>Clothes</h2>
+      <p>List of clothes...</p>
+    </div>
+  );
+};
+
+export default Clothes;
+
+Makeup.js:
+
+import React from 'react';
+
+const Makeup = () => {
+  return (
+    <div>
+      <h2>Makeup</h2>
+      <p>List of makeup products...</p>
+    </div>
+  );
+};
+
+export default Makeup;
+ProductPage.css:
+
+CSS
+
+.product-container {
+  display: flex;
+}
+
+.product-container > div {
+  flex: 1;
+  margin-right: 20px;
+}
