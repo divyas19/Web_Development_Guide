@@ -6,54 +6,141 @@ When you put path / /about, then both the page will be displayed. So use exact t
 index.js
 
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
- <React.StrictMode>
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ThemeProvider>
-        <UserDataProvider>
-          <App />
-        </UserDataProvider>
-      </ThemeProvider>
-    </PersistGate>
-  </Provider>
- </React.StrictMode>
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  rootElement
 );
 
 
 App.js
 
-import React from "react";
-import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import Home from './Home';
+import About from './About';
 
-function App() {
-  
+const App = () => {
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        {/* Add more routes as needed */}
       </Routes>
-      </Router>
     </div>
   );
-}
+};
 
 export default App;
+
+
+Home.js
+
+import React from 'react';
+
+const Home = () => {
+  return (
+    <div>
+      <h1>I am home</h1>
+    </div>
+  );
+};
+
+export default Home;
+
+About.js
+
+import React from 'react';
+
+const About = () => {
+  return (
+    <div>
+      <h1>About Page</h1>
+      <p>This is the about page content.</p>
+    </div>
+  );
+};
+
+export default About;
+
+
+Navbar.js
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        {/* Add more navigation links as needed */}
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+Navbar.js with NavLink
+
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Navbar.css'; // Import CSS file for styling
+
+const Navbar = () => {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <NavLink exact to="/" activeClassName="active">Home</NavLink>
+        </li>
+        <li>
+          <NavLink exact to="/about" activeClassName="active">About</NavLink>
+        </li>
+        {/* Add more navigation links as needed */}
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+Navbar.css
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: blue; /* Default color */
+}
+
+.navbar a.active {
+  color: green; /* Active route color */
+}
+
+
 
