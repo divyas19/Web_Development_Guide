@@ -38,6 +38,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<PageNotFound />} /> {/* Display PageNotFound for unmatched routes */}
         {/* Add more routes as needed */}
       </Routes>
     </div>
@@ -318,6 +319,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />}>
+          <Route index element={<Clothes />} /> //Optinal - To display Clothes content as we navigate to parent link of Products
           <Route path="clothes" element={<Clothes />} />
           <Route path="makeup" element={<Makeup />} />
         </Route>
