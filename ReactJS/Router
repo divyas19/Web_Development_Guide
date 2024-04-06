@@ -256,3 +256,47 @@ Now, suppose the user navigates from "/home" to "/about" using replace: true.
 The browser's history stack contains only one entry: "/about", because the "/home" entry was replaced.
 If the user clicks the back button, they will not see "/home" because it was replaced, so they will go back to the page before "/home", effectively skipping it.
 In summary, using replace: true with useNavigate replaces the current entry in the browser's history stack with the new route, and if the user navigates back, they will skip the replaced route. This can be useful in certain scenarios where you don't want certain routes to appear in the navigation history.
+
+------------useNavigate and number -1------------
+
+In React Router v6, the useNavigate hook returns a navigation function that you can use to programmatically navigate to different routes within your components. If you use the navigation function with -1 as an argument, it will navigate back in the history stack by the specified number of steps.
+
+Here's how you can use -1 with useNavigate:
+
+Import useNavigate: First, import the useNavigate hook from react-router-dom.
+javascript
+Copy code
+import { useNavigate } from 'react-router-dom';
+Call useNavigate to Get the Navigation Function: Inside your component, call useNavigate() to get the navigation function.
+javascript
+Copy code
+const navigate = useNavigate();
+Use the navigate Function with -1 Argument: Pass -1 as an argument to the navigate function to navigate back in the history stack by one step.
+javascript
+Copy code
+navigate(-1);
+Here's a complete example:
+
+javascript
+Copy code
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const MyComponent = () => {
+  const navigate = useNavigate();
+
+  const handleGoBack = () => {
+    // Navigate back in the history stack by one step
+    navigate(-1);
+  };
+
+  return (
+    <div>
+      <h1>My Component</h1>
+      <button onClick={handleGoBack}>Go Back</button>
+    </div>
+  );
+};
+
+export default MyComponent;
+In this example, clicking the "Go Back" button will trigger the handleGoBack function, which calls navigate(-1), causing the application to navigate back in the history stack by one step. This is equivalent to clicking the back button in the browser.
