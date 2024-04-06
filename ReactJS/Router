@@ -417,3 +417,38 @@ CSS
   flex: 1;
   margin-right: 20px;
 }
+
+------------useParams and Dynamic Route------------
+
+useParams is a hook provided by React Router that allows you to access the parameters from the URL in your functional components. Here's a simple example demonstrating how to use useParams:
+
+Let's say you have a route like this:
+
+<Route path="/user/:userId" element={<UserDetails />} />
+
+And in your UserDetails component, you want to access the userId parameter from the URL:
+
+UserDetails.jsx
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+const UserDetails = () => {
+  // Accessing the parameters from the URL
+  const { userId } = useParams();
+
+  return (
+    <div>
+      <h2>User Details</h2>
+      <p>User ID: {userId}</p>
+    </div>
+  );
+};
+
+export default UserDetails;
+In this example:
+
+We define a route with a parameter :userId, which represents a dynamic part of the URL.
+In the UserDetails component, we use the useParams hook provided by React Router to access the parameters from the URL.
+The useParams hook returns an object containing all the parameters defined in the route. We destructure the userId parameter from this object.
+We then use the userId parameter in our component as needed.
+So, if the URL is /user/123, the userId variable inside the UserDetails component will be '123'. This allows you to access dynamic parts of the URL and use them in your components for rendering or other logic.
