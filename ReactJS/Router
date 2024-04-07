@@ -582,6 +582,202 @@ While the lazy component is loading, the Suspense component will render the fall
 Once the lazy component is loaded, React will render it as usual.
 Ensure that the lazy-loaded component (LazyComponent in this example) is properly exported from its file. This lazy loading setup allows you to split your code into smaller chunks and load them on demand, improving the initial load time of your React application.
 
-------------Lazy Loading------------
+------------Authentication and Protected Routes------------
+
+Navbar.js
+
+import { NavLink } from 'react-router-dom'
+import { useAuth } from './auth'
+
+export const Navbar = () => {
+  const auth = useAuth()
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? 'bold' : 'normal',
+      textDecoration: isActive ? 'none' : 'underline'
+    }
+  }
+
+  return (
+    <nav className='primary-nav'>
+      <NavLink to='/' style={navLinkStyles}>
+        Home
+      </NavLink>
+      <NavLink to='/about' style={navLinkStyles}>
+        About
+      </NavLink>
+      <NavLink to='/products' style={navLinkStyles}>
+        Products
+      </NavLink>
+      <NavLink to='/profile' style={navLinkStyles}>
+        Profile
+      </NavLink>
+      {!auth.user && (
+        <NavLink to='/login' style={navLinkStyles}>
+          Login
+        </NavLink>
+      )}
+    </nav>
+  )
+}
+
+
+Home.js
+
+import { useNavigate } from 'react-router-dom'
+
+export const Home = () => {
+  const navigate = useNavigate()
+  return (
+    <>
+      <div>Home Page</div>
+      <button onClick={() => navigate('order-summary')}>Place order</button>
+    </>
+  )
+}
+
+auth.js
+
+import { useState, createContext, useContext } from 'react'
+
+const AuthContext = createContext(null)
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null)
+
+  const login = user => {
+    setUser(user)
+  }
+
+  const logout = () => {
+    setUser(null)
+  }
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  )
+}
+
+export const useAuth = () => {
+  return useContext(AuthContext)
+}
+
+Profile.js
+
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from './auth'
+
+export const Profile = () => {
+  const navigate = useNavigate()
+  const auth = useAuth()
+  const handleLogout = () => {
+    auth.logout()
+    navigate('/')
+  }
+  return (
+    <div>
+      Welcome {auth.user}.<button onClick={handleLogout}>Logout</button>
+    </div>
+  )
+}
+
+Login.js
+
+import { useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { useAuth } from './auth'
+
+export const Login = () => {
+  const [user, setUser] = useState('')
+  const navigate = useNavigate()
+  const location = useLocation()
+  const auth = useAuth()
+
+  const redirectPath = location.state?.path || '/'
+
+  const handleLogin = () => {
+    auth.login(user)
+    navigate(redirectPath, { replace: true })
+  }
+  return (
+    <div>
+      <label>
+        Username: <input type='text' onChange={e => setUser(e.target.value)} />
+      </label>{' '}
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  )
+}
+
+RequireAuth.js
+
+import { Navigate, useLocation } from 'react-router-dom'
+import { useAuth } from './auth'
+
+export const RequireAuth = ({ children }) => {
+  const location = useLocation()
+  const auth = useAuth()
+  if (!auth.user) {
+    return <Navigate to='/login' state={{ path: location.pathname }} />
+  }
+  return children
+}
+
+App.js
+
+import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { Home } from './components/Home'
+import { Navbar } from './components/Navbar'
+import { AuthProvider } from './components/auth'
+import { Login } from './components/Login'
+import { Profile } from './components/Profile'
+import { RequireAuth } from './components/RequireAuth'
+
+const LazyAbout = React.lazy(() => import('./components/About'))
+
+function App() {
+  return (
+    <AuthProvider>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route
+          path='/profile'
+          element={
+            <RequireAuth>
+              <Profile />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='about'
+          element={
+            <React.Suspense fallback='Loading...'>
+              <LazyAbout />
+            </React.Suspense>
+          }
+        />
+        <Route path='order-summary' element={<OrderSummary />} />
+        <Route path='products' element={<Products />}>
+          <Route index element={<FeaturedProducts />} />
+          <Route path='featured' element={<FeaturedProducts />} />
+          <Route path='new' element={<NewProducts />} />
+        </Route>
+        <Route path='users' element={<Users />}>
+          <Route path=':userId' element={<UserDetails />} />
+          <Route path='admin' element={<Admin />} />
+        </Route>
+
+        <Route path='*' element={<NoMatch />} />
+      </Routes>
+    </AuthProvider>
+  )
+}
+
+export default App
 
 __________________________________________________________________________________________________________________________________________________________
