@@ -452,3 +452,89 @@ In the UserDetails component, we use the useParams hook provided by React Router
 The useParams hook returns an object containing all the parameters defined in the route. We destructure the userId parameter from this object.
 We then use the userId parameter in our component as needed.
 So, if the URL is /user/123, the userId variable inside the UserDetails component will be '123'. This allows you to access dynamic parts of the URL and use them in your components for rendering or other logic.
+
+------------useSearchParams------------
+
+useSearchParams is a hook provided by react-router-dom that allows you to access and manipulate the search parameters (query parameters) in the URL within a React component.
+
+Query parameters are key-value pairs that appear after the "?" character in a URL and are used to pass data between different pages or components. For example, in the URL /search?q=react, the query parameter is q with a value of react.
+
+Here's why and when you might use useSearchParams:
+
+1) Accessing Query Parameters: You can use useSearchParams to access query parameters from the URL within your component. This allows you to retrieve data passed via the URL and use it in your component logic.
+
+2) Manipulating Query Parameters: You can also use useSearchParams to manipulate query parameters. For example, you can add, remove, or update query parameters dynamically based on user interactions or application state changes.
+
+3) Building Search Functionality: useSearchParams is commonly used in search functionality where users input search queries and the application fetches data based on those queries. You can use useSearchParams to retrieve the search query from the URL and pass it to your data fetching logic.
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Users from './Users';
+import UserDetails from './UserDetails'; // Assuming you have UserDetails component
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Users />} />
+        <Route path="/user/:userId" element={<UserDetails />} /> {/* This should be in App.js */}
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
+
+import React from 'react';
+import { Outlet, useSearchParams } from 'react-router-dom';
+
+const Users = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const showActiveUsers = searchParams.get('filter') === 'active';
+
+  return (
+    <div>
+      <h2>User 1</h2>
+      <h2>User 2</h2>
+      <h2>User 3</h2>
+      <Outlet />
+      <div>
+        <button onClick={() => setSearchParams({ filter: 'active' })}>
+          Active Users
+        </button>
+        <button onClick={() => setSearchParams({})}>
+          Reset Filter
+        </button>
+      </div>
+      {showActiveUsers ? (
+        <h2>Showing active users</h2>
+      ) : (
+        <h2>Showing all users</h2>
+      )}
+    </div>
+  );
+};
+
+export default Users;
+
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+const UserDetails = () => {
+  const { userId } = useParams(); // Accessing the userId parameter from the URL
+
+  return (
+    <div>
+      <h2>User Details</h2>
+      <p>User ID: {userId}</p>
+      {/* Other user details can be displayed here */}
+    </div>
+  );
+};
+
+export default UserDetails;
+
+------------Lazy Loading------------
+
+__________________________________________________________________________________________________________________________________________________________
