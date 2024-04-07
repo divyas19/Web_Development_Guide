@@ -535,6 +535,12 @@ const UserDetails = () => {
 
 export default UserDetails;
 
+------------Relative Links------------
+
+A relative link is a link that does not start with forward slash and will inherit the closest Route in which they are rendered.
+
+In React Router, a relative link or relative route refers to a route path that is specified relative to the parent route's path. It allows for nested routing within components while maintaining a hierarchical structure. Relative routes are used to define nested routes within parent routes, enabling more granular routing within a React application. This approach facilitates the creation of complex nested layouts and components, making it easier to manage and organize routes within the application's UI hierarchy.
+
 ------------Lazy Loading------------
 
 __________________________________________________________________________________________________________________________________________________________
