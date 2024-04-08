@@ -265,21 +265,15 @@ In React Router v6, the useNavigate hook returns a navigation function that you 
 Here's how you can use -1 with useNavigate:
 
 Import useNavigate: First, import the useNavigate hook from react-router-dom.
-javascript
-Copy code
+
 import { useNavigate } from 'react-router-dom';
 Call useNavigate to Get the Navigation Function: Inside your component, call useNavigate() to get the navigation function.
-javascript
-Copy code
 const navigate = useNavigate();
 Use the navigate Function with -1 Argument: Pass -1 as an argument to the navigate function to navigate back in the history stack by one step.
-javascript
-Copy code
 navigate(-1);
+
 Here's a complete example:
 
-javascript
-Copy code
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -584,6 +578,11 @@ Ensure that the lazy-loaded component (LazyComponent in this example) is properl
 
 ------------Authentication and Protected Routes------------
 
+We have Navbar whivch has 3 links Home, Profile and Login. 
+If without login we go to Profile page it will redirect to Login page. Profile page show User name and Logout Button to set user null and redirects to Home Page.
+Using Context the user data is made available to all pages.
+After Login, the Login url is not put in the history stack. So, you cannot go back to login page after log in.
+
 Navbar.js
 
 import { NavLink } from 'react-router-dom'
@@ -602,12 +601,6 @@ export const Navbar = () => {
     <nav className='primary-nav'>
       <NavLink to='/' style={navLinkStyles}>
         Home
-      </NavLink>
-      <NavLink to='/about' style={navLinkStyles}>
-        About
-      </NavLink>
-      <NavLink to='/products' style={navLinkStyles}>
-        Products
       </NavLink>
       <NavLink to='/profile' style={navLinkStyles}>
         Profile
@@ -736,8 +729,6 @@ import { Login } from './components/Login'
 import { Profile } from './components/Profile'
 import { RequireAuth } from './components/RequireAuth'
 
-const LazyAbout = React.lazy(() => import('./components/About'))
-
 function App() {
   return (
     <AuthProvider>
@@ -753,25 +744,6 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route
-          path='about'
-          element={
-            <React.Suspense fallback='Loading...'>
-              <LazyAbout />
-            </React.Suspense>
-          }
-        />
-        <Route path='order-summary' element={<OrderSummary />} />
-        <Route path='products' element={<Products />}>
-          <Route index element={<FeaturedProducts />} />
-          <Route path='featured' element={<FeaturedProducts />} />
-          <Route path='new' element={<NewProducts />} />
-        </Route>
-        <Route path='users' element={<Users />}>
-          <Route path=':userId' element={<UserDetails />} />
-          <Route path='admin' element={<Admin />} />
-        </Route>
-
         <Route path='*' element={<NoMatch />} />
       </Routes>
     </AuthProvider>
