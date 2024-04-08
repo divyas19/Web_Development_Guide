@@ -1230,66 +1230,109 @@ Product.propTypes = {
 
 export default Product;
 
-__________________________________________________________________________________________________________________________________________________________________________________
+-----------------------------------------------Router--------------------------------------------------------------------------------------------
 
 Router
 
-When you put path / /about, then both the page will be displayed. So use exact to prevent this.
+When you put path / and /about, then both the page will be displayed. So use exact to prevent this.
 
+------------Basics------------
 
 index.js
 
 import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
+import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
- <React.StrictMode>
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ThemeProvider>
-        <UserDataProvider>
-          <App />
-        </UserDataProvider>
-      </ThemeProvider>
-    </PersistGate>
-  </Provider>
- </React.StrictMode>
+const rootElement = document.getElementById("root");
+
+ReactDOM.render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>,
+  rootElement
 );
 
 
 App.js
 
-import React from "react";
-import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes
-} from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './Navbar';
+import Home from './Home';
+import About from './About';
 
-function App() {
-  
+const App = () => {
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<PageNotFound />} /> {/* Display PageNotFound for unmatched routes */}
+        {/* Add more routes as needed */}
       </Routes>
-      </Router>
     </div>
   );
-}
+};
 
 export default App;
+
+
+Home.js
+
+import React from 'react';
+
+const Home = () => {
+  return (
+    <div>
+      <h1>I am home</h1>
+    </div>
+  );
+};
+
+export default Home;
+
+About.js
+
+import React from 'react';
+
+const About = () => {
+  return (
+    <div>
+      <h1>About Page</h1>
+      <p>This is the about page content.</p>
+    </div>
+  );
+};
+
+export default About;
+
+
+Navbar.js
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        {/* Add more navigation links as needed */}
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+------------NavLink------------
 
 
 -----------------------------------------------memo useMemo useCallback--------------------------------------------------------------------------------------------
