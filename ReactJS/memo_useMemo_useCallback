@@ -1,5 +1,102 @@
 -----------------------------------------------memo useMemo useCallback--------------------------------------------------------------------------------------------
 
+useMemo and useCallback are both hooks provided by React, but they serve different purposes:
+
+---------------useMemo:------------------
+
+useMemo is used for memoizing the result of a function. It takes a function and an array of dependencies. It will only recompute the memoized value when one of the dependencies has changed. This helps in optimizing performance by avoiding unnecessary computations.
+It is typically used when you have a costly computation that doesn't need to be re-executed on every render if its dependencies haven't changed.
+Example: Memoizing the result of a complex computation, such as sorting or filtering an array, to avoid recomputing it on every render.
+
+import React, { useState, useMemo } from 'react';
+
+export default function App() {
+  const [number, setNumber] = useState(8);
+  const [dark, setDark] = useState(false);
+
+  const doubleNumber = useMemo(() => {
+    return slowFunction(number);
+  }, [number]);
+
+  const themeStyles = {
+    backgroundColor: dark ? 'black' : 'white',
+    color: dark ? 'white' : 'black'
+  };
+
+  return (
+    <>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setNumber(parseInt(e.target.value))}
+      />
+      <button onClick={() => setDark(prevDark => !prevDark)}>
+        Change Theme
+      </button>
+      <div style={themeStyles}>{doubleNumber}</div>
+    </>
+  );
+}
+
+function slowFunction(num) {
+  console.log('Calling Slow Function');
+  for (let i = 0; i <= 1000000000; i++) {}
+  return num * 2;
+}
+
+---------------useCallback:------------------
+
+
+useCallback is used to memoize a callback function. It returns a memoized version of the callback that only changes if one of the dependencies has changed.
+It is useful when passing callbacks to child components that rely on reference equality to prevent unnecessary re-renders.
+Example: Passing callbacks to child components or event handlers in event listeners where you want to ensure that the callback doesn't change unnecessarily.
+In summary, both useMemo and useCallback are used for optimization purposes in React applications. useMemo is for memoizing the result of a computation, while useCallback is for memoizing a callback function. They help in avoiding unnecessary recalculations and re-renders, thereby improving performance.
+
+import React, { useState, useCallback } from 'react';
+import List from './List.js';
+
+export default function App() {
+  const [number, setNumber] = useState(1);
+  const [dark, setDark] = useState(false);
+
+  const getItems = useCallback(() => {
+    return [number, number + 1, number + 2];
+  }, [number]);
+
+  const theme = {
+    backgroundColor: dark ? '#333' : '#FFF',
+    color: dark ? '#FFF' : '#333'
+  };
+
+  return (
+    <div style={theme}>
+      <input
+        type="number"
+        value={number}
+        onChange={e => setNumber(parseInt(e.target.value))}
+      />
+      <button onClick={() => setDark(prevDark => !prevDark)}>
+        Toggle theme
+      </button>
+      <List getItems={getItems} />
+    </div>
+  );
+}
+
+import React, { useEffect, useState } from 'react';
+
+export default function List({ getItems }) {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    setItems(getItems());
+    console.log("Updating Items");
+  }, [getItems]);
+
+  return items.map((item, index) => <div key={index}>{item}</div>);
+}
+
+-------------------------Example in use----------------------------
 
 React.memo is a function that takes a Component and prevents its rerendering
 
