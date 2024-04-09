@@ -96,6 +96,56 @@ export default function List({ getItems }) {
   return items.map((item, index) => <div key={index}>{item}</div>);
 }
 
+---------------React.memo:------------------
+
+In React, when a parent component renders, a child component might un-necessarily render. To optimize this behaviour, you can use React.memo and pass in the child component.
+React.memo will perform a shallow comparison of the previous and new props and re-render the child component only if the props have changed.
+
+import React from 'react';
+import './App.css';
+import { ParentTwo } from './components/Optimization/ParentTwo';
+
+function App() {
+  return (
+    <div className='App'>
+      <ParentTwo />
+    </div>
+  );
+}
+
+export default App;
+
+
+import React from 'react';
+
+export const ChildTwo = () => {
+  console.log('ChildTwo Render');
+  return <div>ChildTwo component</div>;
+};
+
+export const MemoizedChildTwo = React.memo(ChildTwo);
+
+
+import React, { useState } from 'react';
+import { MemoizedChildTwo } from './ChildTwo';
+
+export const ParentTwo = () => {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('Vishwas');
+
+  console.log('ParentTwo Render');
+
+  return (
+    <div>
+      <button onClick={() => setCount(c => c + 1)}>Count {count}</button>
+      <button onClick={() => setName('Codevolution')}>Change name</button>
+      <MemoizedChildTwo name={name} />
+    </div>
+  );
+};
+
+
+
 -------------------------Example in use----------------------------
 
 React.memo is a function that takes a Component and prevents its rerendering
