@@ -357,3 +357,46 @@ const UserProfile = ({ userIds }) => {
 
 export default UserProfile;
 
+__________________________________________________________________________________________________________________________
+
+Dependent Queries
+
+import React from 'react';
+import axios from 'axios';
+import { useQuery } from 'react-query';
+
+const fetchUserData = async (id) => {
+  const response = await axios.get(`https://api.example.com/user/${id}`);
+  return response.data;
+};
+
+const fetchPostData = async (userId) => {
+  const response = await axios.get(`https://api.example.com/posts?userId=${userId}`);
+  return response.data;
+};
+
+const UserProfile = ({ userId }) => {
+  // Query to fetch user data
+  const { data: userData, isLoading: isUserLoading, isError: isUserError, error: userError } = useQuery(['userData', userId], () => fetchUserData(userId));
+
+  // Dependent query to fetch posts data based on user data
+  const { data: postData, isLoading: isPostLoading, isError: isPostError, error: postError } = useQuery(['postData', userId], () => fetchPostData(userId), {
+    enabled: !!userData, // Enable the query only if userData is available
+  });
+
+  if (isUserLoading || isPostLoading) return <div>Loading...</div>;
+  if (isUserError) return <div>Error loading user data: {userError.message}</div>;
+  if (isPostError) return <div>Error loading posts data: {postError.message}</div>;
+
+  return (
+    <div>
+      <h1>User Profile</h1>
+      <h2>User Data</h2>
+      <pre>{JSON.stringify(userData, null, 2)}</pre>
+      <h2>Posts Data</h2>
+      <pre>{JSON.stringify(postData, null, 2)}</pre>
+    </div>
+  );
+};
+
+export default UserProfile;
