@@ -533,4 +533,71 @@ ________________________________________________________________________________
 
 Infinite Queries
 
+import React from 'react';
+import { useInfiniteQuery } from 'react-query';
+import axios from 'axios';
+
+const fetchPosts = async (page = 0) => {
+  const response = await axios.get(`https://api.example.com/posts?page=${page}`);
+  return response.data;
+};
+
+const PostsList = () => {
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useInfiniteQuery(
+    'posts',
+    ({ pageParam = 0 }) => fetchPosts(pageParam),
+    {
+      getNextPageParam: (lastPage, allPages) => {
+        // Return the next page number or null to indicate no more pages
+        return lastPage.length === 10 ? allPages.length : null;
+      },
+    }
+  );
+
+  return (
+    <div>
+      <h1>Posts</h1>
+      {data.pages.map((page, pageIndex) => (
+        <React.Fragment key={pageIndex}>
+          {page.map(post => (
+            <div key={post.id}>{post.title}</div>
+          ))}
+        </React.Fragment>
+      ))}
+      <button
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage ? 'Loading...' : hasNextPage ? 'Load More' : 'No more posts'}
+      </button>
+    </div>
+  );
+};
+
+export default PostsList;
+
+
+
+Fetching Posts Function (fetchPosts):
+This function is responsible for fetching posts data from the API. It accepts a page parameter, which represents the page number of posts to fetch. By default, it fetches the first page (page 0) if no page number is provided.
+It uses Axios to make a GET request to the API endpoint, which includes the page number in the query parameters.
+It returns the response data obtained from the API.
+
+PostsList Component:
+This functional component is the main component responsible for rendering the list of posts and handling pagination.
+It uses the useInfiniteQuery hook from React Query to perform infinite queries for fetching posts.
+Inside the hook:
+'posts' is used as the query key to identify this specific query.
+The second argument is a function that defines how to fetch data for each page. It receives an object containing a pageParam property, which represents the page number to fetch. The fetchPosts function is called with this pageParam.
+The third argument is an options object. In this example, we define a getNextPageParam function, which determines the next page number based on the last page's data. If the last page contains the maximum number of posts (e.g., 10 posts), it returns the next page number. Otherwise, it returns null to indicate that there are no more pages.
+
+Rendering Posts and Pagination:
+Inside the component's JSX:
+We render the list of posts by mapping over the data.pages array. Each element of data.pages represents a page of posts, and we map over each page to render individual posts.
+The "Load More" button is rendered with an onClick handler that calls the fetchNextPage function when clicked. This function fetches the next page of posts.
+The button is disabled when there are no more pages (!hasNextPage) or when the next page is being fetched (isFetchingNextPage).
+The text of the button changes based on whether the next page is being fetched ('Loading...'), whether there are more pages to load ('Load More'), or whether all posts have been fetched ('No more posts').
+
+Overall, this implementation allows for efficient pagination of posts, with React Query handling the caching, refetching, and pagination logic.
+
 __________________________________________________________________________________________________________________________
