@@ -37,15 +37,11 @@ Now, you can use useQuery hooks within your components, and React Query will man
 
 import React from 'react';
 import { useQuery } from 'react-query';
+import axios from 'axios'
 
 const fetchData = async () => {
-  const response = await fetch('https://api.example.com/data');
-  if (!response.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return response.json();
+ return axios.get('http://localhost:4000/superheroes')
 };
-
 const MyComponent = () => {
 
 const onSuccess = (data) => {
@@ -121,3 +117,65 @@ const { data } = useQuery('key', fetchData, {
 //Data transformation using fetch
 select
 
+__________________________________________________________________________________________________________________________
+
+Custom Query
+
+useSuperHeroesData.js
+import { useQuery } from 'react-query';
+import axios from 'axios'
+
+const fetchData = async () => {
+ return axios.get('http://localhost:4000/superheroes')
+};
+
+export const useSuperHeroesData = (onSuccess, onError) => {
+ return useQuery('data', fetchData,
+{
+//cacheTime:5000,
+//staleTime:30000,
+//enabled:false,
+onSuccess,
+onError,
+select: (data) => {
+  const superHeroNames = data.data.map((hero)=> hero.name)
+  return superHeroNames
+},
+);
+}
+
+
+MyComponent.js
+import React from 'react';
+import { useSuperHeroesData } from '../hooks/useSuperHeroesData'
+
+const MyComponent = () => {
+
+const onSuccess = (data) => {
+  console.log('Perform side effect after data fetching',data)
+}
+
+const onSuccess = (error) => {
+  console.log('Perform side effect after encountering error',error)
+}
+
+const { data, isLoading, isError, error, isFetching, refetch } = useSuperHeroesData(onSuccess,onError);
+
+  if (isLoading || isFetching) return <div>Loading...</div>;
+  if (isError) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      {/* Render your data */}
+      <button onClick={refetch}>Fetch Data</button>
+      {/* {data?.data.map((elem) => {
+        return <div key={elem.name}>{elem.name}</div>
+      })} */}
+      {data.map((heroName)=> {
+        return <div key={heroName}>{heroName}</div>
+       })}
+    </div>
+  );
+};
+
+export default MyComponent;
