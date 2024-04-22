@@ -1,3 +1,68 @@
 -------------------React Query----------------------------
 
 A library for fetching data in React Application.
+
+To use React Query properly, you need to wrap your entire application with a QueryClientProvider, and you need to create and provide a QueryClient instance. Here's how you can set it up:
+
+First, install React Query if you haven't already and other required parts:
+npm install react-query
+npm install @react-query/devtools
+Then, in your App.js, you would set up your QueryClient and wrap your component hierarchy with QueryClientProvider:
+
+App.js
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from '@react-query/devtools';
+import MyComponent from './MyComponent';
+
+// Create a new QueryClient instance
+const queryClient = new QueryClient();
+
+const App = () => {
+  return (
+    // Provide the QueryClient to your app
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <h1>ReactQuery Example</h1>
+        <MyComponent />
+      </div>
+    <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
+};
+
+export default App;
+
+Now, you can use useQuery hooks within your components, and React Query will manage the fetching and caching of data for you. Remember that QueryClientProvider should wrap around your entire application to provide access to the QueryClient instance.
+
+import React from 'react';
+import { useQuery } from 'react-query';
+
+const fetchData = async () => {
+  const response = await fetch('https://api.example.com/data');
+  if (!response.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return response.json();
+};
+
+const MyComponent = () => {
+  const { data, isLoading, isError, error } = useQuery('data', fetchData,{cacheTime:5000,});
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      {/* Render your data */}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+};
+
+export default MyComponent;
+
+
+In React Query, the staleTime option determines how long the data fetched by a query remains considered "fresh" in the cache. If a component requests the data while it's within this "stale" period, React Query will return the cached data immediately without making a new request to the server. However, if the data is requested after the staleTime period has passed, React Query will automatically trigger a background refetch of the data before returning it to the component.
+
+However, if you're referring to a hypothetical cacheTime option in the context of React Query, it could potentially represent the duration for which the data remains in the cache before being considered stale.
