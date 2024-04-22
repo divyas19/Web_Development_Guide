@@ -285,3 +285,75 @@ const UserProfile = () => {
 };
 
 export default UserProfile;
+
+__________________________________________________________________________________________________________________________
+
+Dynamic Parallel Queries
+
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import UserProfile from './UserProfile';
+
+const queryClient = new QueryClient();
+
+const App = () => {
+  // Array of user IDs
+  const userIds = [1, 3];
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        {/* Pass the array of user IDs to UserProfile */}
+        <UserProfile userIds={userIds} />
+      </div>
+    </QueryClientProvider>
+  );
+};
+
+export default App;
+
+import React from 'react';
+import axios from 'axios';
+import { useQueries } from 'react-query';
+
+const fetchUserData = async (id) => {
+  const response = await axios.get(`https://api.example.com/user/${id}`);
+  return response.data;
+};
+
+const fetchPostData = async (userId) => {
+  const response = await axios.get(`https://api.example.com/posts?userId=${userId}`);
+  return response.data;
+};
+
+const UserProfile = ({ userIds }) => {
+  // Array of query objects
+  const queries = userIds.map(userId => {
+    return {
+      queryKey: ['userData', userId],
+      queryFn: () => fetchUserData(userId)
+    };
+  });
+
+  // Execute all queries in parallel
+  const results = useQueries(queries);
+
+  return (
+    <div>
+      <h1>User Profiles</h1>
+      {results.map((result, index) => {
+        if (result.isLoading) return <div key={index}>Loading...</div>;
+        if (result.isError) return <div key={index}>Error: {result.error.message}</div>;
+        return (
+          <div key={index}>
+            <h2>User Data for userId {userIds[index]}</h2>
+            <pre>{JSON.stringify(result.data, null, 2)}</pre>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default UserProfile;
+
