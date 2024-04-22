@@ -47,7 +47,7 @@ const fetchData = async () => {
 };
 
 const MyComponent = () => {
-  const { data, isLoading, isError, error } = useQuery('data', fetchData,{cacheTime:5000,});
+  const { data, isLoading, isError, error } = useQuery('data', fetchData,{cacheTime:5000,staleTime:30000});
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
@@ -65,4 +65,9 @@ export default MyComponent;
 
 In React Query, the staleTime option determines how long the data fetched by a query remains considered "fresh" in the cache. If a component requests the data while it's within this "stale" period, React Query will return the cached data immediately without making a new request to the server. However, if the data is requested after the staleTime period has passed, React Query will automatically trigger a background refetch of the data before returning it to the component.
 
+In React Query, the staleTime option is used to determine how long the data fetched by a query remains considered "fresh" in the cache.
+
+When a component requests the data, React Query checks if the cached data is stale based on the staleTime. If the cached data is still considered fresh (i.e., the time since it was fetched is less than staleTime), React Query returns the cached data immediately without making a new request to the server. This enhances performance by reducing unnecessary network requests and providing a more responsive user experience.
+
+However, if the cached data is considered stale (i.e., the time since it was fetched exceeds staleTime), React Query will still return the cached data immediately to the component. Additionally, it will trigger a background fetch request to update the cached data. This ensures that the data remains up-to-date while still providing a responsive user experience.
 However, if you're referring to a hypothetical cacheTime option in the context of React Query, it could potentially represent the duration for which the data remains in the cache before being considered stale.
