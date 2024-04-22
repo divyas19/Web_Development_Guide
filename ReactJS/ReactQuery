@@ -47,10 +47,26 @@ const fetchData = async () => {
 };
 
 const MyComponent = () => {
-  const { data, isLoading, isError, error, isFetching, refetch } = useQuery('data', fetchData,
+
+const onSuccess = (data) => {
+  console.log('Perform side effect after data fetching',data)
+}
+
+const onSuccess = (error) => {
+  console.log('Perform side effect after encountering error',error)
+}
+
+const { data, isLoading, isError, error, isFetching, refetch } = useQuery('data', fetchData,
 {
-//cacheTime:5000,staleTime:30000,
-enabled:false,}
+//cacheTime:5000,
+//staleTime:30000,
+//enabled:false,
+onSuccess,
+onError,
+select: (data) => {
+  const superHeroNames = data.data.map((hero)=> hero.name)
+  return superHeroNames
+},
 );
 
   if (isLoading || isFetching) return <div>Loading...</div>;
@@ -60,9 +76,12 @@ enabled:false,}
     <div>
       {/* Render your data */}
       <button onClick={refetch}>Fetch Data</button>
-      {data?.data.map((elem) => {
-return <div key={elem.name}>{elem.name}</div>
-})}
+      {/* {data?.data.map((elem) => {
+        return <div key={elem.name}>{elem.name}</div>
+      })} */}
+      {data.map((heroName)=> {
+        return <div key={heroName}>{heroName}</div>
+       })}
     </div>
   );
 };
@@ -78,3 +97,27 @@ When a component requests the data, React Query checks if the cached data is sta
 
 However, if the cached data is considered stale (i.e., the time since it was fetched exceeds staleTime), React Query will still return the cached data immediately to the component. Additionally, it will trigger a background fetch request to update the cached data. This ensures that the data remains up-to-date while still providing a responsive user experience.
 However, if you're referring to a hypothetical cacheTime option in the context of React Query, it could potentially represent the duration for which the data remains in the cache before being considered stale.
+
+
+Other options:-
+
+const { data } = useQuery('key', fetchData, {
+  refetchOnMount: false, // Disable automatic refetch on mount
+});
+
+const { data } = useQuery('key', fetchData, {
+  refetchOnWindowFocus: false, // Disable automatic refetch on window focus
+});
+
+const { data } = useQuery('key', fetchData, {
+  refetchInterval: 5000, // Refetch every 5 seconds (5000 milliseconds)
+});
+
+//Data poll
+const { data } = useQuery('key', fetchData, {
+  refetchIntervalInBackground: 10000, // Refetch every 10 seconds (10000 milliseconds) in background
+});
+
+//Data transformation using fetch
+select
+
