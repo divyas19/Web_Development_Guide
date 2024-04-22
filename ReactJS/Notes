@@ -1621,3 +1621,7 @@ function Counter() {
 
 ------------Conclusion------------
 useState is a great way to setup simple state inside of a component. When state starts to get more complex, though, and is shared between multiple components it is generally best to switch to useReducer since useReducer makes it easier to write complex state interactions without creating a large complex mess of code.
+
+-----------------------------------------------React Query--------------------------------------------------------------------------------------------
+
+Read React Query Notes
