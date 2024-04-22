@@ -360,6 +360,7 @@ export default UserProfile;
 __________________________________________________________________________________________________________________________
 
 Dependent Queries
+//Double negation !! converts the value to boolean
 
 import React from 'react';
 import axios from 'axios';
