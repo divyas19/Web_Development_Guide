@@ -340,25 +340,6 @@ console.log("Result: " + result);
 mainFunction(callbackFunction);
 
 
-Easy example to understand:-
-
-function mainFunction(callback){
-    console.log("This is main function.")
-    setTimeout(()=>{callback()},2000);
-}
-
-function callbackFunction()
-{
-    console.log("This is callback function.")
-}
-
-
-mainFunction(callbackFunction);
-
-// O/P
-// This is main function.
-// This is callback function.
-
 -----------------------------------------------Promise--------------------------------------------------------------------------------------------
 
 JavaScript Promise are easy to manage when dealing with multiple asynchronous operations where callbacks can create callback hell leading to unmanageable code. Prior to promises events and callback functions were used but they had limited functionalities and created unmanageable code. Multiple callback functions would create callback hell that leads to unmanageable code. Promises are used to handle asynchronous operations in JavaScript.
