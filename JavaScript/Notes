@@ -231,6 +231,12 @@ console.log(numArr);
 numArr.splice(2,3,8,9,10,11);
 console.log(numArr);
 
+splice(2, 3, 8, 9, 10, 11) means:
+Start at index 2 (which is the third element in the array).
+Remove 3 elements starting from index 2 (3, 4, and 5).
+Insert 8, 9, 10, and 11 at index 2.
+So, after splice() is executed, the array becomes [1, 2, 8, 9, 10, 11, 6, 7].
+
 
 let charArr =["a","b","c","d"];
 // for(let i =0; i < numArr.length; i++)
