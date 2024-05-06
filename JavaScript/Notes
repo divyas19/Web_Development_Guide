@@ -72,7 +72,7 @@ console.log("Val : "+val);
 
 var str1 = "Hello ";
 var str2 = "world!";
-var res = str1.concat(str2); //will return "Hello world!"
+var res = str1.concat(str2); //will return "Hello world!"     //In java -  String c = a.concat(b);
 
 -----------------------------------------------Useful Methods--------------------------------------------------------------------------------------------
 
