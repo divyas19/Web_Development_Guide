@@ -343,7 +343,7 @@ mainFunction(callbackFunction);
 -----------------------------------------------Promise--------------------------------------------------------------------------------------------
 
 JavaScript Promise are easy to manage when dealing with multiple asynchronous operations where callbacks can create callback hell leading to unmanageable code. Prior to promises events and callback functions were used but they had limited functionalities and created unmanageable code. Multiple callback functions would create callback hell that leads to unmanageable code. Promises are used to handle asynchronous operations in JavaScript.
-
+Asynchronous operations in JavaScript are tasks or operations that don't necessarily execute immediately or in a sequential order with the rest of the code. Instead, they are executed separately from the main program flow, allowing other tasks to continue while waiting for the asynchronous operation to complete. 
 Syntax:
 
 let promise = new Promise(function(resolve, reject){
