@@ -59,3 +59,42 @@ document.getElementById("demo").style.color = "red";
 
 </body>
 </html>
+
+-------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button onclick="greet()">Greet</button>   //Either you can use onclick or addEventListener
+    <!--<button>Greet</button>-->
+    <p class="gre">A</p>
+     <p class="gre">B</p>
+      <script src="script.js"></script>
+  </body>
+</html>
+
+
+const button = document.querySelector("button");
+button.style.color="pink";
+
+
+function greet() {
+  // let paragraphs = document.querySelector(".gre"); // First element with gre class name  
+  // let paragraphs = document.querySelectorAll(".gre");  // give all elements with gre class name
+  let paragraphs = document.getElementsByClassName("gre"); // give all elements with gre class name
+    for (let i = 0; i < paragraphs.length; i++) {
+    // let temp = paragraphs[i].innerHTML;
+    // paragraphs[i].innerHTML = temp+"Hello";
+    let temp = paragraphs[i].textContent;
+    paragraphs[i].textContent = temp+"Hello";
+  }
+  
+
+}
+
+// Add event listener to the button
+// button.addEventListener("click", greet);
