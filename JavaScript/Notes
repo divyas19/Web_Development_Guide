@@ -21,6 +21,11 @@ What if you have to make an expensive database request? You don’t want to be t
 
 When you hear folks say that JavaScript is an asynchronous language, what they mean is that you can manipulate JavaScript to behave in an asynchronous way. It’s not baked in, but it’s possible! 
 
+DOCUMENT OBJECT MODEL
+DOM is a Object() that represents the page you see in the web browser and provides you with an API to interact with it.
+web browser constructs the DOM when it loads an HTML document, and structures all the elements in a tree-like representation.
+JavaScript can access the DOM to dynamically change the content, structure, and style of a web page
+
 -----------------------------------------------Data Types--------------------------------------------------------------------------------------------
 
 let name;
