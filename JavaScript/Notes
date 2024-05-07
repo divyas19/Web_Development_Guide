@@ -287,6 +287,16 @@ With the introduction of ES6 in 2015 two more keywords, let and const came into 
 
 In JavaScript, Hoisting is the default behavior of moving all the declarations at the top of the scope before code execution. Basically, it gives us an advantage that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
 
+
+In JavaScript, let variables are hoisted, but with a slight difference compared to var variables. When you declare a variable using var, it is hoisted to the top of its enclosing function or global scope and initialized with undefined. However, variables declared with let or const are hoisted to the top of their block scope (the block in which they are declared), but they are not initialized. This means that if you try to access a let variable before it's declared in its block, you'll get a ReferenceError.
+
+Here's an example to illustrate this behavior:
+
+console.log(x); // Throws ReferenceError: Cannot access 'x' before initialization
+let x = 10;
+
+In this example, the console.log statement throws a ReferenceError because x is accessed before it's declared. This is due to the fact that let variables are not initialized during the hoisting phase. If you try the same thing with var, it would output undefined instead of throwing an error because var variables are initialized with undefined during hoisting.
+
 -----------------------------------------------Callbacks--------------------------------------------------------------------------------------------
 
 JavaScript is an asynchronous language, which means that it can handle multiple tasks simultaneously. Callbacks are a fundamental aspect of JavaScript, as they allow you to run code after an asynchronous operation has been completed. In this article, we’ll look at what callbacks are, why they’re used, and how to use them with real-life examples and code examples.
