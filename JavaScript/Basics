@@ -18,3 +18,9 @@ Spoiler: at its base, JavaScript is a synchronous, blocking, single-threaded lan
 What if you have to make an expensive database request? You don’t want to be twiddling your thumbs while PG and Postgres grab those 800 songs you need for your music library. Synchronous code makes a programmer’s life very difficult, so the JavaScript community developed some great workarounds.
 
 When you hear folks say that JavaScript is an asynchronous language, what they mean is that you can manipulate JavaScript to behave in an asynchronous way. It’s not baked in, but it’s possible! 
+
+DOCUMENT OBJECT MODEL
+DOM is a Object() that represents the page you see in the web browser and provides you with an API to interact with it.
+web browser constructs the DOM when it loads an HTML document, and structures all the elements in a tree-like representation.
+JavaScript can access the DOM to dynamically change the content, structure, and style of a web page
+
