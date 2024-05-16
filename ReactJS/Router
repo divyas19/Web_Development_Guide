@@ -294,7 +294,57 @@ const MyComponent = () => {
 };
 
 export default MyComponent;
+
 In this example, clicking the "Go Back" button will trigger the handleGoBack function, which calls navigate(-1), causing the application to navigate back in the history stack by one step. This is equivalent to clicking the back button in the browser.
+
+------------useNavigate and useLocation------------
+
+To fetch and use the state passed through the navigate function in React Router, you can use the useLocation hook from react-router-dom. The useLocation hook provides access to the current location object, which includes the state that was passed during navigation.
+
+Here's a step-by-step guide on how to pass state during navigation and then retrieve it in the target component:
+
+Pass State During Navigation:
+When you navigate to a new route, you can pass state like this:
+
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+function ExampleComponent() {
+  const navigate = useNavigate();
+
+  const goWithState = () => {
+    navigate('/target-path', { state: { from: 'exampleComponent' } });
+  };
+
+  return (
+    <div>
+      <button onClick={goWithState}>Go with State</button>
+    </div>
+  );
+}
+
+export default ExampleComponent;
+
+
+Retrieve State in the Target Component:
+In the component that you navigate to (in this case, the component rendered at /target-path), you can use the useLocation hook to access the state.
+
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+function TargetComponent() {
+  const location = useLocation();
+  const state = location.state;
+
+  return (
+    <div>
+      <h1>Target Component</h1>
+      {state && <p>From: {state.from}</p>}
+    </div>
+  );
+}
+
+export default TargetComponent;
 
 ------------Nested Routes------------
 
