@@ -1,5 +1,69 @@
 React JS
 
+-----------------------------------------------Folder Structure--------------------------------------------------------------------------------------------
+
+Example Folder Structure
+Here's an example of a well-organized React project structure:
+
+my-react-app/
+│
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+│
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── logo.png
+│   │   │   └── banner.jpg
+│   │   ├── fonts/
+│   │   │   └── custom-font.ttf
+│   │   └── styles/
+│   │       └── main.css
+│   │
+│   ├── components/
+│   │   ├── header/
+│   │   │   ├── Header.js
+│   │   │   └── Header.css
+│   │   ├── footer/
+│   │   │   ├── Footer.js
+│   │   │   └── Footer.css
+│   │   └── button/
+│   │       ├── Button.js
+│   │       └── Button.css
+│   │
+│   ├── pages/
+│   │   ├── HomePage.js
+│   │   ├── AboutPage.js
+│   │   └── ContactPage.js
+│   │
+│   ├── utils/
+│   │   ├── formatDate.js
+│   │   └── calculateSum.js
+│   │
+│   ├── services/
+│   │   ├── apiService.js
+│   │   └── authService.js
+│   │
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   └── useFetch.js
+│   │
+│   ├── contexts/
+│   │   ├── AuthContext.js
+│   │   └── ThemeContext.js
+│   │
+|   ├── routes/
+|   │   ├── ProtectedRoute.js
+|   │   └── AppRoutes.js
+|   |
+│   ├── App.js
+│   ├── index.js
+│   └── reportWebVitals.js
+│
+└── package.json
+
+
 -----------------------------------------------Naming Convention--------------------------------------------------------------------------------------------
 
 App Name - Lowercase Letters: Use lowercase letters to avoid issues with case sensitivity in different operating systems.
