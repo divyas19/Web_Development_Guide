@@ -66,10 +66,20 @@ Naming Conventions for Image Files - Use lowercase letters to avoid case sensiti
                
 Naming Conventions for Importing Images in React - Use camelCase for the variable names when importing images.
 
-Example - 
+Example - import headerBackground from './assets/images/header-background.png';
+          import productThumbnail from './assets/images/product-thumbnail.png';
+
 
 import headerBackground from './assets/images/header-background.png';
 import productThumbnail from './assets/images/product-thumbnail.png';
+
+Naming Conventions for className and id - Use Kebab-Case for Class Names
+                                          Use CamelCase for ID Names
+
+Example - <div className="notification-bar" id="mainNotification">
+          <p>Welcome to the site!</p>
+          </div>
+
 
 -----------------------------------------------Commands--------------------------------------------------------------------------------------------
 
