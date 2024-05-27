@@ -1,5 +1,66 @@
 React JS
 
+-----------------------------------------------Naming Convention--------------------------------------------------------------------------------------------
+
+App Name - Lowercase Letters: Use lowercase letters to avoid issues with case sensitivity in different operating systems.
+           Hyphens: Use hyphens to separate words for readability. Avoid underscores and spaces.
+           Ex - my-app
+
+Variables - CamelCase
+            Ex - const userName = "John";
+                 const totalAmount = 100;
+
+Constants - Use UPPERCASE and underscores for constant values.
+            const MAX_USERS = 100;
+            const API_URL = "https://api.example.com";
+
+env variables - REACT_APP_  is compulsary
+                Must create .env file in root folder
+                No need for '' or "" 
+                Do not put , or ; at the end
+                Ex - REACT_APP_API=23aCFF56
+                     REACT_APP_INFORMATION=Apple
+
+Function - CamelCase
+           Verb-Noun Structure
+           Ex - function fetchUserData() {
+                // function implementation
+                }
+
+          const updateProfile = (user) => {
+          // function implementation
+          };
+
+Component - Use PascalCase for React component names.
+            Ex - function UserProfile() {
+                 return <div>User Profile</div>;
+                 }
+
+                const Dashboard = () => {
+                return <div>Dashboard</div>;
+                };
+
+Event Handlers - Prefix event handler functions with handle.
+                 Ex - function handleClick() {
+                      // handle click event
+                      }
+
+                      const handleChange = (event) => {
+                      // handle change event
+                      };
+
+State Variables - Use descriptive names for state variables and their update functions, often in pairs with useState.
+                  Ex - const [count, setCount] = useState(0);
+
+Custom Hooks - Prefix custom hooks with use.
+               Ex - function useUserData(userId) {
+                    // custom hook implementation
+                    }
+
+                    const useFetchData = (url) => {
+                    // custom hook implementation
+                    };
+
 -----------------------------------------------Commands--------------------------------------------------------------------------------------------
 
 1)Initially creating an app
