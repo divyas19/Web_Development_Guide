@@ -61,6 +61,16 @@ Custom Hooks - Prefix custom hooks with use.
                     // custom hook implementation
                     };
 
+Naming Conventions for Image Files - Use lowercase letters to avoid case sensitivity issues.
+                                     Avoid using spaces or underscores.
+               
+Naming Conventions for Importing Images in React - Use camelCase for the variable names when importing images.
+
+Example - 
+
+import headerBackground from './assets/images/header-background.png';
+import productThumbnail from './assets/images/product-thumbnail.png';
+
 -----------------------------------------------Commands--------------------------------------------------------------------------------------------
 
 1)Initially creating an app
