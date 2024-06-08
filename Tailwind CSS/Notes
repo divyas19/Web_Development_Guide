@@ -1,1 +1,76 @@
 ------------------------------------------Basics-----------------------------------------------------
+
+CSS framework madeup of utility classes.
+Much lower-level than Bootstarp, Materialize etc
+
+Check for Node
+
+node -v
+
+Install
+
+npm install -D tailwindcss
+npx tailwindcss init
+
+When we use Tailwind we create a source file where we import all of the Tailwind course styles and functionality. 
+We can also write our own CSS using Tailwind inside this file.
+Then we use Tailwind to process the source file into a vanilla CSS output file at build time with all the final CSS rules inside it.
+We can link that CSS from our HTML page.
+
+Any changes made in source CSS file we need to run Tailwind to process that into a new output CSS file.
+
+style.css ---- > Tailwind ---- > style.css ---- > index.html
+src file                         public file
+
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+Make changes here to add customized part
+
+
+Create a css file ex - src/styles.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+1st way
+
+In package.json
+"scripts": {
+"build-css": "tailwindcss build src/styles.css -o public/styles.css"
+},
+
+npm run buils-css //You can name it other way also
+
+<link href="./styles.css" rel="stylesheet">
+
+or 
+
+imput.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="text-3xl font-bold underline">
+    Hello world!
+  </h1>
+</body>
+</html>
+
