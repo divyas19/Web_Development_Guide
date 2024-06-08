@@ -74,3 +74,239 @@ npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
 </body>
 </html>
 
+------------------------------------------Frequently used Tailwind CSS utilities-----------------------------------------------------
+
+Here's a comprehensive list of frequently used Tailwind CSS utilities, organized by category. This should cover most of the common use cases:
+
+----------------------------------------Layout----------------------------------------
+
+--------Width--------
+w-{size}
+Example: w-1/2, w-full, w-screen
+
+--------Height--------
+h-{size}
+Example: h-1/2, h-full, h-screen
+
+----------------------------------------Display----------------------------------------
+
+block
+inline-block
+inline
+flex
+inline-flex
+table
+hidden
+
+
+----------------------------------------Background----------------------------------------
+
+--------Background Color--------
+
+bg-{color}
+Example: bg-green-300, bg-yellow-500
+
+--------Background Image--------
+
+bg-[url('/path/to/image.jpg')]
+
+--------Background Size--------
+
+bg-{size}
+Example: bg-cover, bg-contain
+
+--------Background Position--------
+
+bg-{position}
+Example: bg-center, bg-top
+
+---------------------------------------Color----------------------------------------
+
+Text Color
+
+text-{color}
+Example: text-red-500, text-blue-700
+
+----------------------------------------Border----------------------------------------
+
+--------Border Width--------
+
+border-{size}
+Example: border-2
+
+--------Border Color--------
+
+border-{color}
+Example: border-gray-300
+
+--------Border Radius--------
+
+rounded-{size}
+Example: rounded, rounded-lg, rounded-full
+
+----------------------------------------Spacing----------------------------------------
+
+--------Padding--------
+
+p-{size}
+px-{size}
+py-{size}
+pt-{size}
+pr-{size}
+pb-{size}
+pl-{size}
+Example: p-4, px-2, py-3, pt-1
+
+--------Margin--------
+
+m-{size}
+mx-{size}
+my-{size}
+mt-{size}
+mr-{size}
+mb-{size}
+ml-{size}
+Example: m-4, mx-2, my-3, mt-1
+
+----------------------------------------Typography----------------------------------------
+
+--------Font Family--------
+font-{family}
+Example: font-sans, font-serif, font-mono
+
+--------Font Size--------
+text-{size}
+Example: text-sm, text-lg, text-xl
+
+--------Font Weight--------
+font-{weight}
+Example: font-bold, font-medium
+
+--------Text Align--------
+text-{align}
+Example: text-left, text-center, text-right
+
+----------------------------------------Sizing Units----------------------------------------
+
+--------Tailwind uses a standard scale for sizes, which can be used for padding, margin, width, height, etc.:--------
+
+Numbers: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24, 32, 40, 48, 56, 64
+Fractions: 1/2, 1/3, 2/3, 1/4, 3/4
+Percentages: full
+Auto: auto
+Screen size: screen
+Examples of Size
+p-4       /* padding: 1rem (4 * 0.25rem) */
+m-2       /* margin: 0.5rem (2 * 0.25rem) */
+w-1/2     /* width: 50% */
+h-screen  /* height: 100vh */
+
+----------------------------------------Flexbox----------------------------------------
+
+--------Display Flex--------
+
+flex
+
+--------Flex Direction--------
+
+flex-{direction}
+Example: flex-row, flex-col
+
+--------Flex Wrap--------
+flex-wrap
+flex-nowrap
+
+--------Justify Content--------
+justify-{alignment}
+Example: justify-start, justify-center, justify-between
+
+--------Align Items--------
+items-{alignment}
+Example: items-start, items-center
+
+--------Align Self--------
+self-{alignment}
+Example: self-start, self-center
+
+----------------------------------------Grid----------------------------------------
+
+--------Display Grid--------
+grid
+
+--------Grid Template Columns--------
+grid-cols-{n}
+Example: grid-cols-3
+
+--------Grid Template Rows--------
+grid-rows-{n}
+Example: grid-rows-2
+
+--------Gap--------
+gap-{size}
+gap-x-{size}
+gap-y-{size}
+Example: gap-4, gap-x-2, gap-y-2
+
+----------------------------------------Positioning----------------------------------------
+
+--------Position--------
+static
+fixed
+absolute
+relative
+sticky
+Top/Right/Bottom/Left
+css
+Copy code
+top-{size}
+right-{size}
+bottom-{size}
+left-{size}
+Example: top-0, right-1/2
+
+----------------------------------------Tables----------------------------------------
+
+--------Table Layout--------
+table-auto
+table-fixed
+
+--------Border Collapse--------
+border-collapse
+border-separate
+
+----------------------------------------Effects----------------------------------------
+
+--------Box Shadow--------
+shadow-{size}
+Example: shadow-sm, shadow-lg
+
+--------Opacity--------
+opacity-{value}
+Example: opacity-50, opacity-100
+
+----------------------------------------Interactivity----------------------------------------
+
+--------Cursor--------
+cursor-{type}
+Example: cursor-pointer, cursor-not-allowed
+
+----------------------------------------Overflow----------------------------------------
+
+--------Overflow--------
+overflow-{value}
+overflow-x-{value}
+overflow-y-{value}
+Example: overflow-auto, overflow-hidden, overflow-x-scroll
+
+----------------------------------------Responsive Design----------------------------------------
+
+--------Tailwind uses breakpoints for responsive design:--------
+
+sm - min-width: 640px
+md - min-width: 768px
+lg - min-width: 1024px
+xl - min-width: 1280px
+2xl - min-width: 1536px
+Example:
+md:bg-red-500
+Applies bg-red-500 on screens larger than 768px.
