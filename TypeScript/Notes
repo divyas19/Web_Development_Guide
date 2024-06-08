@@ -1,2 +1,6 @@
 ----------------------------------------Basics----------------------------------------
 
+tsc sandbox.ts sandbox.js
+Since name is same 
+tsc sandbox.ts
+tsc sandbox.ts -w
