@@ -4,3 +4,31 @@ tsc sandbox.ts sandbox.js
 Since name is same 
 tsc sandbox.ts
 tsc sandbox.ts -w
+
+
+const fname = "riya";
+console.log(fname);
+
+const func = (num: number) => console.log(num * Math.PI);
+
+func(100);
+
+let fruits = ["apple", "banana", "mango", 9, true];
+
+fruits.push("guava");
+
+fruits.push(false);
+
+let veg = {
+  yellow: "pumpkin",
+  orange: "tomato",
+};
+
+// veg.purple = "brinjal"; //Not allowed
+
+veg = {
+  yellow: "mango",
+  orange: "tomato",
+};
+
+veg.purple = brinjal;
