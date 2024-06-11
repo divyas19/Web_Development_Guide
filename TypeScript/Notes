@@ -226,7 +226,7 @@ logDetails = (ninja: {name: string, age: number}) => {
 
 --------------------The DOM and Type Casting-------------------
 
-const anchor = document.querySelector('a')!;
+const anchor = document.querySelector('a')!;  // ! It shows that it is there
 if(anchor) {
   console.log(anchor.href);
 }
