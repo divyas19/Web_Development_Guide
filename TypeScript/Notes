@@ -1,10 +1,41 @@
 ----------------------------------------Basics----------------------------------------
 
-tsc sandbox.ts sandbox.js
-Since name is same 
-tsc sandbox.ts
-tsc sandbox.ts -w
+Alternative to JavaScript(Super Set)
+Allows us to use strict type
+Supports Modern Features (arrow functions, let, const)
+Extra features (generics, interfaces, tupples etc)
 
+------------------------Setup in JS 
+
+Create a snadbox.ts file and put command
+
+tsc sandbox.ts sandbox.js
+If name is same for js file
+tsc sandbox.ts
+tsc sandbox.ts -w //For running command only once
+
+
+------------------------Better Workflow and tscongig
+
+put deploy in public 
+put ts in src
+
+tsc src/sandbox.ts
+
+or
+
+tsc --init  gives tsconfig 
+
+change 
+    "rootDir": "./src" /* Specify the root folder within your source files. */,
+    "outDir": "./public" /* Specify an output folder for all emitted files. */,
+  },
+  "include": ["src"]
+}
+
+src so that anything outside src is not put in public only src files are available in public
+
+------------------------------------Basic Data Types
 
 const fname = "riya";
 console.log(fname);
@@ -138,28 +169,7 @@ console.log(ninja);
 
 
 
-better workflow and tscongig
 
-put deploy in public 
-put ts in src
-
-tsc src/sandbox.ts
-
-or
-
-tsc --init  gives tsconfig 
-
-change 
-
-    "module": "commonjs" /* Specify what module code is generated. */,
-    "rootDir": "./src" /* Specify the root folder within your source files. */,
-
-
-  },
-  "include": ["src"]
-}
-
-src so that anything outside src is not put in public only src files are available in public
 
 
 
