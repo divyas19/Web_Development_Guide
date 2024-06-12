@@ -5,7 +5,7 @@ Allows us to use strict type
 Supports Modern Features (arrow functions, let, const)
 Extra features (generics, interfaces, tupples etc)
 
-------------------------Setup in JS 
+------------------------Setup in JS------------------------ 
 
 Create a snadbox.ts file and put command
 
@@ -14,8 +14,7 @@ If name is same for js file
 tsc sandbox.ts
 tsc sandbox.ts -w //For running command only once
 
-
-------------------------Better Workflow and tscongig
+------------------------Better Workflow and tscongig------------------------
 
 put deploy in public 
 put ts in src
@@ -35,7 +34,7 @@ change
 
 src so that anything outside src is not put in public only src files are available in public
 
-------------------------------------Basic Data Types
+------------------------Basic Data Types------------------------
 
 const fname = "riya";
 console.log(fname);
@@ -100,7 +99,7 @@ ninja = {
   // skills: ['running'],
 };
 
----------------------------Explicit Types and Dynamic (any types)
+------------------------Explicit Types and Dynamic (any types)------------------------
 
 let character: string = 'mario';
 let age: number;
@@ -165,7 +164,7 @@ console.log(ninja);
 ninja = { name: 25, age: 'yoshi' };
 console.log(ninja);
 
---------------------------------------Function Basics | Type Aliases | Function Signatures----------------------
+------------------------Function Basics | Type Aliases | Function Signatures------------------------
 
 let greet: Function;
 greet = () => {
@@ -224,7 +223,7 @@ logDetails = (ninja: {name: string, age: number}) => {
 }
 
 
---------------------The DOM and Type Casting-------------------
+------------------------The DOM and Type Casting------------------------
 
 const anchor = document.querySelector('a')!;  // ! It shows that it is there
 if(anchor) {
@@ -253,7 +252,7 @@ form.addEventListener('submit', (e: Event) => {
   );
 });
 
-----------------------------Classes
+------------------------Classes------------------------
 
 // classes
 class Invoice {
@@ -303,10 +302,7 @@ form.addEventListener('submit', (e: Event) => {
   );
 });
 
-
-
-
--------------------------------------------public private readonly-------------------------------------------------------------
+------------------------public private readonly------------------------
 
 // classes
 class Invoice {
@@ -321,7 +317,7 @@ class Invoice {
   }
 }
 
--------------------------------Modules-----------------------------------------------
+------------------------Modules------------------------
 
 Only Modern Browsers support
 Compile separately so need extra requests
@@ -348,7 +344,8 @@ in src directly
 
 import { Invoice } from './classes/Invoice.js';
 
------------------interfaces---------------------------------
+------------------------interfaces------------------------
+
 //app.ts
 
 import { Invoice } from './classes/Invoice.js';
@@ -403,8 +400,7 @@ form.addEventListener('submit', (e: Event) => {
   );
 });
 
-
---------------------------interfaces with classes-----------------------------------------
+------------------------interfaces with classes------------------------
 
 classes -- >Invoice.ts Payment.ts
 
@@ -449,7 +445,8 @@ export interface HasFormatter {
 
 In script be link app.js not app.ts
 
-------------------------------------------Rendering an HTML Template--------------------------------------------
+------------------------Rendering an HTML Template------------------------
+
 classes -- >Invoice.ts Payment.ts ListTemplate.ts
 
 import { HasFormatter } from "../interfaces/HasFormatter";
@@ -511,17 +508,17 @@ form.addEventListener('submit', (e: Event) => {
   list.render(doc, type.value, 'end');
 });
 
-// GENERICS
+------------------------Generics------------------------
 
-// const addUID = (obj: object) => {
-//   let uid = Math.floor(Math.random() * 100);
-//   return {...obj, uid};
-// }
+const addUID = (obj: object) => {
+   let uid = Math.floor(Math.random() * 100);
+   return {...obj, uid};
+ }
 
-// const addUID = <T extends object>(obj: T) => {
-//   let uid = Math.floor(Math.random() * 100);
-//   return {...obj, uid};
-// }
+const addUID = <T extends object>(obj: T) => {
+   let uid = Math.floor(Math.random() * 100);
+   return {...obj, uid};
+ }
 
 const addUID = <T extends {name: string}>(obj: T) => {
   let uid = Math.floor(Math.random() * 100);
@@ -554,6 +551,45 @@ const docFour: Resource<string[]> = {
 
 console.log(docThree, docFour);
 
------------------------------Generics-----------------
+------------------------Enums------------------------
 
+// ENUMS
+
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR };
+
+interface Resource<T> {
+  uid: number;
+  resourceType: ResourceType;
+  data: T;
+}
+
+const docOne: Resource<object> = {
+  uid: 1,
+  resourceType: ResourceType.BOOK,
+  data: { title: 'name of the wind' }
+}
+const docTwo: Resource<object> = {
+  uid: 10,
+  resourceType: ResourceType.DIRECTOR,
+  data: { title: 'name of the wind' }
+}
+
+console.log(docOne);
+console.log(docTwo);
+
+------------------------Tupples------------------------
+
+// TUPLES
+let arr = ['ryu', 25, true];
+arr[0] = false;
+arr[1] = 'yoshi';
+arr = [30, false, 'yoshi'];
+
+let tup: [string, number, boolean] = ['ryu', 25, true];
+// tup[0] = false;
+tup[0] = 'ken';
+
+let student: [string, number];
+//student = [23564, 'chun-li'];
+student = ['chun-li', 23564];
 
