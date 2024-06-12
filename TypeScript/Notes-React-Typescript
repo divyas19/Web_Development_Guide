@@ -1,3 +1,5 @@
+------------------------------------------Basic
+
 Here's the major benefit of using TypeScript presented line by line:
 
 Static Typing: TypeScript's static typing allows errors to be caught during compile-time rather than runtime, reducing the likelihood of bugs in production.
@@ -9,3 +11,27 @@ Incremental Adoption: TypeScript can be gradually introduced into existing JavaS
 Robust Tooling Ecosystem: Enhanced support for linting, code formatting tools, and better integration with testing frameworks and tools.
 Enhanced Code Navigation: Easily navigate to variable definitions, function implementations, and find all references, improving the developer experience.
 Large Community and Ecosystem: TypeScript has a large and active community, providing extensive resources, libraries, and support, with strong support from modern frameworks like Angular, React, and Vue.
+
+
+For building Libraries use interface else use type
+
+------------------------------------------props
+
+type GreetProps = {
+  name: string
+}
+
+export const Greet = (props: GreetProps) => {
+  
+  return (
+    <div>
+          Hey {props.name}! You have unread messages.
+    </div>
+  )
+}
+
+//Other Folder
+
+<Greet name="ABC" />
+
+-------------------------------------
