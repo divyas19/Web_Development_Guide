@@ -15,7 +15,7 @@ Large Community and Ecosystem: TypeScript has a large and active community, prov
 
 For building Libraries use interface else use type
 
-------------------------------------------props
+------------------------------------------props-------------------------------------------
 
 type GreetProps = {
   name: string
@@ -42,7 +42,6 @@ export const Greet = (props: GreetProps) => {
 
 <Greet name='Vishwas' isLoggedIn={false} />
 
--------------------------------------
 
 Person.types.ts 
 
@@ -126,4 +125,72 @@ export const Oscar = (props: OscarProps) => {
   return <div>{props.children}</div>
 }
 
+Button.tsx 
+
+type ButtonProps = {
+  handleClick: (event: React.MouseEvent<HTMLButtonElement>, id: number) => void
+}
+
+export const Button = (props: ButtonProps) => {
+  return <button onClick={event => props.handleClick(event, 1)}>Click</button>
+}
+
+Input.tsx
+
+type InputProps = {
+  value: string
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+export const Input = ({ value, handleChange }: InputProps) => {
+  // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   console.log(event)
+  // }
+  return <input type='text' value={value} onChange={handleChange} />
+}
+
+App.tsx
+
+function App() {
+  const personName = {
+    first: 'Bruce',
+    last: 'Wayne'
+  }
+
+  const nameList = [
+    {
+      first: 'Bruce',
+      last: 'Wayne'
+    },
+    {
+      first: 'Clark',
+      last: 'Kent'
+    },
+    {
+      first: 'Princess',
+      last: 'Diana'
+    }
+  ]
+
+  return (
+    <div className='App'>
+      <Greet name='Vishwas' isLoggedIn={false} />
+      <Person name={personName} />
+      <PersonList names={nameList} />
+      <Status status='loading' />
+      <Heading>Placeholder text</Heading>
+      <Oscar>
+        <Heading>Oscar goes to Dicaprio</Heading>
+      </Oscar>
+      <Button
+        handleClick={(event, id) => {
+          console.log('Button clicked', event, id)
+        }}
+      />
+     <Input value='' handleChange={event => console.log(event)} />
+    </div>
+  )
+}
+
+export default App
 -----------------------------------------------------------------------------
