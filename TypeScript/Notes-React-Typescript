@@ -210,3 +210,56 @@ function App() {
 export default App
 
 ---------------------------------useState Hook---------------------------------------
+LoggedIn.tsx
+
+import { useState } from 'react'
+
+export const LoggedIn = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const handleLogin = () => {
+    setIsLoggedIn(true)
+  }
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+  }
+  return (
+    <div>
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogout}>Logout</button>
+      <div>User is {isLoggedIn ? 'logged in' : 'logged out'}</div>
+    </div>
+  )
+}
+
+User.tsx
+
+import { useState } from 'react'
+
+type AuthUser = {
+  name: string
+  email: string
+}
+
+export const User = () => {
+  const [user, setUser] = useState<AuthUser | null>(null)
+  const handleLogin = () => {
+    setUser({
+      name: 'Vishwas',
+      email: 'vishwas@example.com'
+    })
+  }
+  const handleLogout = () => {
+    setUser(null)
+  }
+  return (
+    <div>
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogout}>Logout</button>
+      <div>User name is {user?.name}</div>
+    </div>
+  )
+}
+
+----------------------------------useReducer
+
+-------------------------------useContext
