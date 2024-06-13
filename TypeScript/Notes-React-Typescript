@@ -19,19 +19,27 @@ For building Libraries use interface else use type
 
 type GreetProps = {
   name: string
+  messageCount?: number
+  isLoggedIn: boolean
 }
 
 export const Greet = (props: GreetProps) => {
-  
+  const { messageCount = 0 } = props
   return (
     <div>
-          Hey {props.name}! You have unread messages.
+      {props.isLoggedIn ? (
+        <h2>
+          Hey {props.name}! You have {messageCount} unread messages
+        </h2>
+      ) : (
+        <h2>Welcome Guest</h2>
+      )}
     </div>
   )
 }
 
 //Other Folder
 
-<Greet name="ABC" />
+<Greet name='Vishwas' isLoggedIn={false} />
 
 -------------------------------------
