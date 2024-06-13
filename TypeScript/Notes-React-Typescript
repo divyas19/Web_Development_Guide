@@ -149,6 +149,20 @@ export const Input = ({ value, handleChange }: InputProps) => {
   return <input type='text' value={value} onChange={handleChange} />
 }
 
+Container.tsx
+
+type ContainerProps= {
+  styles: React.CSSProperties
+}
+
+export const Container = (props: ContainerProps) => {
+  return (
+    <div style={props.styles}>
+      Text content goes here
+    </div>
+  )
+}
+
 App.tsx
 
 function App() {
@@ -188,9 +202,11 @@ function App() {
         }}
       />
      <Input value='' handleChange={event => console.log(event)} />
+  <Container styles={{ border: '1px solid black', padding: '1rem' }} />
     </div>
   )
 }
 
 export default App
------------------------------------------------------------------------------
+
+---------------------------------useState Hook---------------------------------------
