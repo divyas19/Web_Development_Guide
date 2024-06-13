@@ -43,3 +43,87 @@ export const Greet = (props: GreetProps) => {
 <Greet name='Vishwas' isLoggedIn={false} />
 
 -------------------------------------
+
+Person.types.ts 
+
+export type Name = {
+  first: string
+  last: string
+}
+export type PersonProps = {
+  name: Name
+}
+
+Person.tsx
+
+import { PersonProps } from './Person.types'
+
+export const Person = (props: PersonProps) => {
+  return (
+    <h2>
+      {props.name.first} {props.name.last}
+    </h2>
+  )
+}
+
+PersonList.tsx
+
+import { Name } from './Person.types'
+
+type PersonListProps = {
+  names: Name[]
+}
+
+export const PersonList = (props: PersonListProps) => {
+  return (
+    <div>
+      {props.names.map(name => {
+        return (
+          <h2 key={name.first}>
+            {name.first} {name.last}
+          </h2>
+        )
+      })}
+    </div>
+  )
+}
+
+Status.tsx
+
+type StatusProps = {
+  status: 'loading' | 'success' | 'error'
+}
+
+export const Status = (props: StatusProps) => {
+  let message
+  if (props.status === 'loading') {
+    message = 'Loading...'
+  } else if (props.status === 'success') {
+    message = 'Data fetched successfully!'
+  } else if (props.status === 'error') {
+    message = 'Error fetching data'
+  }
+  return <h2>Status - {message}</h2>
+}
+
+Heading.tsx
+
+type HeadingProps = {
+  children: string
+}
+
+export const Heading = (props: HeadingProps) => {
+  return <h2>{props.children}</h2>
+}
+
+Oscar.tsx
+
+type OscarProps = {
+  children: React.ReactNode
+}
+
+export const Oscar = (props: OscarProps) => {
+  return <div>{props.children}</div>
+}
+
+-----------------------------------------------------------------------------
