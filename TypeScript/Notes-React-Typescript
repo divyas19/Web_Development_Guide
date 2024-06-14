@@ -515,7 +515,41 @@ export const MutableRef = () => {
   )
 }
 
-------------------------------------------------------------------
+------------------------------Component as aprop------------------------------------
+
+Login.tsx
+
+export const Login = () => {
+  return <div>Please login to continue</div>
+}
+
+Profile.tsx
+
+export type ProfileProps = {
+  name: string
+}
+
+export const Profile = ({ name }: ProfileProps) => {
+  return <div>Private Profile component. Name is {name}</div>
+}
+
+Private.tsx
+
+import { Login } from './Login'
+import { ProfileProps } from './Profile'
+
+type PrivateProps = {
+  isLoggedIn: boolean
+  Component: React.ComponentType<ProfileProps>
+}
+
+export const Private = ({ isLoggedIn, Component }: PrivateProps) => {
+  if (isLoggedIn) {
+    return <Component name='Vishwas' />
+  } else {
+    return <Login />
+  }
+}
 
 --------------------------------------------------------------
 
