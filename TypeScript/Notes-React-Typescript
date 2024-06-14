@@ -406,5 +406,67 @@ export const Box = () => {
   )
 }
 
+UserContext.tsx
+
+import React, { useState, createContext } from 'react'
+
+type AuthUser = {
+  name: string
+  email: string
+}
+
+type UserContextType = {
+  user: AuthUser | null
+  setUser: React.Dispatch<React.SetStateAction<AuthUser | null>>
+}
+
+type UserContextProviderProps = {
+  children: React.ReactNode
+}
+
+// export const UserContext = createContext<UserContextType | null>(null)
+export const UserContext = createContext({} as UserContextType)
+
+export const UserContextProvider = ({ children }: UserContextProviderProps) => {
+  const [user, setUser] = useState<AuthUser | null>(null)
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  )
+}
+
+User.tsx
+
+import { useContext } from 'react'
+import { UserContext } from './UserContext'
+
+export const User = () => {
+  const userContext = useContext(UserContext)
+  const handleLogin = () => {
+    // if (userContext) {
+    userContext.setUser({
+      name: 'Vishwas',
+      email: 'asd@asd.com'
+    })
+    // }
+  }
+  const handleLogout = () => {
+    // if (userContext) {
+    userContext.setUser(null)
+    // }
+  }
+  return (
+    <div>
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogout}>Logout</button>
+      <div>User name is {userContext.user?.name}</div>
+      <div>User email is {userContext.user?.email}</div>
+      {/* <div>User name is {userContext?.user?.name}</div>
+      <div>User email is {userContext?.user?.email}</div> */}
+    </div>
+  )
+}
+
 ----------------------------------useRef
 
