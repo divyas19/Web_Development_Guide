@@ -670,6 +670,38 @@ export const Toast = ({ position }: ToastProps) => {
 
 ------------------------------Wrapping HTML Elements------------------------------------
 
+Button.tsx
+
+type ButtonProps = {
+  variant: 'primary' | 'secondary'
+  children: string
+} & Omit<React.ComponentProps<'button'>, 'children'>
+
+export const CustomButton = ({ variant, children, ...rest }: ButtonProps) => {
+  return (
+    <button className={`class-with-${variant}`} {...rest}>
+      {children}
+    </button>
+  )
+}
+
+Input.tsx
+
+type InputProps = React.ComponentProps<'input'>
+
+export const Input = (props: InputProps) => {
+  return <input {...props} />
+}
+
 ------------------------------Extracting a Components Prop Types------------------------------------
+
+CustomComponent.tsx
+
+import React from 'react'
+import { Greet } from '../props/Greet'
+
+export const CustomComponent = (props: React.ComponentProps<typeof Greet>) => {
+  return <div>{props.name}</div>
+}
 ------------------------------Polymorphic Components------------------------------------
 ------------------------------Wrap Up------------------------------------
