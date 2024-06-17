@@ -7,7 +7,7 @@ Extra features (generics, interfaces, tupples etc)
 
 ------------------------Setup in JS------------------------ 
 
-Create a snadbox.ts file and put command
+Create a sandbox.ts file and put command
 
 tsc sandbox.ts sandbox.js
 If name is same for js file
@@ -33,6 +33,24 @@ change
 }
 
 src so that anything outside src is not put in public only src files are available in public
+
+------------------------Extra-----------------------------------
+
+. (Dot)
+Current Directory:
+
+The single dot (.) refers to the current working directory.
+When used in commands, it indicates the current directory without needing to specify the full path.
+
+/ (Slash)
+Root Directory:
+
+A single slash (/) at the beginning of a path denotes the root directory of the file system.
+For example, /home/user refers to the user directory inside the home directory, which is located at the root of the file system.
+Path Separator:
+
+The slash is used as a separator between directories in a file path.
+For example, home/user/documents indicates the path from the home directory to the user directory to the documents directory.
 
 ------------------------Basic Data Types------------------------
 
