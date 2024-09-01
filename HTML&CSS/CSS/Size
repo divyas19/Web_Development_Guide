@@ -7,8 +7,8 @@ px - not fixed size
 
 Relative Lengths -
 
-rem - rem Unit: The rem is based upon the font-size value of the root element, which is the <html> element. And if the <html> element doesn’t have a specified font-size, the browser                                              	default value of 16px is used. So here only the value of the root is considered, and there is no relation with a parent element.
+rem - rem Unit: The rem is based upon the font-size value of the root element, which is the <html> element. And if the <html> element doesn’t have a specified font-size, the browser default value of 16px is used. So here only the value of the root is considered, and there is no relation with a parent element.
 
-em - em Unit: The em unit allows setting the font size of an element relative to the font size of its parent. When the size of the parent element changes, the size of the child changes  	automatically.
+em - em Unit: The em unit allows setting the font size of an element relative to the font size of its parent. When the size of the parent element changes, the size of the child changes automatically.
 
 max-width - 60ch - To limit characters
