@@ -26,6 +26,8 @@ DOM is a Object() that represents the page you see in the web browser and provid
 web browser constructs the DOM when it loads an HTML document, and structures all the elements in a tree-like representation.
 JavaScript can access the DOM to dynamically change the content, structure, and style of a web page
 
+The Document Object Model (DOM) is a programming interface that allows JavaScript and other programming languages to interact with HTML and XML documents. The DOM represents a document as a tree of nodes, where each node is an object that represents a part of the document.
+
 -----------------------------------------------Data Types--------------------------------------------------------------------------------------------
 
 let name;
