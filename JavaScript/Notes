@@ -346,6 +346,17 @@ These methods are commonly used for borrowing methods from other objects, settin
 
 -----------------------------------------------Callbacks--------------------------------------------------------------------------------------------
 
+JavaScript is primarily synchronous, meaning it executes code line by line in a single thread, waiting for each statement to complete before moving to the next one. This is often referred to as "blocking" behavior, where each operation must finish before the next can begin.
+
+However, JavaScript also supports asynchronous operations, allowing certain tasks to be executed in the background without blocking the main thread. This is achieved through features like:
+
+Callbacks: Functions passed as arguments to other functions and executed after some operation (e.g., when a task like reading a file is completed).
+Promises: Objects that represent a value that may be available now, or in the future, used for handling asynchronous tasks.
+async/await: Modern syntax for handling promises in a more synchronous-looking manner.
+Event loop: JavaScript uses an event loop to manage asynchronous tasks and callbacks, ensuring they are executed after synchronous code completes.
+
+In short, JavaScript is synchronous by default but allows asynchronous behavior through these mechanisms to handle non-blocking tasks, such as I/O operations or network requests.
+
 JavaScript is an asynchronous language, which means that it can handle multiple tasks simultaneously. Callbacks are a fundamental aspect of JavaScript, as they allow you to run code after an asynchronous operation has been completed. In this article, we’ll look at what callbacks are, why they’re used, and how to use them with real-life examples and code examples.
 
 What are Callbacks?
@@ -359,6 +370,12 @@ Callbacks are used to handle the results of asynchronous operations in a non-blo
 Callbacks allow you to continue executing code while the operation is being executed in the background. Once the operation has completed, the callback function is called with the result of the operation. This way, you can ensure that the program remains responsive and the user experience is not impacted.
 
 Concepts:
+
+Asynchronous operations refer to tasks that are initiated but do not block the execution of other code while they are being processed. Instead of waiting for the task to complete, the program can continue executing other operations, and when the asynchronous task finishes, it signals (via a callback, promise, or event) that the result is ready.
+
+In simple terms:
+Synchronous: Code runs line by line, and each task waits for the previous one to finish.
+Asynchronous: Some tasks (like network requests or file I/O) run in the background, allowing other code to execute without waiting for the result immediately.
 
 Asynchronous programming: Callbacks are used to handle the results of asynchronous operations, which means that the operation does not block the execution of the rest of the program. Instead, the program continues to run and the callback function is executed when the operation is complete.
 
