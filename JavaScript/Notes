@@ -396,19 +396,22 @@ Loading images on a website: When you load a website, images can take a while to
 
 Handling form submissions: When a user submits a form, it takes time to process the data and send it to the server. If the form submission was executed synchronously, the user would have to wait for the data to be processed and sent before the form can be submitted. With callbacks, you can handle the form submission asynchronously, which means that the user can continue to interact with the form while the data is being processed and sent in the background.
 
+const val = Number(prompt("Enter the age: ")); // Convert input to a number
 
-async function getData(showData) {
-    try {
-        // Simulating a fetch call
-        data = ["Apple", "Mango"]; // Data is hardcoded here
-        showData(data); // Passing data to the callback function
-    } catch (error) {
-        console.log("Error:", error); 
+function getValidity(show) {
+    if (val < 18) {
+        show(false);
+    } else {
+        show(true); 
     }
 }
 
-getData((data) => {
-    console.log(data); // This is the callback function
+getValidity((check) => {
+    if (check) {
+        console.log("Can Vote");
+    } else {
+        console.log("Cannot Vote");
+    }
 });
 
 -----------------------------------------------Promise--------------------------------------------------------------------------------------------
